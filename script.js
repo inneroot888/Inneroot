@@ -6,10 +6,54 @@ function getDraw(){try{const x=JSON.parse(localStorage.getItem("innerootDailyDra
 function openModal(h){content.innerHTML=h;backdrop.hidden=false}function closeModal(){backdrop.hidden=true}
 function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
 function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
-function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p>這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="actions"><button class="primary" id="copy">複製 AI 探索指令</button><button class="secondary" id="done">完成今日抽牌</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
+function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 AI 陪我探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
 function promptText(){const d=getDraw();return `今天抽到：${d?d.card.zh+"（"+d.card.en+"）":"未抽牌"}\n\n請不要把塔羅當作預測未來，而是作為自我探索與潛意識反思的工具。\n\n今天的心情：${mood||"未選擇"}\n我的記錄：${journal||"未填寫"}\n\n請從潛意識、情緒、核心信念、重複模式、內在需要與身體感受角度，引導我理解自己。不要判斷吉凶，不要預測未來。請多用提問，最後提供一個今天可以實踐的小步驟。`;}
-async function copyPrompt(){try{await navigator.clipboard.writeText(promptText());showToast("AI 探索指令已複製")}catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
-function openJournal(){openModal(`<h2>今天想記錄什麼？</h2><p>這張牌帶給你的感受是什麼？</p><textarea id="j" placeholder="寫下今天的情緒與想法…">${journal}</textarea><button class="primary" id="save">儲存今天覺察</button>`);document.getElementById("save").onclick=()=>{journal=document.getElementById("j").value;localStorage.setItem("innerootJournal",journal);closeModal();showToast("日記已儲存今天覺察")}}
+async function copyPrompt(){try{await navigator.clipboard.writeText(promptText());showToast("探索指令已複製")}catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
+function escapeHTML(value){return String(value||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
+function openJournal(){
+  const draw=getDraw(),card=draw?draw.card:null;
+  const questions=card?card.q:["今天最想留下的是哪一個感受？","有什麼事情值得你慢慢理解？","今天想對自己說什麼？"];
+  const savedFocus=localStorage.getItem("innerootJournalFocus")||"";
+  const cardBlock=card?`<div class="journal-card-mini"><img src="${card.file}" alt="${card.zh}"><div><span>今日牌卡</span><strong>${card.zh}</strong><small>${card.en}</small></div></div>`:`<div class="journal-card-mini no-card"><div class="daisy-mark">✽</div><div><span>今日覺察</span><strong>潛意識日記</strong><small>慢慢聆聽今天的自己</small></div></div>`;
+  openModal(`<div class="journal-shell">
+    <div class="journal-daisy daisy-one"></div><div class="journal-daisy daisy-two"></div>
+    <header class="journal-header">
+      <p class="eyebrow">inneroot · 潛意識日記</p>
+      <h2>今天，哪一句最觸動你？</h2>
+      <p>${today()} · 將今天的感受，輕輕放進文字裡。</p>
+    </header>
+    ${cardBlock}
+    <div class="journal-prompts">
+      ${questions.map((q,i)=>`<button type="button" class="journal-prompt${savedFocus===q?" selected":""}" data-focus="${escapeHTML(q)}"><span class="prompt-dot"></span><span class="prompt-flower">✿</span><span>${q}</span></button>`).join("")}
+    </div>
+    <label class="journal-label" for="j">今天，想把什麼記錄下來？</label>
+    <div class="journal-paper">
+      <textarea id="j" placeholder="寫下你的想法與感受…">${escapeHTML(journal)}</textarea>
+    </div>
+    <div class="journal-mood">
+      <span>今天的心情</span>
+      <div>${["平靜","開心","一般","焦慮","難過"].map(x=>`<button type="button" class="mood-chip${mood===x?" selected":""}" data-jm="${x}">${x}</button>`).join("")}</div>
+    </div>
+    <button class="primary journal-save" id="save">✿ 收藏今天的覺察</button>
+    <p class="journal-private">你的記錄只儲存在這部裝置。</p>
+  </div>`);
+  document.querySelectorAll(".journal-prompt").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll(".journal-prompt").forEach(x=>x.classList.remove("selected"));
+    b.classList.add("selected");
+    localStorage.setItem("innerootJournalFocus",b.dataset.focus);
+  });
+  document.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{
+    mood=b.dataset.jm;
+    localStorage.setItem("innerootMood",mood);
+    document.querySelectorAll("[data-jm]").forEach(x=>x.classList.toggle("selected",x===b));
+  });
+  document.getElementById("save").onclick=()=>{
+    journal=document.getElementById("j").value;
+    localStorage.setItem("innerootJournal",journal);
+    openModal(`<div class="journal-finish"><div class="finish-flower">✿</div><h2>今天，又開了一朵花。</h2><p>你的覺察已經好好收藏。<br>願它慢慢長成，屬於你的力量。</p><button class="primary" id="finish">完成</button></div>`);
+    document.getElementById("finish").onclick=closeModal;
+  };
+}
 function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
 function info(title,text){openModal(`<h2>${title}</h2><p>${text}</p>`)}
 document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.action;if(a==="home")scrollTo({top:0,behavior:"smooth"});if(a==="draw")beginDraw();if(a==="journal")openJournal();if(a==="mood")openMood();if(a==="prompt")copyPrompt();if(a==="insight")info("洞察分析","完成更多心情、抽牌和日記後，這裡會整理你的重複模式。");if(a==="growth")info("成長圖譜","每一次記錄，都是一個新的根。")})

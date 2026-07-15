@@ -14,11 +14,106 @@ button,textarea{font:inherit}.page-shell{min-height:100vh;padding:18px;backgroun
 .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#6c8872}.modal-card h2{font-family:Georgia,"Noto Serif TC",serif;font-size:34px;margin:8px 0 14px}
 .modal-card p{line-height:1.8;color:#68776e}.primary,.secondary{border-radius:16px;padding:13px 20px;cursor:pointer}.primary{border:0;color:#fff;background:linear-gradient(135deg,#789879,#496d57)}
 .secondary{border:1px solid rgba(57,91,68,.18);color:#31513f;background:rgba(255,255,255,.72)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.card-stage{display:grid;place-items:center;padding:12px 0}.card-back,.tarot-card{width:220px;height:352px;border-radius:18px;border:2px solid #c8aa68;box-shadow:0 20px 44px rgba(45,72,53,.22)}
+.card-stage{display:grid;place-items:center;padding:12px 0}.card-back,.tarot-card{width:min(280px,72vw);height:auto;aspect-ratio:5/8;border-radius:18px;border:2px solid #c8aa68;box-shadow:0 20px 44px rgba(45,72,53,.22)}
 .card-back{display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 45%,transparent 0 42px,rgba(235,208,143,.95) 43px 45px,transparent 46px),linear-gradient(160deg,#2d5642,#5f7d64);color:#efd792;font-size:58px}
 .card-back span{display:block;font-size:13px;letter-spacing:.18em}.tarot-card{object-fit:cover;animation:flip .75s ease both}
 @keyframes flip{from{transform:rotateY(90deg);opacity:0}to{transform:rotateY(0);opacity:1}}.questions{padding-left:22px;line-height:1.9;color:#5f6f65}
 .badge{display:inline-block;padding:7px 11px;border-radius:999px;background:#e5eee1;color:#4e6d57;font-size:13px}
 textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-radius:18px;background:#fff;padding:15px}
 .toast{position:fixed;right:20px;bottom:20px;z-index:60;padding:13px 18px;border-radius:16px;background:#315b45;color:#fff}.toast[hidden]{display:none}
-@media(max-width:760px){.page-shell{padding:0}.design-stage{border-radius:0}.modal-card h2{font-size:28px}.card-back,.tarot-card{width:180px;height:288px}}
+@media(max-width:760px){.page-shell{padding:0}.design-stage{border-radius:0}.modal-card{padding:24px 20px}.modal-card h2{font-size:28px}.card-back,.tarot-card{width:min(230px,72vw);height:auto;aspect-ratio:5/8}}
+
+.result-copy{margin-top:10px}
+.result-closing{margin:22px 0 4px;padding:16px 18px;border-radius:18px;background:rgba(229,238,225,.72);text-align:center;color:#4d6857;line-height:1.8}
+.result-closing .sprout{display:block;font-size:22px;margin-bottom:4px}
+
+/* Update 03 — 白色太陽菊夢幻日記 */
+.journal-shell{
+  position:relative;
+  overflow:hidden;
+  margin:-8px;
+  padding:10px 6px 4px;
+  color:#405d4b;
+}
+.journal-header{text-align:center;padding:4px 42px 10px}
+.journal-header h2{margin:5px 0 8px;font-size:31px;color:#3f614d}
+.journal-header p{margin:0;color:#7a8c80;font-size:14px}
+.journal-daisy{
+  position:absolute;width:72px;height:72px;border-radius:50%;opacity:.42;
+  background:
+    radial-gradient(circle at center,#d7b568 0 10%,transparent 11%),
+    repeating-conic-gradient(from 0deg,#fff 0 11deg,transparent 11deg 22deg);
+  filter:drop-shadow(0 5px 10px rgba(85,112,92,.12));
+  pointer-events:none
+}
+.daisy-one{right:-24px;top:28px;transform:rotate(13deg)}
+.daisy-two{left:-30px;bottom:175px;width:92px;height:92px;transform:rotate(-10deg)}
+.journal-card-mini{
+  display:flex;align-items:center;gap:14px;margin:10px 0 18px;padding:13px 15px;
+  border:1px solid rgba(160,180,158,.28);border-radius:20px;
+  background:rgba(255,255,255,.72);box-shadow:0 10px 28px rgba(64,91,72,.08)
+}
+.journal-card-mini img{
+  width:64px;height:102px;object-fit:cover;border-radius:10px;border:1px solid #d9c48b;
+  box-shadow:0 8px 18px rgba(53,77,60,.15)
+}
+.journal-card-mini span,.journal-card-mini small{display:block;color:#849388}
+.journal-card-mini strong{display:block;margin:4px 0 2px;font-family:Georgia,"Noto Serif TC",serif;font-size:23px;color:#3d5d49}
+.journal-card-mini.no-card .daisy-mark{font-size:42px;color:#d8b45b}
+.journal-prompts{display:grid;gap:10px;margin:6px 0 20px}
+.journal-prompt{
+  width:100%;display:grid;grid-template-columns:20px 24px 1fr;align-items:center;gap:8px;
+  padding:14px 15px;text-align:left;border:1px solid rgba(116,148,123,.17);
+  border-radius:16px;background:rgba(255,255,255,.68);color:#526b5b;cursor:pointer;
+  box-shadow:0 6px 16px rgba(70,95,76,.055);transition:.2s ease
+}
+.journal-prompt:hover,.journal-prompt.selected{
+  border-color:rgba(103,143,111,.42);background:#f4f8ef;transform:translateY(-1px)
+}
+.prompt-dot{width:17px;height:17px;border:1.5px solid #a9bca9;border-radius:50%}
+.journal-prompt.selected .prompt-dot{border:5px solid #709274}
+.prompt-flower{color:#c7a85e;font-size:18px}
+.journal-label{
+  display:block;margin:3px 0 9px;font-family:Georgia,"Noto Serif TC",serif;
+  font-size:22px;color:#44634f;text-align:center
+}
+.journal-paper{
+  position:relative;padding:7px;border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,254,248,.97),rgba(248,248,239,.94));
+  border:1px solid rgba(189,181,147,.25);
+  box-shadow:0 13px 30px rgba(69,92,74,.08)
+}
+.journal-paper:before,.journal-paper:after{
+  content:"✿";position:absolute;color:#ddd1a5;font-size:24px;opacity:.8
+}
+.journal-paper:before{left:12px;bottom:8px}.journal-paper:after{right:12px;top:8px}
+.journal-paper textarea{
+  min-height:220px;border:0;border-radius:14px;resize:vertical;color:#4a5f51;
+  padding:18px 20px;background:
+    repeating-linear-gradient(to bottom,transparent 0,transparent 34px,rgba(131,151,132,.14) 35px);
+  line-height:35px;outline:none
+}
+.journal-mood{margin:17px 0 4px;padding:14px;border-radius:17px;background:rgba(246,249,241,.78)}
+.journal-mood>span{display:block;margin-bottom:10px;color:#617868;font-size:14px}
+.journal-mood>div{display:flex;gap:7px;flex-wrap:wrap}
+.mood-chip{
+  border:1px solid rgba(103,139,109,.17);border-radius:999px;padding:7px 11px;
+  background:#fff;color:#65796b;cursor:pointer
+}
+.mood-chip.selected{background:#dfeadd;color:#3f654d;border-color:#9db39f}
+.journal-save{display:block;width:100%;margin-top:14px;font-size:17px}
+.journal-private{text-align:center;font-size:12px;color:#8a978e;margin:12px 0 0!important}
+.journal-finish{text-align:center;padding:34px 10px 22px}
+.finish-flower{
+  width:90px;height:90px;display:grid;place-items:center;margin:0 auto 15px;border-radius:50%;
+  background:radial-gradient(circle,#d5b568 0 14%,#fff 15% 50%,#edf3e8 51%);
+  color:#d1ad52;font-size:40px;box-shadow:0 12px 28px rgba(76,103,82,.12)
+}
+.journal-finish h2{color:#41614e}
+.journal-finish .primary{min-width:150px;margin-top:8px}
+@media(max-width:760px){
+  .journal-header{padding-left:28px;padding-right:28px}
+  .journal-header h2{font-size:26px}
+  .journal-card-mini img{width:55px;height:88px}
+  .journal-paper textarea{min-height:190px}
+}
