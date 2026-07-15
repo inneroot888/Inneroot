@@ -1,5 +1,3 @@
-Included:
-16-tower.webp
-17-star.webp
-18-moon.webp
-19-sun.webp
+Pack06
+20-judgement.webp
+21-world.webp
