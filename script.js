@@ -14,43 +14,86 @@ function openJournal(){
   const draw=getDraw(),card=draw?draw.card:null;
   const questions=card?card.q:["今天最想留下的是哪一個感受？","有什麼事情值得你慢慢理解？","今天想對自己說什麼？"];
   const savedFocus=localStorage.getItem("innerootJournalFocus")||"";
-  const cardBlock=card?`<div class="journal-card-mini"><img src="${card.file}" alt="${card.zh}"><div><span>今日牌卡</span><strong>${card.zh}</strong><small>${card.en}</small></div></div>`:`<div class="journal-card-mini no-card"><div class="daisy-mark">✽</div><div><span>今日覺察</span><strong>潛意識日記</strong><small>慢慢聆聽今天的自己</small></div></div>`;
-  openModal(`<div class="journal-shell">
-    <div class="journal-daisy daisy-one"></div><div class="journal-daisy daisy-two"></div>
-    <header class="journal-header">
-      <p class="eyebrow">inneroot · 潛意識日記</p>
-      <h2>今天，哪一句最觸動你？</h2>
-      <p>${today()} · 將今天的感受，輕輕放進文字裡。</p>
+  const selectedQuestion=savedFocus||questions[0];
+  const weekday=new Intl.DateTimeFormat("en-US",{weekday:"long"}).format(new Date());
+  const dateParts=today().split("-");
+
+  openModal(`<div class="journal-page-v2">
+    <div class="journal-glow glow-a"></div>
+    <div class="journal-glow glow-b"></div>
+
+    <header class="journal-topbar">
+      <div class="journal-brand">❈ inneroot ❈</div>
+      <h2>潛意識日記</h2>
+      <p>記錄今日的感受，讓覺察成為成長的養分</p>
     </header>
-    ${cardBlock}
-    <div class="journal-prompts">
-      ${questions.map((q,i)=>`<button type="button" class="journal-prompt${savedFocus===q?" selected":""}" data-focus="${escapeHTML(q)}"><span class="prompt-dot"></span><span class="prompt-flower">✿</span><span>${q}</span></button>`).join("")}
+
+    <div class="journal-date-card">
+      <strong>${dateParts[0]} / ${dateParts[1]} / ${dateParts[2]}</strong>
+      <span>${weekday}</span>
+      <small>✽ ${card?card.zh:"今日覺察"}</small>
     </div>
-    <label class="journal-label" for="j">今天，想把什麼記錄下來？</label>
-    <div class="journal-paper">
-      <textarea id="j" placeholder="寫下你的想法與感受…">${escapeHTML(journal)}</textarea>
+
+    <div class="journal-layout">
+      <aside class="journal-left-panel">
+        <div class="panel-label">✦ 今日牌卡 ✦</div>
+        ${card?`<img class="journal-feature-card" src="${card.file}" alt="${card.zh}">`:`<div class="journal-feature-empty">✽</div>`}
+        <div class="journal-card-caption">
+          <strong>${card?card.zh:"潛意識日記"}</strong>
+          <span>${card?card.en:"Inneroot Journal"}</span>
+        </div>
+        <p class="journal-card-message">${card?"這張牌帶來今天的提醒，陪你看見正在發生的自己。":"慢慢寫下今天的感受，讓內在聲音有地方安放。"}</p>
+      </aside>
+
+      <section class="journal-main-panel">
+        <h3>今天，哪一句最觸動你？</h3>
+        <div class="journal-prompts-v2">
+          ${questions.map(q=>`<button type="button" class="journal-prompt-v2${selectedQuestion===q?" selected":""}" data-focus="${escapeHTML(q)}"><span class="radio-ring"></span><span class="daisy-icon">✽</span><span>${q}</span></button>`).join("")}
+        </div>
+
+        <div class="journal-writing-title">今天，想把什麼記錄下來？</div>
+        <div class="journal-paper-v2">
+          <div class="paper-daisy top-right"></div>
+          <div class="paper-daisy bottom-left"></div>
+          <textarea id="j" placeholder="寫下你的想法與感受…">${escapeHTML(journal)}</textarea>
+        </div>
+      </section>
     </div>
-    <div class="journal-mood">
-      <span>今天的心情</span>
-      <div>${["平靜","開心","一般","焦慮","難過"].map(x=>`<button type="button" class="mood-chip${mood===x?" selected":""}" data-jm="${x}">${x}</button>`).join("")}</div>
+
+    <div class="journal-bottom-row">
+      <div class="journal-mood-card">
+        <span class="small-title">✦ 今天的心情 ✦</span>
+        <div class="mood-row">
+          ${["平靜","開心","一般","焦慮","難過"].map(x=>`<button type="button" class="mood-chip-v2${mood===x?" selected":""}" data-jm="${x}">${x}</button>`).join("")}
+        </div>
+        <label for="gentleNote">給今天的自己一句溫柔的話</label>
+        <input id="gentleNote" type="text" value="${escapeHTML(localStorage.getItem("innerootGentleNote")||"")}" placeholder="妳已經很棒了…">
+      </div>
+
+      <div class="journal-save-area">
+        <button class="journal-save-v2" id="save">✽ 收藏今天的覺察</button>
+        <p>🔒 你的記錄只屬於你，安心地寫下，慢慢地成長。</p>
+      </div>
     </div>
-    <button class="primary journal-save" id="save">✿ 收藏今天的覺察</button>
-    <p class="journal-private">你的記錄只儲存在這部裝置。</p>
   </div>`);
-  document.querySelectorAll(".journal-prompt").forEach(b=>b.onclick=()=>{
-    document.querySelectorAll(".journal-prompt").forEach(x=>x.classList.remove("selected"));
+
+  document.querySelectorAll(".journal-prompt-v2").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll(".journal-prompt-v2").forEach(x=>x.classList.remove("selected"));
     b.classList.add("selected");
     localStorage.setItem("innerootJournalFocus",b.dataset.focus);
   });
+
   document.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{
     mood=b.dataset.jm;
     localStorage.setItem("innerootMood",mood);
     document.querySelectorAll("[data-jm]").forEach(x=>x.classList.toggle("selected",x===b));
   });
+
   document.getElementById("save").onclick=()=>{
     journal=document.getElementById("j").value;
     localStorage.setItem("innerootJournal",journal);
-    openModal(`<div class="journal-finish"><div class="finish-flower">✿</div><h2>今天，又開了一朵花。</h2><p>你的覺察已經好好收藏。<br>願它慢慢長成，屬於你的力量。</p><button class="primary" id="finish">完成</button></div>`);
+    localStorage.setItem("innerootGentleNote",document.getElementById("gentleNote").value);
+    openModal(`<div class="journal-finish-v2"><div class="finish-daisy">✽</div><h2>今天，又開了一朵花。</h2><p>你的覺察已經好好收藏。<br>願它慢慢長成，屬於你的力量。</p><button class="primary" id="finish">完成</button></div>`);
     document.getElementById("finish").onclick=closeModal;
   };
 }
