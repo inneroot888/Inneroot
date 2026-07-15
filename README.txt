@@ -1,14 +1,15 @@
-Inneroot Update 04 — 夢幻白色太陽菊日記 V2
+Inneroot Journal Step 1
 
-主要修正：
-- 版面改成左邊大牌卡、右邊問題與日記紙
-- 加入獨立日期卡
-- 日記文字已與橫線對齊
-- 白色太陽菊改為較完整的花瓣裝飾
-- 大幅減少普通表單感
-- 手機版會自動改成上下排列
-- 保留今日心情與溫柔句子
-- 儲存後顯示「今天，又開了一朵花」
+今次只做第一步：
+- 將你最後確認的日記設計圖，真正放入日記 Modal
+- 保留可打字、可選問題、可選心情、可儲存
+- 實際牌卡與日期會覆蓋在設計稿上
+- 其他網站頁面不變
 
 上傳 GitHub：
-覆蓋 index.html、style.css、script.js 後 Commit changes。
+index.html
+style.css
+script.js
+journal-template.png
+
+覆蓋同名檔案後 Commit changes。
