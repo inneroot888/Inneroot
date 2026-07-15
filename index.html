@@ -10,31 +10,41 @@
 <body>
   <main class="page-shell">
     <section class="design-stage" aria-label="Inneroot 首頁">
-      <img src="inneroot-home.png" alt="Inneroot 夢幻森林首頁" class="design-image">
+      <img src="inneroot-home.png" alt="Inneroot 淺色森林首頁" class="design-image">
+
       <button class="hotspot nav-home" aria-label="首頁" data-action="home"></button>
-      <button class="hotspot nav-draw" aria-label="抽一張牌" data-action="draw"></button>
+      <button class="hotspot nav-draw" aria-label="每日抽牌" data-action="draw"></button>
       <button class="hotspot nav-journal" aria-label="潛意識日記" data-action="journal"></button>
-      <button class="hotspot nav-prompt" aria-label="AI 探索指令" data-action="prompt"></button>
-      <button class="hotspot nav-growth" aria-label="成長足跡" data-action="growth"></button>
-      <button class="hotspot hero-listen" aria-label="聽聽內心的聲音" data-action="mood"></button>
-      <button class="hotspot mood-great" aria-label="很棒" data-mood="很棒"></button>
+      <button class="hotspot nav-mood" aria-label="心情追蹤" data-action="mood"></button>
+      <button class="hotspot nav-insight" aria-label="洞察分析" data-action="insight"></button>
+      <button class="hotspot nav-growth" aria-label="成長圖譜" data-action="growth"></button>
+      <button class="hotspot nav-prompt" aria-label="AI 探索" data-action="prompt"></button>
+
       <button class="hotspot mood-calm" aria-label="平靜" data-mood="平靜"></button>
-      <button class="hotspot mood-normal" aria-label="普通" data-mood="普通"></button>
-      <button class="hotspot mood-low" aria-label="低落" data-mood="低落"></button>
+      <button class="hotspot mood-happy" aria-label="開心" data-mood="開心"></button>
+      <button class="hotspot mood-normal" aria-label="一般" data-mood="一般"></button>
       <button class="hotspot mood-anxious" aria-label="焦慮" data-mood="焦慮"></button>
-      <button class="hotspot quick-draw" aria-label="快速抽牌" data-action="draw"></button>
-      <button class="hotspot insight" aria-label="潛意識洞察" data-action="insight"></button>
+      <button class="hotspot mood-hard" aria-label="難過" data-mood="難過"></button>
+
+      <button class="hotspot log-mood" aria-label="記錄心情" data-action="mood"></button>
+      <button class="hotspot daily-card" aria-label="每日抽牌" data-action="draw"></button>
       <button class="hotspot journal-card" aria-label="潛意識日記" data-action="journal"></button>
-      <button class="hotspot growth-card" aria-label="成長足跡" data-action="growth"></button>
+      <button class="hotspot insight-card" aria-label="洞察分析" data-action="insight"></button>
     </section>
-    <div class="mobile-helper"><strong>Inneroot</strong><span>按畫面中的功能區開始探索。</span></div>
+
+    <div class="mobile-helper">
+      <strong>Inneroot</strong>
+      <span>按畫面中的功能區開始探索。</span>
+    </div>
   </main>
+
   <div class="modal-backdrop" id="modalBackdrop" hidden>
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="close" id="closeModal" aria-label="關閉">×</button>
       <div id="modalContent"></div>
     </section>
   </div>
+
   <div class="toast" id="toast" hidden></div>
   <script src="script.js"></script>
 </body>
