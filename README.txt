@@ -1,13 +1,15 @@
-Inneroot Journal V3 — Step 1
+Inneroot Journal V3 — Step 2
 
-今次修正：
-- 完全移除設計稿背景圖
-- 所有版面由 HTML/CSS 重畫，不會再重疊
-- 左邊大牌卡、日期卡、三條問題、日記紙、心情區、玻璃按鈕全部保留
-- 白色太陽菊、藤蔓感、金色星光與奶白夢幻背景
-- 日記文字與橫線對齊
-- 手機／iPad 自動改為上下排列
-- 其他網站頁面不變
+今次只精修外觀，沒有修改任何功能或版面結構。
 
-GitHub：
-上傳 index.html、style.css、script.js 覆蓋原檔，再 Commit changes。
+更新內容：
+- 日記紙加入自然撕紙邊、紙纖維質感
+- 橫線更淡，文字維持 38px 行距對齊
+- 白色太陽菊改成更自然花瓣外觀
+- 收藏按鈕改成更淺色透明玻璃感
+- 加入柔和高光、按壓縮放
+- 背景加入極淡霧光及金色粒子
+- 問題卡片陰影及透明感精修
+
+GitHub 更新：
+上傳 index.html、style.css、script.js，覆蓋原檔並 Commit changes。
