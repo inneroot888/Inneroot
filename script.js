@@ -1,87 +1,16 @@
-const tarotCards = [
-  "愚者","魔術師","女祭司","皇后","皇帝","教皇","戀人","戰車","力量","隱者",
-  "命運之輪","正義","倒吊人","死神","節制","惡魔","高塔","星星","月亮","太陽","審判","世界"
-];
-
-let mood = localStorage.getItem("innerootMood") || "";
-let journal = localStorage.getItem("innerootJournal") || "";
-let drawnCard = localStorage.getItem("innerootCard") || "";
-
-const backdrop = document.getElementById("modalBackdrop");
-const modalContent = document.getElementById("modalContent");
-const closeModalButton = document.getElementById("closeModal");
-const toast = document.getElementById("toast");
-
-function showToast(message){
-  toast.textContent = message;
-  toast.hidden = false;
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => { toast.hidden = true; }, 1700);
-}
-function openModal(html){ modalContent.innerHTML = html; backdrop.hidden = false; }
-function closeModal(){ backdrop.hidden = true; }
-
-function drawCard(){
-  drawnCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
-  localStorage.setItem("innerootCard", drawnCard);
-  openModal(`<p class="eyebrow">今日抽牌</p><h2 id="modalTitle">${drawnCard}</h2><p>先不要急著找牌義。第一眼，你留意到什麼？它令你想到哪一段情緒、關係或回憶？</p><button class="primary" id="drawAgain">再抽一張</button>`);
-  document.getElementById("drawAgain").addEventListener("click", drawCard);
-}
-function openJournal(){
-  openModal(`<p class="eyebrow">潛意識日記</p><h2 id="modalTitle">寫下此刻的你</h2><textarea id="journalInput" placeholder="今天發生了什麼？你有什麼情緒、身體感覺或反覆出現的想法？">${journal}</textarea><button class="primary" id="saveJournal">儲存此頁</button>`);
-  document.getElementById("saveJournal").addEventListener("click", () => {
-    journal = document.getElementById("journalInput").value.trim();
-    localStorage.setItem("innerootJournal", journal);
-    closeModal();
-    showToast("日記已儲存");
-  });
-}
-function makePrompt(){
-  return `請不要把塔羅當作預測未來，而是作為自我探索與潛意識反思的工具。
-
-今天的心情：${mood || "未選擇"}
-今天抽到的牌：${drawnCard || "未抽牌"}
-我的記錄：${journal || "未填寫"}
-
-請從情緒、核心信念、重複模式、內在需要與身體感受角度，引導我理解自己。不要判定吉凶，請多用提問，最後提供一個今天可以實踐的小步驟。`;
-}
-async function copyPrompt(){
-  const prompt = makePrompt();
-  try{ await navigator.clipboard.writeText(prompt); showToast("AI 探索指令已複製"); }
-  catch{ openModal(`<p class="eyebrow">AI 探索指令</p><h2 id="modalTitle">長按以下內容複製</h2><textarea readonly>${prompt}</textarea>`); }
-}
-function openMood(){
-  openModal(`<p class="eyebrow">今日心情</p><h2 id="modalTitle">今天的你，感覺如何？</h2><div class="mood-list">${["平靜","開心","一般","焦慮","難過"].map(item => `<button data-select-mood="${item}">${item}</button>`).join("")}</div>`);
-  document.querySelectorAll("[data-select-mood]").forEach(button => button.addEventListener("click", () => saveMood(button.dataset.selectMood)));
-}
-function saveMood(value){
-  mood = value;
-  localStorage.setItem("innerootMood", mood);
-  openModal(`<p class="eyebrow">已記錄</p><h2 id="modalTitle">今天的心情：${mood}</h2><p>記錄不是為了評價自己，而是慢慢看見情緒出現的規律。</p><button class="primary" id="finishMood">完成</button>`);
-  document.getElementById("finishMood").addEventListener("click", closeModal);
-}
-function openInsight(){
-  openModal(`<p class="eyebrow">洞察分析</p><h2 id="modalTitle">從重複出現的情緒開始</h2><p>第一版會先記錄你的心情、牌卡和日記。之後再加入長期模式整理與每月回顧。</p><button class="primary" id="goJournal">寫一篇記錄</button>`);
-  document.getElementById("goJournal").addEventListener("click", openJournal);
-}
-function openGrowth(){
-  openModal(`<p class="eyebrow">成長圖譜</p><h2 id="modalTitle">你的森林正慢慢生長</h2><p>完成每日心情、抽牌或日記後，未來會在這裡形成你的探索時間線。</p><button class="primary" id="closeGrowth">返回首頁</button>`);
-  document.getElementById("closeGrowth").addEventListener("click", closeModal);
-}
-
-document.querySelectorAll("[data-action]").forEach(button => {
-  button.addEventListener("click", () => {
-    const action = button.dataset.action;
-    if(action === "home") window.scrollTo({top:0,behavior:"smooth"});
-    if(action === "draw") drawCard();
-    if(action === "journal") openJournal();
-    if(action === "prompt") copyPrompt();
-    if(action === "growth") openGrowth();
-    if(action === "mood") openMood();
-    if(action === "insight") openInsight();
-  });
-});
-document.querySelectorAll("[data-mood]").forEach(button => button.addEventListener("click", () => saveMood(button.dataset.mood)));
-closeModalButton.addEventListener("click", closeModal);
-backdrop.addEventListener("click", (event) => { if(event.target === backdrop) closeModal(); });
-document.addEventListener("keydown", (event) => { if(event.key === "Escape") closeModal(); });
+const cards=[{"file": "00-fool.webp", "zh": "愚者", "en": "The Fool", "q": ["今天有什麼地方值得重新開始？", "你是否因為害怕犯錯而停下來？", "如果放低一次控制，你會想試什麼？"]}, {"file": "01-magician.webp", "zh": "魔術師", "en": "The Magician", "q": ["你手上已經擁有什麼資源？", "你最近忽略了哪一種能力？", "今天可以主動完成哪一件小事？"]}, {"file": "02-high-priestess.webp", "zh": "女祭司", "en": "The High Priestess", "q": ["你心裡其實早已知道什麼？", "最近有什麼感受未被說出口？", "今天可以如何安靜地聽自己？"]}, {"file": "03-empress.webp", "zh": "皇后", "en": "The Empress", "q": ["你現在最需要怎樣的照顧？", "你有沒有過度付出而忽略自己？", "今天可以為自己創造什麼舒服空間？"]}, {"file": "04-emperor.webp", "zh": "皇帝", "en": "The Emperor", "q": ["你現在最需要建立哪一條界線？", "哪件事需要更清晰的結構？", "今天可以做哪個穩定自己的決定？"]}, {"file": "05-hierophant.webp", "zh": "教皇", "en": "The Hierophant", "q": ["哪些信念是你真正認同的？", "哪些規則只是因為習慣而跟從？", "你今天想向誰或什麼學習？"]}, {"file": "06-lovers.webp", "zh": "戀人", "en": "The Lovers", "q": ["你正在面對哪一個重要選擇？", "你真正重視的是什麼？", "你的選擇有沒有忠於自己？"]}, {"file": "07-chariot.webp", "zh": "戰車", "en": "The Chariot", "q": ["你現在想把力量帶往哪裡？", "你內在有哪兩股力量正在拉扯？", "今天最值得專注的是什麼？"]}, {"file": "08-strength.webp", "zh": "力量", "en": "Strength", "q": ["你可以如何溫柔地面對困難？", "哪種情緒需要被安撫而非壓制？", "你其實比自己想像中堅持了多久？"]}, {"file": "09-hermit.webp", "zh": "隱者", "en": "The Hermit", "q": ["你需要暫時離開哪些雜音？", "最近有什麼問題需要獨自想清楚？", "今天可以留多少時間給自己？"]}, {"file": "10-wheel-of-fortune.webp", "zh": "命運之輪", "en": "Wheel of Fortune", "q": ["你正在經歷哪一種轉變？", "有哪些事情並不完全受你控制？", "你可以如何配合而非抗拒變化？"]}, {"file": "11-justice.webp", "zh": "正義", "en": "Justice", "q": ["你是否誠實面對自己的選擇？", "哪件事需要更平衡地看待？", "今天可以承擔哪一部分責任？"]}, {"file": "12-hanged-man.webp", "zh": "倒吊人", "en": "The Hanged Man", "q": ["你是否需要換一個角度？", "有哪些事情暫時不必急著推進？", "放下哪個執著會令你更自由？"]}, {"file": "13-death.webp", "zh": "死神", "en": "Death", "q": ["有什麼已經完成，但你仍未放手？", "哪個舊模式正在離開？", "你想為新階段騰出什麼空間？"]}, {"file": "14-temperance.webp", "zh": "節制", "en": "Temperance", "q": ["你的生活哪一部分需要調和？", "你最近是否走得太快或太慢？", "今天可以做什麼令自己回到平衡？"]}, {"file": "15-devil.webp", "zh": "惡魔", "en": "The Devil", "q": ["你最近被什麼慾望或恐懼牽制？", "哪個模式明知不舒服卻重複出現？", "你可以先鬆開哪一小部分？"]}, {"file": "16-tower.webp", "zh": "高塔", "en": "The Tower", "q": ["哪個真相正在打破舊有想法？", "你最害怕失去的是什麼？", "在混亂之中，有什麼變得更清楚？"]}, {"file": "17-star.webp", "zh": "星星", "en": "The Star", "q": ["今天什麼事情令你重新燃起希望？", "你有沒有忽略自己真正的需要？", "如果相信自己一次，你會做什麼？"]}, {"file": "18-moon.webp", "zh": "月亮", "en": "The Moon", "q": ["最近有什麼讓你感到不確定？", "你的恐懼之中有多少來自想像？", "你需要更多什麼資訊或安全感？"]}, {"file": "19-sun.webp", "zh": "太陽", "en": "The Sun", "q": ["今天有什麼值得你真心享受？", "你在哪裡可以更坦率地做自己？", "有什麼好事其實已經在發生？"]}, {"file": "20-judgement.webp", "zh": "審判", "en": "Judgement", "q": ["你正在回應哪一個內在呼喚？", "有哪些過去需要重新理解？", "你準備為自己作出什麼新決定？"]}, {"file": "21-world.webp", "zh": "世界", "en": "The World", "q": ["你最近完成了哪一個重要階段？", "你可以如何肯定自己的成長？", "下一段旅程想帶著什麼出發？"]}];
+let mood=localStorage.getItem("innerootMood")||"",journal=localStorage.getItem("innerootJournal")||"";
+const backdrop=document.getElementById("modalBackdrop"),content=document.getElementById("modalContent"),toast=document.getElementById("toast");
+function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+function getDraw(){try{const x=JSON.parse(localStorage.getItem("innerootDailyDraw")||"null");return x&&x.date===today()?x:null}catch{return null}}
+function openModal(h){content.innerHTML=h;backdrop.hidden=false}function closeModal(){backdrop.hidden=true}
+function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
+function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
+function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p>這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="actions"><button class="primary" id="copy">複製 AI 探索指令</button><button class="secondary" id="done">完成今日抽牌</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=closeModal}
+function promptText(){const d=getDraw();return `今天抽到：${d?d.card.zh+"（"+d.card.en+"）":"未抽牌"}\n\n請不要把塔羅當作預測未來，而是作為自我探索與潛意識反思的工具。\n\n今天的心情：${mood||"未選擇"}\n我的記錄：${journal||"未填寫"}\n\n請從潛意識、情緒、核心信念、重複模式、內在需要與身體感受角度，引導我理解自己。不要判斷吉凶，不要預測未來。請多用提問，最後提供一個今天可以實踐的小步驟。`;}
+async function copyPrompt(){try{await navigator.clipboard.writeText(promptText());showToast("AI 探索指令已複製")}catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
+function openJournal(){openModal(`<h2>潛意識日記</h2><textarea id="j" placeholder="寫下今天的情緒與想法…">${journal}</textarea><button class="primary" id="save">儲存</button>`);document.getElementById("save").onclick=()=>{journal=document.getElementById("j").value;localStorage.setItem("innerootJournal",journal);closeModal();showToast("日記已儲存")}}
+function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
+function info(title,text){openModal(`<h2>${title}</h2><p>${text}</p>`)}
+document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>{const a=b.dataset.action;if(a==="home")scrollTo({top:0,behavior:"smooth"});if(a==="draw")beginDraw();if(a==="journal")openJournal();if(a==="mood")openMood();if(a==="prompt")copyPrompt();if(a==="insight")info("洞察分析","完成更多心情、抽牌和日記後，這裡會整理你的重複模式。");if(a==="growth")info("成長圖譜","每一次記錄，都是一個新的根。")})
+document.getElementById("closeModal").onclick=closeModal;backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
