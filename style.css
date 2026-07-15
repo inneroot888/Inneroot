@@ -14,11 +14,15 @@ button,textarea{font:inherit}.page-shell{min-height:100vh;padding:18px;backgroun
 .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#6c8872}.modal-card h2{font-family:Georgia,"Noto Serif TC",serif;font-size:34px;margin:8px 0 14px}
 .modal-card p{line-height:1.8;color:#68776e}.primary,.secondary{border-radius:16px;padding:13px 20px;cursor:pointer}.primary{border:0;color:#fff;background:linear-gradient(135deg,#789879,#496d57)}
 .secondary{border:1px solid rgba(57,91,68,.18);color:#31513f;background:rgba(255,255,255,.72)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.card-stage{display:grid;place-items:center;padding:12px 0}.card-back,.tarot-card{width:220px;height:352px;border-radius:18px;border:2px solid #c8aa68;box-shadow:0 20px 44px rgba(45,72,53,.22)}
+.card-stage{display:grid;place-items:center;padding:12px 0}.card-back,.tarot-card{width:min(280px,72vw);height:auto;aspect-ratio:5/8;border-radius:18px;border:2px solid #c8aa68;box-shadow:0 20px 44px rgba(45,72,53,.22)}
 .card-back{display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 45%,transparent 0 42px,rgba(235,208,143,.95) 43px 45px,transparent 46px),linear-gradient(160deg,#2d5642,#5f7d64);color:#efd792;font-size:58px}
 .card-back span{display:block;font-size:13px;letter-spacing:.18em}.tarot-card{object-fit:cover;animation:flip .75s ease both}
 @keyframes flip{from{transform:rotateY(90deg);opacity:0}to{transform:rotateY(0);opacity:1}}.questions{padding-left:22px;line-height:1.9;color:#5f6f65}
 .badge{display:inline-block;padding:7px 11px;border-radius:999px;background:#e5eee1;color:#4e6d57;font-size:13px}
 textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-radius:18px;background:#fff;padding:15px}
 .toast{position:fixed;right:20px;bottom:20px;z-index:60;padding:13px 18px;border-radius:16px;background:#315b45;color:#fff}.toast[hidden]{display:none}
-@media(max-width:760px){.page-shell{padding:0}.design-stage{border-radius:0}.modal-card h2{font-size:28px}.card-back,.tarot-card{width:180px;height:288px}}
+@media(max-width:760px){.page-shell{padding:0}.design-stage{border-radius:0}.modal-card{padding:24px 20px}.modal-card h2{font-size:28px}.card-back,.tarot-card{width:min(230px,72vw);height:auto;aspect-ratio:5/8}}
+
+.result-copy{margin-top:10px}
+.result-closing{margin:22px 0 4px;padding:16px 18px;border-radius:18px;background:rgba(229,238,225,.72);text-align:center;color:#4d6857;line-height:1.8}
+.result-closing .sprout{display:block;font-size:22px;margin-bottom:4px}
