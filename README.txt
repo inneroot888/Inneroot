@@ -1,0 +1,1 @@
+Replace these four .webp files in your GitHub repository root and commit changes.
