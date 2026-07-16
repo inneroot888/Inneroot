@@ -16,7 +16,7 @@ function closeModal(){
 }
 function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
 function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
-function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 開始深入探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
+function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>下一步，把看到這張牌後最先出現的感受寫下來。<br>不需要寫得完整，只需要對自己誠實。</div><div class="actions"><button class="primary" id="toJournal">前往潛意識日記</button><button class="secondary" id="finishDraw">稍後再寫</button></div>`);document.getElementById("toJournal").onclick=openJournal;document.getElementById("finishDraw").onclick=closeModal}
 function promptText(){
   const d=getDraw();
   const card=d?d.card:null;
@@ -80,6 +80,23 @@ ${gentle}
 }
 
 async function copyPrompt(){
+  journal=localStorage.getItem("innerootJournal")||"";
+  if(!journal.trim()){
+    openModal(`<div class="explore-ready">
+      <div class="explore-orb">✦</div>
+      <p class="eyebrow">INNER EXPLORATION</p>
+      <h2>先寫下你的感受</h2>
+      <p>「深入探索」會結合你今天的牌卡、心情和潛意識日記，幫你整理值得留意的感受與內在模式。先留下幾句真實感受，探索內容會更貼近你。</p>
+      <div class="explore-actions">
+        <button class="primary" id="writeFirst">前往潛意識日記</button>
+        <button class="secondary" id="closeExplore">稍後再做</button>
+      </div>
+    </div>`);
+    document.getElementById("writeFirst").onclick=openJournal;
+    document.getElementById("closeExplore").onclick=closeModal;
+    return;
+  }
+
   const text=promptText();
 
   try{
@@ -89,7 +106,7 @@ async function copyPrompt(){
       <div class="explore-orb">✦</div>
       <p class="eyebrow">INNER EXPLORATION</p>
       <h2>深入探索內容已準備好</h2>
-      <p>「深入探索」會將你今日的牌卡、心情和日記整理成一段清晰提示，讓你貼到任何文字對話 AI，從不同角度理解自己的感受、想法和重複模式。</p>
+      <p>「深入探索」會結合你今天抽到的牌卡、記錄的心情和潛意識日記，整理成一段清晰提示，方便貼到文字對話 AI，幫助你從不同角度理解自己的感受、想法和重複模式。這不是標準答案，而是一個陪你探索自己的角度。</p>
       <div class="explore-actions">
         <button class="primary" id="copyAgain">複製深入探索內容</button>
         <button class="secondary" id="closeExplore">稍後再去</button>
@@ -190,8 +207,9 @@ function openJournal(){
     journal=document.getElementById("j").value;
     localStorage.setItem("innerootJournal",journal);
     localStorage.setItem("innerootGentleNote",document.getElementById("gentleNoteV4").value);
-    openModal(`<div class="journal-v4-finish"><div class="journal-v4-bloom">✿</div><h2>今天的覺察已經收藏好了。</h2><p>願你把這份溫柔留給自己，也慢慢長成新的力量。</p><button class="primary" id="finish">完成</button></div>`);
-    document.getElementById("finish").onclick=closeModal;
+    openModal(`<div class="journal-v4-finish"><div class="journal-v4-bloom">✿</div><h2>今天的覺察已經收藏好了。</h2><p>下一步，可以讓「深入探索」結合今天的牌卡、心情和日記，陪你整理其中的連結與值得留意的方向。</p><div class="actions"><button class="primary" id="startExplore">開始深入探索</button><button class="secondary" id="finishLater">稍後再做</button></div></div>`);
+    document.getElementById("startExplore").onclick=copyPrompt;
+    document.getElementById("finishLater").onclick=closeModal;
   };
 }
 function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
