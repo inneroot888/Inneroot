@@ -2721,3 +2721,40 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .draw-v70-cardback,.draw-v70-glow,.draw-v70-ripple{animation:none!important}
   .draw-v70-cardback.is-revealing{opacity:0;transition:opacity .2s ease}
 }
+
+
+/* =========================================================
+   Inneroot V7.1.1 Hotfix
+   Only covers the two personal-name areas baked into
+   inneroot-home.png. No layout, animation or feature changes.
+   ========================================================= */
+.bee-name-cover{
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(255,249,222,.34),transparent 32%),
+    linear-gradient(135deg,rgba(247,250,242,.98),rgba(232,242,228,.98));
+}
+
+/* Main "你好 BEE" area */
+.bee-name-cover-main{
+  left:22.8%;
+  top:6.7%;
+  width:74.4%;
+  height:14.4%;
+  border-radius:22px;
+}
+
+/* Lower-left "你好 BEE / 歡迎登入" area */
+.bee-name-cover-account{
+  left:2.15%;
+  bottom:2.6%;
+  width:18.7%;
+  height:8.3%;
+  border-radius:17px;
+}
+
+@media(max-width:760px){
+  .bee-name-cover{display:none!important}
+}
