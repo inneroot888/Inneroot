@@ -1,0 +1,62 @@
+/* Inneroot V5.2 — viewport-fixed bottom navigation + full garden illustration */
+@media (max-width:600px) and (orientation:portrait){
+  /* Nav is now a direct child of body, outside the scrolling homepage. */
+  body > .asset-bottom-nav{
+    position:fixed !important;
+    left:10px !important;
+    right:10px !important;
+    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
+    top:auto !important;
+    margin:0 !important;
+    width:auto !important;
+    z-index:2147483000 !important;
+    transform:translateZ(0) !important;
+    -webkit-transform:translateZ(0) !important;
+    will-change:transform !important;
+    contain:none !important;
+  }
+
+  /* Keep enough space below the last card for the fixed navigation. */
+  .mobile-assets-home,
+  .asset-content{
+    padding-bottom:118px !important;
+  }
+
+  /* Show the complete garden illustration inside the available card area. */
+  .asset-feature-card.asset-wide{
+    height:164px !important;
+    min-height:164px !important;
+    overflow:hidden !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:148px !important;
+    height:148px !important;
+    max-width:44% !important;
+    max-height:calc(100% - 12px) !important;
+    right:10px !important;
+    bottom:6px !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    transform:none !important;
+    clip-path:none !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  body > .asset-bottom-nav{
+    left:8px !important;
+    right:8px !important;
+    bottom:calc(7px + env(safe-area-inset-bottom)) !important;
+  }
+  .asset-feature-card.asset-wide{
+    height:158px !important;
+    min-height:158px !important;
+  }
+  .asset-feature-card.asset-wide > img{
+    width:140px !important;
+    height:140px !important;
+    right:8px !important;
+    bottom:6px !important;
+  }
+}

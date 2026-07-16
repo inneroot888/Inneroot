@@ -1,12 +1,7 @@
-Inneroot V5.1 更新包
+Inneroot V5.2
 
-只修正：
-1. 底部導航固定在畫面底部，不跟頁面內容捲動
-2. 移除額外裝飾燈及其黑色殘影
-3. 心靈花園插畫縮細並右移，避免遮住文字
+修正：
+1. 底部導航由 main 移到 body 直屬，固定於 viewport。
+2. 心靈花園插畫完整顯示，不再用負 bottom 裁走底部。
 
-上傳到 GitHub 根目錄：
-- index.html：覆蓋同名檔案
-- fix-v51.css：新增檔案
-
-保留原本 fix-v48.css、fix-v49.css、fix-v50.css。
+上傳 index.html 覆蓋原檔，新增 fix-v52.css。保留 fix-v48 至 fix-v51。
