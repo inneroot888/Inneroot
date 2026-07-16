@@ -2441,3 +2441,62 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
     overflow:auto !important;
   }
 }
+
+
+/* =========================================================
+   Inneroot V6.0 — Logo layout aligned to approved reference
+   ========================================================= */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-topbar{
+    align-items:flex-start !important;
+    justify-content:space-between !important;
+    gap:14px !important;
+  }
+
+  .asset-logo,
+  .asset-logo.asset-logo-mark{
+    display:block !important;
+    padding:0 !important;
+    margin:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+  }
+
+  .asset-logo img{
+    display:block;
+    width:156px;
+    max-width:44vw;
+    height:auto;
+    object-fit:contain;
+    filter:drop-shadow(0 3px 18px rgba(255,255,255,.55));
+  }
+
+  .asset-round{
+    width:52px !important;
+    height:52px !important;
+    margin-top:2px;
+    background:rgba(255,255,255,.68) !important;
+    border:1px solid rgba(255,255,255,.92) !important;
+    box-shadow:0 14px 32px rgba(55,75,58,.10) !important;
+    backdrop-filter:blur(18px);
+  }
+
+  .asset-welcome{
+    margin-top:48px !important;
+    max-width:340px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-logo img{
+    width:138px;
+    max-width:46vw;
+  }
+
+  .asset-welcome{
+    margin-top:42px !important;
+  }
+}

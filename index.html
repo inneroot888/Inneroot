@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inneroot</title>
   <meta name="description" content="與潛意識對話，遇見真正的自己。">
-  <link rel="stylesheet" href="style.css?v=4.7.0">
-  <link rel="stylesheet" href="fix-v48.css?v=4.8.0">
-  <link rel="stylesheet" href="fix-v49.css?v=4.9.0">
-  <link rel="stylesheet" href="fix-v50.css?v=5.0.0">
-  <link rel="stylesheet" href="fix-v51.css?v=5.1.0">
-  <link rel="stylesheet" href="fix-v52.css?v=5.2.0">
-  <link rel="stylesheet" href="fix-v53.css?v=5.3.0">
-  <link rel="stylesheet" href="fix-v54.css?v=5.4.0">
-  <link rel="stylesheet" href="fix-v55.css?v=5.5.0">
-  <link rel="stylesheet" href="fix-v56.css?v=5.6.0">
-  <link rel="stylesheet" href="fix-v57.css?v=5.7.0">
-  <link rel="stylesheet" href="fix-v58.css?v=5.8.0">
-  <link rel="stylesheet" href="fix-v59.css?v=5.9.0">
+  <link rel="stylesheet" href="style.css?v=6.0.0">
 </head>
 <body>
   <main class="page-shell desktop-home">
@@ -42,11 +30,11 @@
     <section class="asset-hero">
       <img class="asset-hero-bg" src="hero-lake.webp" alt="" aria-hidden="true">
       <img class="asset-deco asset-deco-daisy" src="decor-daisy.png" alt="" aria-hidden="true">
+      <img class="asset-deco asset-deco-lantern" src="decor-lantern.png" alt="" aria-hidden="true">
 
       <div class="asset-topbar">
-        <div class="asset-logo">
-          <span>✤</span>
-          <div><strong>inneroot</strong><small>回到內在的花園</small></div>
+        <div class="asset-logo asset-logo-mark" aria-label="inneroot logo">
+          <img src="logo-wordmark-crop.png" alt="inneroot logo">
         </div>
         <button class="asset-round" data-action="settings" aria-label="設定">⚙︎</button>
       </div>
@@ -63,13 +51,13 @@
           <button data-action="mood">記錄歷史</button>
         </div>
         <div class="asset-moods">
-          <button data-action="mood" aria-label="平靜"><img src="mood-calm-v59.png" alt=""><small>平靜</small></button>
-          <button data-action="mood" aria-label="開心"><img src="mood-happy-v59.png" alt=""><small>開心</small></button>
-          <button data-action="mood" aria-label="一般"><img src="mood-neutral-v59.png" alt=""><small>一般</small></button>
-          <button data-action="mood" aria-label="焦慮"><img src="mood-anxious-v59.png" alt=""><small>焦慮</small></button>
-          <button data-action="mood" aria-label="難過"><img src="mood-sad-v59.png" alt=""><small>難過</small></button>
+          <button data-action="mood" aria-label="平靜"><img src="mood-calm.png" alt=""><small>平靜</small></button>
+          <button data-action="mood" aria-label="開心"><img src="mood-happy.png" alt=""><small>開心</small></button>
+          <button data-action="mood" aria-label="一般"><img src="mood-neutral.png" alt=""><small>一般</small></button>
+          <button data-action="mood" aria-label="焦慮"><img src="mood-anxious.png" alt=""><small>焦慮</small></button>
+          <button data-action="mood" aria-label="難過"><img src="mood-sad.png" alt=""><small>難過</small></button>
         </div>
-        <button class="asset-mood-save" data-action="mood">記錄我的心情</button>
+        <button class="asset-mood-save" data-action="mood">❧　記錄我的心情</button>
       </section>
     </section>
 
@@ -99,14 +87,14 @@
 
       <div class="asset-quote"><span>❧</span><p>「當你越安靜，你越能聽見自己的聲音。」</p><i>♡</i></div>
     </section>
-  </main>
 
-  <nav class="asset-bottom-nav" aria-label="主要導覽">
+    <nav class="asset-bottom-nav" aria-label="主要導覽">
       <button data-action="home" class="active"><img src="nav-home.png" alt=""><small>首頁</small></button>
       <button data-action="draw"><img src="nav-draw.png" alt=""><small>抽牌</small></button>
       <button data-action="journal"><img src="nav-journal.png" alt=""><small>日記</small></button>
       <button data-action="prompt"><img src="nav-ai.png" alt=""><small>AI 探索</small></button>
     </nav>
+  </main>
 
   <div id="modalBackdrop" class="modal-backdrop" hidden>
     <section class="modal-card" role="dialog" aria-modal="true">
@@ -116,6 +104,6 @@
   </div>
 
   <div id="toast" class="toast" hidden></div>
-  <script src="script.js?v=4.8.0"></script>
+  <script src="script.js"></script>
 </body>
 </html>
