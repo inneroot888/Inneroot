@@ -701,7 +701,9 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 
 
 
-/* Clear sidebar tap feedback */
+
+
+/* Exact tap marker — follows the real finger position */
 .hotspot{
   -webkit-tap-highlight-color: transparent !important;
   outline: none !important;
@@ -709,34 +711,91 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   background: transparent !important;
   box-shadow: none !important;
   cursor: pointer;
-  border-radius: 14px;
-  z-index: 3;
-  transition:
-    background-color .16s ease,
-    box-shadow .16s ease,
-    transform .12s ease;
 }
 .hotspot:focus,
-.hotspot:focus-visible{
+.hotspot:focus-visible,
+.hotspot:active{
   outline: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
-.hotspot.is-tapped{
-  background: rgba(144,169,126,.28) !important;
+
+.tap-marker{
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%,-50%);
+  background: rgba(105,139,84,.82);
   box-shadow:
-    inset 0 0 0 1px rgba(114,143,96,.24),
-    0 5px 16px rgba(73,101,66,.12) !important;
-  transform: scale(.985);
+    0 0 0 0 rgba(105,139,84,.34),
+    0 0 18px rgba(105,139,84,.42);
+  animation: innerootTapRipple .62s ease-out forwards;
 }
-.hotspot.is-tapped::after{
+
+.tap-marker::after{
   content:"";
   position:absolute;
-  left:7px;
-  top:50%;
-  width:4px;
-  height:54%;
-  min-height:18px;
-  border-radius:999px;
-  background:rgba(95,128,79,.9);
-  transform:translateY(-50%);
-  box-shadow:0 0 10px rgba(95,128,79,.26);
+  inset:5px;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+}
+
+.tap-label{
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%,0);
+  padding: 7px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: #52694c;
+  background: rgba(249,250,244,.96);
+  border: 1px solid rgba(126,151,111,.26);
+  box-shadow: 0 7px 20px rgba(72,92,67,.14);
+  animation: innerootTapLabel .85s ease forwards;
+}
+
+@keyframes innerootTapRipple{
+  0%{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(.72);
+    box-shadow:
+      0 0 0 0 rgba(105,139,84,.34),
+      0 0 18px rgba(105,139,84,.42);
+  }
+  70%{
+    opacity:.9;
+    transform:translate(-50%,-50%) scale(1);
+    box-shadow:
+      0 0 0 18px rgba(105,139,84,0),
+      0 0 22px rgba(105,139,84,.28);
+  }
+  100%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(1.08);
+    box-shadow:
+      0 0 0 24px rgba(105,139,84,0),
+      0 0 24px rgba(105,139,84,0);
+  }
+}
+
+@keyframes innerootTapLabel{
+  0%{
+    opacity:0;
+    transform:translate(-50%,5px);
+  }
+  18%,68%{
+    opacity:1;
+    transform:translate(-50%,0);
+  }
+  100%{
+    opacity:0;
+    transform:translate(-50%,-4px);
+  }
 }

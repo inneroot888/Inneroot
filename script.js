@@ -204,16 +204,31 @@ function runAction(a){
   if(a==="settings")info("設定","設定功能將於下一階段開放。");
 }
 
-document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>{
+function showTapFeedback(e,label){
+  const marker=document.createElement("span");
+  marker.className="tap-marker";
+  marker.style.left=e.clientX+"px";
+  marker.style.top=e.clientY+"px";
+
+  const text=document.createElement("span");
+  text.className="tap-label";
+  text.textContent=label||"已選擇";
+  text.style.left=e.clientX+"px";
+  text.style.top=Math.max(12,e.clientY-48)+"px";
+
+  document.body.appendChild(marker);
+  document.body.appendChild(text);
+
+  setTimeout(()=>marker.remove(),700);
+  setTimeout(()=>text.remove(),900);
+}
+
+document.querySelectorAll("[data-action]").forEach(b=>b.onclick=(e)=>{
   const a=b.dataset.action;
 
-  document.querySelectorAll(".hotspot.is-tapped")
-    .forEach(x=>x.classList.remove("is-tapped"));
-
   if(b.classList.contains("hotspot")){
-    b.classList.add("is-tapped");
+    showTapFeedback(e,b.getAttribute("aria-label"));
     setTimeout(()=>runAction(a),180);
-    setTimeout(()=>b.classList.remove("is-tapped"),1050);
   }else{
     runAction(a);
   }
