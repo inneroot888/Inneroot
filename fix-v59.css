@@ -1,0 +1,28 @@
+/* Inneroot V5.9 — fresh mood assets to bypass Safari image cache */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-moods button{
+    grid-template-rows:74px auto !important;
+  }
+
+  .asset-moods img{
+    width:74px !important;
+    height:74px !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    display:block !important;
+    margin:0 auto !important;
+    transform:none !important;
+  }
+
+  .asset-mood-save{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:1370 / 210 !important;
+    background:url("mood-save-button-exact.png?v=5.9.0") center / contain no-repeat !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-moods button{grid-template-rows:66px auto !important}
+  .asset-moods img{width:66px !important;height:66px !important}
+}
