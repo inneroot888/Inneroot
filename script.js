@@ -245,6 +245,16 @@ function showTapFeedback(e,label){
   setTimeout(()=>text.remove(),900);
 }
 
+
+function updateTimeGreeting(){
+  const el=document.getElementById("timeGreeting");
+  if(!el)return;
+  const hour=new Date().getHours();
+  const greeting=hour<12?"早上好":hour<18?"下午好":"晚上好";
+  el.textContent=`${greeting}，歡迎回來`;
+}
+updateTimeGreeting();
+
 document.querySelectorAll("[data-action]").forEach(b=>b.onclick=(e)=>{
   const a=b.dataset.action;
 
