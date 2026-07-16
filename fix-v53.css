@@ -1,0 +1,94 @@
+/* Inneroot V5.3 — non-overlapping fixed navigation and full garden art */
+@media (max-width:600px) and (orientation:portrait){
+  html,
+  body{
+    width:100% !important;
+    height:100dvh !important;
+    min-height:100dvh !important;
+    overflow:hidden !important;
+    overscroll-behavior:none !important;
+  }
+
+  body{
+    display:flex !important;
+    flex-direction:column !important;
+    background:#f4f6ed !important;
+  }
+
+  /* The homepage becomes the only scrolling area. Its height excludes the nav. */
+  body > main.mobile-assets-home{
+    position:relative !important;
+    flex:1 1 auto !important;
+    min-height:0 !important;
+    height:auto !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    padding-bottom:22px !important;
+  }
+
+  /* Navigation occupies its own row; it never floats over cards. */
+  body > .asset-bottom-nav{
+    position:relative !important;
+    inset:auto !important;
+    flex:0 0 82px !important;
+    width:calc(100% - 18px) !important;
+    height:72px !important;
+    margin:5px 9px calc(5px + env(safe-area-inset-bottom)) !important;
+    z-index:1000 !important;
+    transform:none !important;
+    -webkit-transform:none !important;
+    will-change:auto !important;
+  }
+
+  /* Old fixed-nav spacing is no longer required. */
+  .mobile-assets-home,
+  .asset-content{
+    padding-bottom:22px !important;
+  }
+
+  /* Show the complete garden illustration inside the card. */
+  .asset-feature-card.asset-wide{
+    height:164px !important;
+    min-height:164px !important;
+    overflow:hidden !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    position:absolute !important;
+    width:138px !important;
+    height:148px !important;
+    max-width:none !important;
+    max-height:none !important;
+    right:12px !important;
+    top:8px !important;
+    bottom:auto !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+    transform:none !important;
+    clip-path:none !important;
+  }
+
+  body.modal-open{
+    overflow:hidden !important;
+  }
+
+  body.modal-open > main.mobile-assets-home{
+    overflow:hidden !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  body > .asset-bottom-nav{
+    width:calc(100% - 14px) !important;
+    margin-left:7px !important;
+    margin-right:7px !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:130px !important;
+    height:142px !important;
+    right:8px !important;
+    top:8px !important;
+  }
+}

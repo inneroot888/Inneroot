@@ -1,7 +1,12 @@
-Inneroot V5.2
+Inneroot V5.3 更新
 
 修正：
-1. 底部導航由 main 移到 body 直屬，固定於 viewport。
-2. 心靈花園插畫完整顯示，不再用負 bottom 裁走底部。
+1. 底部功能列不再疊在功能卡上。
+2. 首頁內容成為獨立可捲動區，功能列佔據固定底部空間。
+3. Safari 工具列出現或收起時，功能列仍保持在內容區下方。
+4. 心靈花園插畫完整縮放，顯示鐘罩、花卉及底座。
 
-上傳 index.html 覆蓋原檔，新增 fix-v52.css。保留 fix-v48 至 fix-v51。
+上傳：
+- index.html 覆蓋同名檔案
+- fix-v53.css 新增到 GitHub 根目錄
+- 保留之前所有 fix CSS
