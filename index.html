@@ -26,128 +26,74 @@
     </section>
   </main>
 
-  <main class="mobile-home mobile-v3" aria-label="Inneroot 手機版首頁">
-    <div class="dream-sky" aria-hidden="true">
-      <span class="sun-halo"></span>
-      <span class="mountain m1"></span>
-      <span class="mountain m2"></span>
-      <span class="tree-cloud tc1"></span>
-      <span class="tree-cloud tc2"></span>
-      <span class="lake"></span>
-      <span class="dock"></span>
-      <span class="lantern"><i></i></span>
-      <span class="spark s1">✦</span>
-      <span class="spark s2">✧</span>
-      <span class="spark s3">✦</span>
-    </div>
+  <main class="mobile-home mobile-assets-home" aria-label="Inneroot 手機版首頁">
+    <section class="asset-hero">
+      <img class="asset-hero-bg" src="hero-lake.webp" alt="" aria-hidden="true">
+      <img class="asset-deco asset-deco-daisy" src="decor-daisy.png" alt="" aria-hidden="true">
+      <img class="asset-deco asset-deco-lantern" src="decor-lantern.png" alt="" aria-hidden="true">
 
-    <div class="flower-border left" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-    </div>
-    <div class="flower-border right" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-    </div>
-
-    <section class="mobile-v3-hero">
-      <div class="mobile-v3-topbar">
-        <div class="mobile-v3-logo">
-          <div class="mobile-v3-tree">✤</div>
-          <div>
-            <strong>inneroot</strong>
-            <small>回到內在的花園</small>
-          </div>
+      <div class="asset-topbar">
+        <div class="asset-logo">
+          <span>✤</span>
+          <div><strong>inneroot</strong><small>回到內在的花園</small></div>
         </div>
-        <div class="mobile-v3-tools">
-          <button data-action="settings" aria-label="提醒">♧</button>
-          <button data-action="settings" aria-label="設定">⚙︎</button>
-        </div>
+        <button class="asset-round" data-action="settings" aria-label="設定">⚙︎</button>
       </div>
 
-      <div class="mobile-v3-welcome">
+      <div class="asset-welcome">
         <p>WELCOME HOME</p>
-        <h1>下午好，Bee <span>✦</span></h1>
+        <h1>下午好，Bee <i>✦</i></h1>
         <div>深呼吸，聆聽內在的聲音，<br>你已經在回家的路上。</div>
       </div>
 
-      <section class="mobile-v3-mood">
-        <div class="mood-head">
-          <div>
-            <h2>你今天的心情如何？</h2>
-            <p>覺察當下的感受，照顧自己，從這一刻開始。</p>
-          </div>
-          <button class="history-pill" data-action="mood">❧ 記錄歷史</button>
+      <section class="asset-mood-card">
+        <div class="asset-mood-head">
+          <div><h2>你今天的心情如何？</h2><p>覺察當下的感受，照顧自己，從這一刻開始。</p></div>
+          <button data-action="mood">記錄歷史</button>
         </div>
-        <div class="mood-orbs">
-          <button data-action="mood" aria-label="平靜"><span class="orb calm">☺</span><small>平靜</small></button>
-          <button data-action="mood" aria-label="開心"><span class="orb happy">☀</span><small>開心</small></button>
-          <button data-action="mood" aria-label="一般"><span class="orb normal">—</span><small>一般</small></button>
-          <button data-action="mood" aria-label="焦慮"><span class="orb anxious">☁</span><small>焦慮</small></button>
-          <button data-action="mood" aria-label="難過"><span class="orb sad">☂</span><small>難過</small></button>
+        <div class="asset-moods">
+          <button data-action="mood" aria-label="平靜"><img src="mood-calm.png" alt=""><small>平靜</small></button>
+          <button data-action="mood" aria-label="開心"><img src="mood-happy.png" alt=""><small>開心</small></button>
+          <button data-action="mood" aria-label="一般"><img src="mood-neutral.png" alt=""><small>一般</small></button>
+          <button data-action="mood" aria-label="焦慮"><img src="mood-anxious.png" alt=""><small>焦慮</small></button>
+          <button data-action="mood" aria-label="難過"><img src="mood-sad.png" alt=""><small>難過</small></button>
         </div>
-        <button class="mood-main-button" data-action="mood">❧　記錄我的心情</button>
+        <button class="asset-mood-save" data-action="mood">❧　記錄我的心情</button>
       </section>
     </section>
 
-    <section class="mobile-v3-content">
-      <div class="mobile-v3-grid">
-        <button class="garden-card card-draw" data-action="draw">
-          <div class="garden-card-copy">
-            <strong>每日抽牌 <i>✦</i></strong>
-            <small>接收今天的<br>內在指引</small>
-          </div>
-          <div class="garden-card-art tarot-art"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="7"/><path d="M21 16h22M32 22l3 6 7 .9-5 4.8 1.2 7-6.2-3.3-6.2 3.3 1.2-7-5-4.8 7-.9z"/><path d="M23 49h18"/></svg></div>
-          <b>→</b>
+    <section class="asset-content">
+      <div class="asset-card-grid">
+        <button class="asset-feature-card" data-action="draw">
+          <div><strong>每日抽牌 <i>✦</i></strong><small>接收今天的內在指引</small></div>
+          <img src="feature-draw.png" alt="">
         </button>
-
-        <button class="garden-card card-journal" data-action="journal">
-          <div class="garden-card-copy">
-            <strong>潛意識日記 <i>✦</i></strong>
-            <small>寫下感受，<br>覺察內在聲音</small>
-          </div>
-          <div class="garden-card-art journal-art"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 14c8-4 16-4 20 1v39c-5-4-12-4-20 0z"/><path d="M52 14c-8-4-16-4-20 1v39c5-4 12-4 20 0z"/><path d="M20 24h7M20 31h7M37 24h7M37 31h7"/><path d="M47 10c-4 3-6 7-6 12 5-1 9-4 12-8"/></svg></div>
-          <b>→</b>
+        <button class="asset-feature-card" data-action="journal">
+          <div><strong>潛意識日記 <i>✦</i></strong><small>寫下感受，覺察內在的聲音</small></div>
+          <img src="feature-journal.png" alt="">
         </button>
-
-        <button class="garden-card card-insight" data-action="insight">
-          <div class="garden-card-copy">
-            <strong>洞察分析 <i>✦</i></strong>
-            <small>回顧與分析，<br>看見成長軌跡</small>
-          </div>
-          <div class="garden-card-art insight-art"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="28" r="17"/><path d="M40 40l13 13M17 35l8-9 6 5 9-12"/><path d="M17 46c5 1 10 0 14-3"/></svg></div>
-          <b>→</b>
+        <button class="asset-feature-card" data-action="insight">
+          <div><strong>洞察分析 <i>✦</i></strong><small>回顧與分析，看見成長軌跡</small></div>
+          <img src="feature-insight.png" alt="">
         </button>
-
-        <button class="garden-card card-ai" data-action="prompt">
-          <div class="garden-card-copy">
-            <strong>AI 探索 <i>✦</i></strong>
-            <small>整理今天的<br>內在訊息</small>
-          </div>
-          <div class="garden-card-art ai-art"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="31" r="18"/><path d="M24 30h.1M40 30h.1M25 39c4 3 10 3 14 0M32 13V7M20 17l-5-5M44 17l5-5"/><path d="M15 45c-5 2-8 6-9 11 6 0 11-2 15-6M49 45c5 2 8 6 9 11-6 0-11-2-15-6"/></svg></div>
-          <b>→</b>
+        <button class="asset-feature-card" data-action="prompt">
+          <div><strong>AI 探索 <i>✦</i></strong><small>整理今天的內在訊息</small></div>
+          <img src="feature-ai.png" alt="">
         </button>
-
-        <button class="garden-card wide card-garden" data-action="garden">
-          <div class="garden-card-copy">
-            <strong>心靈花園 <i>✦</i></strong>
-            <small>收藏你的內在種子，讓心靈慢慢綻放</small>
-          </div>
-          <div class="garden-card-art garden-art"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 50h30M21 50c-2-10 1-18 11-24 10 6 13 14 11 24"/><path d="M32 50V24M32 33c-7 0-11-4-12-10 7 0 11 4 12 10M32 39c7 0 11-4 12-10-7 0-11 4-12 10"/><path d="M13 50h38l-4 6H17z"/></svg></div>
-          <b>→</b>
+        <button class="asset-feature-card asset-wide" data-action="garden">
+          <div><strong>心靈花園 <i>✦</i></strong><small>收藏你的內在種子，讓心靈慢慢綻放</small></div>
+          <img src="feature-garden.png" alt="">
         </button>
       </div>
 
-      <div class="mobile-v3-quote">
-        <span>❧</span>
-        <p>「當你越安靜，你越能聽見自己的聲音。」</p>
-        <i>♡</i>
-      </div>
+      <div class="asset-quote"><span>❧</span><p>「當你越安靜，你越能聽見自己的聲音。」</p><i>♡</i></div>
     </section>
 
-    <nav class="mobile-v3-bottom" aria-label="主要導覽">
-      <button data-action="home" class="active"><span><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 32 32 12l23 20"/><path d="M17 29v25h30V29M27 54V38h10v16"/><path d="M12 51c4-3 8-4 13-2M52 51c-4-3-8-4-13-2"/></svg></span><small>首頁</small></button>
-      <button data-action="draw"><span><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="7"/><path d="M21 16h22M32 22l3 6 7 .9-5 4.8 1.2 7-6.2-3.3-6.2 3.3 1.2-7-5-4.8 7-.9z"/><path d="M23 49h18"/></svg></span><small>抽牌</small></button>
-      <button data-action="journal"><span><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 14c8-4 16-4 20 1v39c-5-4-12-4-20 0z"/><path d="M52 14c-8-4-16-4-20 1v39c5-4 12-4 20 0z"/><path d="M20 24h7M20 31h7M37 24h7M37 31h7"/><path d="M47 10c-4 3-6 7-6 12 5-1 9-4 12-8"/></svg></span><small>日記</small></button>
-      <button data-action="prompt"><span><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="31" r="18"/><path d="M24 30h.1M40 30h.1M25 39c4 3 10 3 14 0M32 13V7M20 17l-5-5M44 17l5-5"/><path d="M15 45c-5 2-8 6-9 11 6 0 11-2 15-6M49 45c5 2 8 6 9 11-6 0-11-2-15-6"/></svg></span><small>AI 探索</small></button>
+    <nav class="asset-bottom-nav" aria-label="主要導覽">
+      <button data-action="home" class="active"><img src="nav-home.png" alt=""><small>首頁</small></button>
+      <button data-action="draw"><img src="nav-draw.png" alt=""><small>抽牌</small></button>
+      <button data-action="journal"><img src="nav-journal.png" alt=""><small>日記</small></button>
+      <button data-action="prompt"><img src="nav-ai.png" alt=""><small>AI 探索</small></button>
     </nav>
   </main>
 

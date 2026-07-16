@@ -1,18 +1,16 @@
-Inneroot V3.0 — 真正獨立手機版重建
+Inneroot V4.1 — 全部檔案同一層版本
 
-今次唔係修補，係重新做手機首頁：
+已完成：
+- 移除 images/mobile 資料夾
+- 20 個手機素材全部移到 GitHub 根目錄
+- index.html、style.css 圖片路徑全部改為同層
+- 花束、葉片、蝴蝶裝飾亦已接入手機首頁
+- 所有新素材均已被網站引用
+- JavaScript 語法檢查通過
 
-- 重新寫手機版 HTML
-- 純 CSS 建立森林、湖面、山景、燈籠、花朵、柔光
-- 無使用裁切設計圖當背景
-- 心情區、功能卡、底部導航全部重建
-- 所有按鈕仍然連接原本功能
-- iPad / 電腦版保持不變
-- 潛意識日記、每日抽牌、AI 探索操作修正保留
-
-GitHub 更新：
-請覆蓋：
-- index.html
-- style.css
-
-script.js 不需要更換。
+更新方法：
+1. 解壓 ZIP
+2. 將所有檔案直接上傳至 GitHub repo 根目錄
+3. 覆蓋 index.html、style.css
+4. 其餘素材檔直接新增
+5. Commit changes
