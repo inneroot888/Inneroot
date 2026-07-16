@@ -16,7 +16,7 @@ function closeModal(){
 }
 function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
 function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
-function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 開始內在探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
+function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 開始深入探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
 function promptText(){
   const d=getDraw();
   const card=d?d.card:null;
@@ -88,28 +88,28 @@ async function copyPrompt(){
     openModal(`<div class="explore-ready">
       <div class="explore-orb">✦</div>
       <p class="eyebrow">INNER EXPLORATION</p>
-      <h2>探索內容已準備好</h2>
-      <p>今日牌卡、心情、反思問題同日記已經整理完成。</p>
+      <h2>深入探索內容已準備好</h2>
+      <p>「深入探索」會將你今日的牌卡、心情和日記整理成一段清晰提示，讓你貼到任何文字對話 AI，從不同角度理解自己的感受、想法和重複模式。</p>
       <div class="explore-actions">
-        <button class="primary" id="copyAgain">複製探索內容</button>
+        <button class="primary" id="copyAgain">複製深入探索內容</button>
         <button class="secondary" id="closeExplore">稍後再去</button>
       </div>
-      <p class="explore-note">你可以將內容貼到任何支援文字對話的 AI 平台，開始今天的內在探索。</p>
+      <p class="explore-note">你可以將內容貼到任何支援文字對話的 AI 平台，開始今天的深入探索。</p>
     </div>`);
 
-    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("探索內容已複製")}catch{showToast("請長按文字手動複製")}};
+    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("深入探索內容已複製")}catch{showToast("請長按文字手動複製")}};
   }catch{
     openModal(`<div class="explore-ready">
       <p class="eyebrow">INNER EXPLORATION</p>
       <h2>長按以下內容複製</h2>
       <textarea class="explore-prompt" readonly>${escapeHTML(text)}</textarea>
       <div class="explore-actions">
-        <button class="primary" id="copyAgain">複製探索內容</button>
+        <button class="primary" id="copyAgain">複製深入探索內容</button>
         <button class="secondary" id="closeExplore">關閉</button>
       </div>
     </div>`);
 
-    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("探索內容已複製")}catch{showToast("請長按文字手動複製")}};
+    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("深入探索內容已複製")}catch{showToast("請長按文字手動複製")}};
   }
 }
 
@@ -143,7 +143,7 @@ function openJournal(){
         <strong>${card?card.zh:"今日覺察"}</strong>
         <span>${card?card.en:"Inneroot Journal"}</span>
       </div>
-      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card" width="180" height="270" style="display:block;width:180px;max-width:min(38vw,180px);height:auto;max-height:270px;object-fit:contain;justify-self:end;">`:`<div class="journal-v4-card empty">✿</div>`}
+      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card">`:`<div class="journal-v4-card empty">✿</div>`}
       <p class="journal-v4-cardcopy">${card?"這張牌像一面柔和的鏡，陪你看看今天真正觸動你的，是什麼。":"今天可以不急著找答案，只需要誠實地記下感受。"}</p>
     </section>
 
