@@ -1,0 +1,155 @@
+/* Inneroot V4.9 — feature card geometry and text/illustration separation */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-card-grid{
+    gap:10px !important;
+  }
+
+  .asset-feature-card{
+    min-height:188px !important;
+    height:188px !important;
+    padding:18px 14px 16px !important;
+    display:block !important;
+    overflow:hidden !important;
+  }
+
+  .asset-feature-card > div{
+    position:relative !important;
+    z-index:5 !important;
+    width:64% !important;
+    max-width:64% !important;
+    min-height:106px !important;
+    padding:0 !important;
+    margin:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:flex-start !important;
+    text-shadow:none !important;
+  }
+
+  .asset-feature-card > div::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  .asset-feature-card strong{
+    margin:0 !important;
+    min-height:27px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:5px !important;
+    white-space:nowrap !important;
+    font-size:19px !important;
+    line-height:1.2 !important;
+    font-weight:600 !important;
+    color:#365a45 !important;
+  }
+
+  .asset-feature-card strong i{
+    flex:0 0 auto !important;
+    margin:0 !important;
+    font-size:9px !important;
+    line-height:1 !important;
+  }
+
+  .asset-feature-card small{
+    display:block !important;
+    width:100% !important;
+    max-width:122px !important;
+    margin:11px 0 0 !important;
+    font-size:12.5px !important;
+    line-height:1.48 !important;
+    font-weight:400 !important;
+    color:#68796e !important;
+  }
+
+  .asset-feature-card > img{
+    position:absolute !important;
+    z-index:1 !important;
+    object-fit:contain !important;
+    object-position:right bottom !important;
+    opacity:.98 !important;
+  }
+
+  .asset-feature-card[data-action="draw"] > img{
+    width:118px !important;
+    height:118px !important;
+    right:-4px !important;
+    bottom:-5px !important;
+  }
+
+  .asset-feature-card[data-action="journal"] > img{
+    width:124px !important;
+    height:124px !important;
+    right:-10px !important;
+    bottom:-5px !important;
+  }
+
+  .asset-feature-card[data-action="insight"] > img{
+    width:119px !important;
+    height:119px !important;
+    right:-3px !important;
+    bottom:-5px !important;
+  }
+
+  .asset-feature-card[data-action="prompt"] > img{
+    width:120px !important;
+    height:120px !important;
+    right:-3px !important;
+    bottom:-5px !important;
+  }
+
+  .asset-feature-card::after{
+    left:14px !important;
+    bottom:14px !important;
+  }
+
+  .asset-feature-card.asset-wide{
+    height:148px !important;
+    min-height:148px !important;
+  }
+
+  .asset-feature-card.asset-wide > div{
+    width:64% !important;
+    max-width:64% !important;
+    min-height:78px !important;
+  }
+
+  .asset-feature-card.asset-wide small{
+    max-width:240px !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:148px !important;
+    height:148px !important;
+    right:4px !important;
+    bottom:-10px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-feature-card{
+    min-height:180px !important;
+    height:180px !important;
+    padding:17px 12px 15px !important;
+  }
+
+  .asset-feature-card > div{
+    width:64% !important;
+    max-width:64% !important;
+  }
+
+  .asset-feature-card strong{
+    font-size:17px !important;
+  }
+
+  .asset-feature-card small{
+    max-width:108px !important;
+    font-size:11.5px !important;
+  }
+
+  .asset-feature-card[data-action="draw"] > img{width:108px !important;height:108px !important;right:-5px !important}
+  .asset-feature-card[data-action="journal"] > img{width:114px !important;height:114px !important;right:-10px !important}
+  .asset-feature-card[data-action="insight"] > img{width:109px !important;height:109px !important;right:-4px !important}
+  .asset-feature-card[data-action="prompt"] > img{width:110px !important;height:110px !important;right:-4px !important}
+}
