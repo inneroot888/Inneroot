@@ -1834,3 +1834,47 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
     mix-blend-mode:multiply;
   }
 }
+
+
+/* =========================================================
+   Inneroot V4.3 — Four independent illustrations
+   ========================================================= */
+@media (max-width:600px) and (orientation:portrait){
+
+  .asset-feature-card > img{
+    mix-blend-mode:normal !important;
+    background:transparent !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    filter:drop-shadow(0 10px 16px rgba(65,83,66,.10)) !important;
+  }
+
+  .asset-feature-card[data-action="draw"] > img,
+  .asset-feature-card[data-action="journal"] > img,
+  .asset-feature-card[data-action="insight"] > img,
+  .asset-feature-card[data-action="prompt"] > img{
+    width:150px !important;
+    height:150px !important;
+    right:-7px !important;
+    bottom:-7px !important;
+    object-fit:contain !important;
+  }
+
+  .asset-feature-card[data-action="journal"] > img{
+    width:158px !important;
+    height:158px !important;
+    right:-10px !important;
+  }
+
+  .asset-feature-card[data-action="insight"] > img{
+    width:155px !important;
+    height:155px !important;
+  }
+
+  .asset-feature-card[data-action="prompt"] > img{
+    width:156px !important;
+    height:156px !important;
+    right:-9px !important;
+  }
+}
