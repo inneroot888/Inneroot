@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inneroot</title>
   <meta name="description" content="與潛意識對話，遇見真正的自己。">
   <link rel="stylesheet" href="style.css">
@@ -24,6 +24,100 @@
       <button class="hotspot journal-card" data-action="journal" aria-label="潛意識日記"></button>
       <button class="hotspot insight-card" data-action="insight" aria-label="洞察分析"></button>
     </section>
+  </main>
+
+  <main class="mobile-home" aria-label="Inneroot 手機版首頁">
+    <section class="mobile-hero">
+      <div class="mobile-topbar">
+        <div class="mobile-brand">
+          <span class="mobile-tree">♧</span>
+          <div>
+            <strong>inneroot</strong>
+            <small>回到內在的花園</small>
+          </div>
+        </div>
+        <button class="mobile-round" data-action="settings" aria-label="設定">⚙︎</button>
+      </div>
+
+      <div class="mobile-welcome">
+        <p class="mobile-kicker">WELCOME HOME</p>
+        <h1>下午好，Bee</h1>
+        <p>深呼吸，聆聽內在的聲音。<br>你已經在回家的路上。</p>
+      </div>
+
+      <section class="mobile-mood-card">
+        <div class="mobile-section-head">
+          <div>
+            <h2>你今天的心情如何？</h2>
+            <p>你的感受很重要。</p>
+          </div>
+          <button class="mobile-text-button" data-action="mood">記錄</button>
+        </div>
+        <div class="mobile-moods">
+          <button data-action="mood" aria-label="平靜"><span>☺</span><small>平靜</small></button>
+          <button data-action="mood" aria-label="開心"><span>☀</span><small>開心</small></button>
+          <button data-action="mood" aria-label="一般"><span>—</span><small>一般</small></button>
+          <button data-action="mood" aria-label="焦慮"><span>☁</span><small>焦慮</small></button>
+          <button data-action="mood" aria-label="難過"><span>☂</span><small>難過</small></button>
+        </div>
+      </section>
+    </section>
+
+    <section class="mobile-actions">
+      <button class="mobile-feature mobile-feature-large" data-action="draw">
+        <span class="mobile-feature-icon">✦</span>
+        <span>
+          <strong>每日抽牌</strong>
+          <small>接收今天的內在指引</small>
+        </span>
+        <b>→</b>
+      </button>
+
+      <div class="mobile-feature-grid">
+        <button class="mobile-feature" data-action="journal">
+          <span class="mobile-feature-icon">▧</span>
+          <span>
+            <strong>潛意識日記</strong>
+            <small>寫低此刻感受</small>
+          </span>
+        </button>
+
+        <button class="mobile-feature" data-action="prompt">
+          <span class="mobile-feature-icon">✣</span>
+          <span>
+            <strong>AI 探索</strong>
+            <small>整理今天的內在訊息</small>
+          </span>
+        </button>
+
+        <button class="mobile-feature" data-action="insight">
+          <span class="mobile-feature-icon">⌁</span>
+          <span>
+            <strong>洞察分析</strong>
+            <small>看見重複出現的模式</small>
+          </span>
+        </button>
+
+        <button class="mobile-feature" data-action="garden">
+          <span class="mobile-feature-icon">❋</span>
+          <span>
+            <strong>心靈花園</strong>
+            <small>收藏你的內在種子</small>
+          </span>
+        </button>
+      </div>
+
+      <blockquote class="mobile-quote">
+        「當你越安靜，你越能聽見自己的聲音。」
+      </blockquote>
+    </section>
+
+    <nav class="mobile-bottom-nav" aria-label="主要導覽">
+      <button data-action="home" class="active"><span>⌂</span><small>首頁</small></button>
+      <button data-action="draw"><span>✦</span><small>抽牌</small></button>
+      <button data-action="journal"><span>▧</span><small>日記</small></button>
+      <button data-action="prompt"><span>✣</span><small>AI 探索</small></button>
+    </nav>
   </main>
 
   <div id="modalBackdrop" class="modal-backdrop" hidden>

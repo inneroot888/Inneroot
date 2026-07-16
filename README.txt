@@ -1,16 +1,18 @@
-Inneroot V1.9 — iPhone 響應式修正版
+Inneroot V2.0 — 真正獨立 iPhone 首頁
 
-今次修正：
-- iPhone 直向顯示自動配合螢幕寬度
-- 移除桌面固定尺寸造成的下方大量空白
-- 保留 iPad 及電腦版原有尺寸
-- 彈窗在 iPhone 上改為接近全寬並可上下捲動
-- 加入 iPhone safe area 支援
-- 不修改任何按鈕功能
-- 不修改 AI 探索內容
-- 不修改點擊提示
+手機版：
+- 不再縮小桌面版圖片
+- 全屏森林背景
+- 手機可讀的問候、心情卡及功能卡
+- 底部固定四個主要按鈕：
+  首頁、抽牌、日記、AI 探索
+- 保留洞察分析及心靈花園入口
+- 彈窗配合 iPhone 闊度
+- 支援 iPhone safe area
+
+iPad／電腦版：
+- 完全保留原有設計及按鈕位置
 
 更新方式：
-請上傳並覆蓋：
-1. index.html
-2. style.css
+請將 index.html、style.css 一併上傳覆蓋。
+script.js 不需要更換。
