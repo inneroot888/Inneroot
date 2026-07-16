@@ -1,0 +1,75 @@
+/* Inneroot V5.1 — fixed bottom navigation, remove extra lantern, garden spacing */
+@media (max-width:600px) and (orientation:portrait){
+  /* Extra overlay lantern/black artifact must never render. */
+  .asset-deco-lantern{
+    display:none !important;
+  }
+
+  /* Keep the navigation attached to the viewport, not the document flow. */
+  .asset-bottom-nav{
+    position:fixed !important;
+    left:10px !important;
+    right:10px !important;
+    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
+    top:auto !important;
+    margin:0 !important;
+    transform:none !important;
+    z-index:999 !important;
+    width:auto !important;
+    max-width:none !important;
+    contain:layout paint;
+  }
+
+  /* Leave enough scroll space so the fixed bar never covers the last card. */
+  .asset-content{
+    padding-bottom:118px !important;
+  }
+
+  /* Heart garden: reserve a clean text area and move illustration right. */
+  .asset-feature-card.asset-wide{
+    height:156px !important;
+    min-height:156px !important;
+    padding:18px 16px 16px !important;
+  }
+
+  .asset-feature-card.asset-wide > div{
+    width:67% !important;
+    max-width:67% !important;
+    position:relative !important;
+    z-index:3 !important;
+  }
+
+  .asset-feature-card.asset-wide small{
+    max-width:250px !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:142px !important;
+    height:142px !important;
+    right:-2px !important;
+    bottom:-8px !important;
+    object-fit:contain !important;
+    object-position:right bottom !important;
+    z-index:1 !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-bottom-nav{
+    left:8px !important;
+    right:8px !important;
+    bottom:calc(7px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .asset-feature-card.asset-wide > div{
+    width:65% !important;
+    max-width:65% !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:132px !important;
+    height:132px !important;
+    right:-4px !important;
+    bottom:-7px !important;
+  }
+}
