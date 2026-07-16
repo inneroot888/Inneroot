@@ -1660,3 +1660,177 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
     transform:rotate(8deg);
   }
 }
+
+
+/* =========================================================
+   Inneroot V4.2 — Match approved mobile reference
+   ========================================================= */
+@media (max-width:600px) and (orientation:portrait){
+
+  .asset-hero{
+    min-height:820px !important;
+  }
+
+  .asset-hero-bg{
+    object-position:center 18% !important;
+    filter:saturate(.90) brightness(1.05) contrast(.96) !important;
+  }
+
+  .asset-welcome{
+    margin-top:86px !important;
+  }
+
+  .asset-welcome h1{
+    font-size:37px !important;
+    letter-spacing:.01em;
+  }
+
+  .asset-mood-card{
+    left:15px !important;
+    right:15px !important;
+    bottom:22px !important;
+    padding:23px 17px 18px !important;
+    border-radius:31px !important;
+    background:
+      radial-gradient(circle at 88% 8%,rgba(255,242,190,.36),transparent 28%),
+      linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,251,242,.94)) !important;
+  }
+
+  .asset-mood-head h2{
+    font-size:22px !important;
+  }
+
+  .asset-moods{
+    margin-top:17px !important;
+  }
+
+  .asset-moods img{
+    width:64px !important;
+    height:64px !important;
+    transform:scale(1.08);
+    filter:
+      drop-shadow(0 8px 14px rgba(66,85,65,.10))
+      drop-shadow(0 0 8px rgba(255,255,255,.72)) !important;
+  }
+
+  .asset-moods button{
+    gap:6px !important;
+  }
+
+  .asset-mood-save{
+    margin-top:17px !important;
+    padding:15px !important;
+    border-radius:999px !important;
+    background:
+      radial-gradient(circle at 75% 35%,rgba(255,255,255,.20),transparent 30%),
+      linear-gradient(180deg,#98ad93,#708b73) !important;
+    box-shadow:
+      0 13px 27px rgba(64,94,69,.20),
+      inset 0 1px 0 rgba(255,255,255,.56) !important;
+  }
+
+  .asset-content{
+    padding-top:22px !important;
+  }
+
+  .asset-card-grid{
+    gap:11px !important;
+  }
+
+  .asset-feature-card{
+    min-height:194px !important;
+    padding:18px 16px !important;
+    border-radius:27px !important;
+    background:
+      radial-gradient(circle at 83% 88%,rgba(226,237,220,.48),transparent 38%),
+      linear-gradient(145deg,#fffefa,#fffaf0) !important;
+    box-shadow:
+      0 16px 36px rgba(60,80,61,.09),
+      inset 0 1px 0 rgba(255,255,255,.96) !important;
+  }
+
+  .asset-feature-card.asset-wide{
+    min-height:156px !important;
+  }
+
+  .asset-feature-card > div{
+    max-width:56% !important;
+  }
+
+  .asset-feature-card strong{
+    font-size:19px !important;
+  }
+
+  .asset-feature-card small{
+    font-size:12px !important;
+    color:#748278 !important;
+  }
+
+  /* The illustration itself blends into the card; no visible white square. */
+  .asset-feature-card > img{
+    width:142px !important;
+    height:142px !important;
+    right:-6px !important;
+    bottom:-5px !important;
+    object-fit:contain !important;
+    mix-blend-mode:multiply;
+    filter:
+      drop-shadow(0 12px 18px rgba(72,91,71,.09))
+      saturate(.96) !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:168px !important;
+    height:168px !important;
+    right:10px !important;
+    bottom:-13px !important;
+  }
+
+  .asset-feature-card::after{
+    content:"→";
+    position:absolute;
+    left:17px;
+    bottom:15px;
+    width:33px;
+    height:33px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#5f7663;
+    font-size:18px;
+    background:rgba(255,255,255,.83);
+    border:1px solid rgba(116,139,114,.16);
+    box-shadow:0 5px 12px rgba(64,84,64,.06);
+  }
+
+  .asset-bottom-nav{
+    height:80px !important;
+    padding:5px 8px !important;
+  }
+
+  .asset-bottom-nav button{
+    height:68px !important;
+  }
+
+  .asset-bottom-nav img{
+    width:48px !important;
+    height:48px !important;
+    object-fit:contain !important;
+    mix-blend-mode:multiply;
+    filter:drop-shadow(0 5px 8px rgba(61,81,62,.08));
+  }
+
+  .asset-bottom-nav button.active{
+    background:
+      radial-gradient(circle at 50% 12%,rgba(255,244,196,.34),transparent 34%),
+      linear-gradient(145deg,#edf4e9,#dce8d8) !important;
+  }
+
+  .asset-deco-daisy,
+  .asset-deco-lantern,
+  .asset-content::before,
+  .asset-content::after,
+  .asset-hero::before{
+    mix-blend-mode:multiply;
+  }
+}
