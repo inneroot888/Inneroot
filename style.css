@@ -2721,3 +2721,32 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .draw-v70-cardback,.draw-v70-glow,.draw-v70-ripple{animation:none!important}
   .draw-v70-cardback.is-revealing{opacity:0;transition:opacity .2s ease}
 }
+
+
+/* Inneroot V7.1.4 — desktop dynamic greeting only */
+.desktop-dynamic-greeting{
+  position:absolute;
+  left:25.7%;
+  top:22.1%;
+  z-index:2;
+  pointer-events:none;
+  color:#344b38;
+  text-shadow:0 2px 14px rgba(255,255,255,.94);
+}
+.desktop-dynamic-greeting h1{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(31px,4vw,55px);
+  line-height:1.1;
+  font-weight:500;
+  letter-spacing:.01em;
+}
+.desktop-dynamic-greeting p{
+  margin:17px 0 0;
+  font-size:clamp(14px,1.62vw,21px);
+  line-height:1.65;
+  color:#3e5143;
+}
+@media(max-width:760px){
+  .desktop-dynamic-greeting{display:none!important}
+}

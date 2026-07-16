@@ -450,3 +450,16 @@ document.querySelectorAll("[data-action]").forEach(b=>b.onclick=(e)=>{
 
 document.getElementById("closeModal").onclick=closeModal;backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
 if(pendingDailyRollover)setTimeout(showDailyRolloverPrompt,80);
+
+(function setDesktopDynamicGreeting(){
+  const el=document.getElementById("desktopDynamicGreeting");
+  if(!el)return;
+  const hour=new Date().getHours();
+  if(hour>=5 && hour<12){
+    el.textContent="Good Morning";
+  }else if(hour>=12 && hour<18){
+    el.textContent="Good Afternoon";
+  }else{
+    el.textContent="Good Evening";
+  }
+})();
