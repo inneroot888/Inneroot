@@ -432,8 +432,11 @@ function updateTimeGreeting(){
   const el=document.getElementById("timeGreeting");
   if(!el)return;
   const hour=new Date().getHours();
-  const greeting=hour<12?"早上好":hour<18?"下午好":"晚上好";
-  el.textContent=`${greeting}，歡迎回來`;
+  el.textContent=hour<12
+    ?"Good Morning"
+    :hour<18
+      ?"Good Afternoon"
+      :"Good Evening";
 }
 updateTimeGreeting();
 
@@ -455,9 +458,9 @@ if(pendingDailyRollover)setTimeout(showDailyRolloverPrompt,80);
   const el=document.getElementById("desktopDynamicGreeting");
   if(!el)return;
   const hour=new Date().getHours();
-  if(hour>=5 && hour<12){
+  if(hour<12){
     el.textContent="Good Morning";
-  }else if(hour>=12 && hour<18){
+  }else if(hour<18){
     el.textContent="Good Afternoon";
   }else{
     el.textContent="Good Evening";

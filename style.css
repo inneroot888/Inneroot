@@ -2750,3 +2750,18 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 @media(max-width:760px){
   .desktop-dynamic-greeting{display:none!important}
 }
+
+
+/* Inneroot V7.1.5 — shared greeting leaf icon */
+.greeting-leaf{
+  display:inline-block;
+  margin-left:.12em;
+  font-style:normal;
+  font-size:.68em;
+  color:#728d69;
+  transform:rotate(-10deg) translateY(-.06em);
+  text-shadow:0 2px 10px rgba(255,255,255,.88);
+}
+.asset-welcome .greeting-leaf{
+  color:#78906f;
+}
