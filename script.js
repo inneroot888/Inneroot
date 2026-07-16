@@ -192,12 +192,31 @@ function openJournal(){
 }
 function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
 function info(title,text){openModal(`<h2>${title}</h2><p>${text}</p>`)}
+function runAction(a){
+  if(a==="home")scrollTo({top:0,behavior:"smooth"});
+  if(a==="draw")beginDraw();
+  if(a==="journal")openJournal();
+  if(a==="mood")openMood();
+  if(a==="prompt")copyPrompt();
+  if(a==="insight")info("洞察分析","完成更多心情、抽牌和日記後，這裡會整理你的重複模式。");
+  if(a==="growth")info("成長圖譜","每一次記錄，都是一個新的根。");
+  if(a==="garden")info("心靈花園","這裡將收藏你的內在種子與成長片段。");
+  if(a==="settings")info("設定","設定功能將於下一階段開放。");
+}
+
 document.querySelectorAll("[data-action]").forEach(b=>b.onclick=()=>{
   const a=b.dataset.action;
+
+  document.querySelectorAll(".hotspot.is-tapped")
+    .forEach(x=>x.classList.remove("is-tapped"));
+
   if(b.classList.contains("hotspot")){
-    b.classList.remove("is-tapped");
-    void b.offsetWidth;
     b.classList.add("is-tapped");
-    setTimeout(()=>b.classList.remove("is-tapped"),420);
-  }if(a==="home")scrollTo({top:0,behavior:"smooth"});if(a==="draw")beginDraw();if(a==="journal")openJournal();if(a==="mood")openMood();if(a==="prompt")copyPrompt();if(a==="insight")info("洞察分析","完成更多心情、抽牌和日記後，這裡會整理你的重複模式。");if(a==="growth")info("成長圖譜","每一次記錄，都是一個新的根。");if(a==="garden")info("心靈花園","這裡將收藏你的內在種子與成長片段。");if(a==="settings")info("設定","設定功能將於下一階段開放。")})
+    setTimeout(()=>runAction(a),180);
+    setTimeout(()=>b.classList.remove("is-tapped"),1050);
+  }else{
+    runAction(a);
+  }
+});
+
 document.getElementById("closeModal").onclick=closeModal;backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
