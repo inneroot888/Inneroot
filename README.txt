@@ -1,12 +1,27 @@
-Inneroot V5.3 更新
+Inneroot V5.4 — 心情圖案及「記錄我的心情」按鈕完整更新
 
-修正：
-1. 底部功能列不再疊在功能卡上。
-2. 首頁內容成為獨立可捲動區，功能列佔據固定底部空間。
-3. Safari 工具列出現或收起時，功能列仍保持在內容區下方。
-4. 心靈花園插畫完整縮放，顯示鐘罩、花卉及底座。
+包含：
+- mood-calm.png
+- mood-happy.png
+- mood-neutral.png
+- mood-anxious.png
+- mood-sad.png
+- mood-save-button.png
+- fix-v54.css
+- index.html
 
-上傳：
-- index.html 覆蓋同名檔案
-- fix-v53.css 新增到 GitHub 根目錄
-- 保留之前所有 fix CSS
+已處理：
+- 5 個心情素材獨立化
+- 移除棋盤格假背景，轉為透明 PNG
+- 統一為 640 × 640 畫布及一致視覺比例
+- 手機顯示尺寸、間距及文字距離已校正
+- 「記錄我的心情」整條按鈕圖已接入原按鈕
+- 原本 data-action="mood" 點擊功能保留
+- V5.4 CSS 放在所有舊 CSS 之後載入
+- 修改只套用於手機直向版，桌面及 iPad 版不受影響
+
+GitHub：
+將 ZIP 內所有檔案直接上傳到 repository 根目錄。
+index.html 及 mood-*.png 會覆蓋同名檔案；
+mood-save-button.png 與 fix-v54.css 是新檔案。
+保留 fix-v48.css 至 fix-v53.css。

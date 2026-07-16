@@ -1,0 +1,87 @@
+/* Inneroot V5.4 — independent mood icons and full mood button */
+@media (max-width:600px) and (orientation:portrait){
+
+  .asset-mood-card{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .asset-moods{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:4px !important;
+    align-items:start !important;
+    margin-top:15px !important;
+  }
+
+  .asset-moods button{
+    min-width:0 !important;
+    display:grid !important;
+    grid-template-rows:68px auto !important;
+    justify-items:center !important;
+    align-items:start !important;
+    gap:5px !important;
+    padding:0 !important;
+    overflow:visible !important;
+  }
+
+  .asset-moods img{
+    width:68px !important;
+    height:68px !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    transform:none !important;
+    mix-blend-mode:normal !important;
+    filter:drop-shadow(0 7px 12px rgba(73,91,72,.10)) !important;
+  }
+
+  .asset-moods small{
+    margin:0 !important;
+    font-size:12px !important;
+    line-height:1.2 !important;
+    color:#66766b !important;
+    white-space:nowrap !important;
+  }
+
+  .asset-mood-save{
+    height:58px !important;
+    margin-top:15px !important;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:999px !important;
+    background-color:transparent !important;
+    background-image:url("mood-save-button.png") !important;
+    background-repeat:no-repeat !important;
+    background-position:center !important;
+    background-size:100% 100% !important;
+    box-shadow:none !important;
+    color:transparent !important;
+    font-size:0 !important;
+    text-shadow:none !important;
+    overflow:hidden !important;
+  }
+
+  .asset-mood-save:focus-visible{
+    outline:2px solid rgba(101,132,106,.55) !important;
+    outline-offset:3px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-moods button{
+    grid-template-rows:60px auto !important;
+  }
+
+  .asset-moods img{
+    width:60px !important;
+    height:60px !important;
+  }
+
+  .asset-moods small{
+    font-size:11px !important;
+  }
+
+  .asset-mood-save{
+    height:54px !important;
+  }
+}
