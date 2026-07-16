@@ -1,7 +1,78 @@
 const cards=[{"file": "00-fool.webp", "zh": "愚者", "en": "The Fool", "q": ["今天有什麼地方值得重新開始？", "你是否因為害怕犯錯而停下來？", "如果放低一次控制，你會想試什麼？"]}, {"file": "01-magician.webp", "zh": "魔術師", "en": "The Magician", "q": ["你手上已經擁有什麼資源？", "你最近忽略了哪一種能力？", "今天可以主動完成哪一件小事？"]}, {"file": "02-high-priestess.webp", "zh": "女祭司", "en": "The High Priestess", "q": ["你心裡其實早已知道什麼？", "最近有什麼感受未被說出口？", "今天可以如何安靜地聽自己？"]}, {"file": "03-empress.webp", "zh": "皇后", "en": "The Empress", "q": ["你現在最需要怎樣的照顧？", "你有沒有過度付出而忽略自己？", "今天可以為自己創造什麼舒服空間？"]}, {"file": "04-emperor.webp", "zh": "皇帝", "en": "The Emperor", "q": ["你現在最需要建立哪一條界線？", "哪件事需要更清晰的結構？", "今天可以做哪個穩定自己的決定？"]}, {"file": "05-hierophant.webp", "zh": "教皇", "en": "The Hierophant", "q": ["哪些信念是你真正認同的？", "哪些規則只是因為習慣而跟從？", "你今天想向誰或什麼學習？"]}, {"file": "06-lovers.webp", "zh": "戀人", "en": "The Lovers", "q": ["你正在面對哪一個重要選擇？", "你真正重視的是什麼？", "你的選擇有沒有忠於自己？"]}, {"file": "07-chariot.webp", "zh": "戰車", "en": "The Chariot", "q": ["你現在想把力量帶往哪裡？", "你內在有哪兩股力量正在拉扯？", "今天最值得專注的是什麼？"]}, {"file": "08-strength.webp", "zh": "力量", "en": "Strength", "q": ["你可以如何溫柔地面對困難？", "哪種情緒需要被安撫而非壓制？", "你其實比自己想像中堅持了多久？"]}, {"file": "09-hermit.webp", "zh": "隱者", "en": "The Hermit", "q": ["你需要暫時離開哪些雜音？", "最近有什麼問題需要獨自想清楚？", "今天可以留多少時間給自己？"]}, {"file": "10-wheel-of-fortune.webp", "zh": "命運之輪", "en": "Wheel of Fortune", "q": ["你正在經歷哪一種轉變？", "有哪些事情並不完全受你控制？", "你可以如何配合而非抗拒變化？"]}, {"file": "11-justice.webp", "zh": "正義", "en": "Justice", "q": ["你是否誠實面對自己的選擇？", "哪件事需要更平衡地看待？", "今天可以承擔哪一部分責任？"]}, {"file": "12-hanged-man.webp", "zh": "倒吊人", "en": "The Hanged Man", "q": ["你是否需要換一個角度？", "有哪些事情暫時不必急著推進？", "放下哪個執著會令你更自由？"]}, {"file": "13-death.webp", "zh": "死神", "en": "Death", "q": ["有什麼已經完成，但你仍未放手？", "哪個舊模式正在離開？", "你想為新階段騰出什麼空間？"]}, {"file": "14-temperance.webp", "zh": "節制", "en": "Temperance", "q": ["你的生活哪一部分需要調和？", "你最近是否走得太快或太慢？", "今天可以做什麼令自己回到平衡？"]}, {"file": "15-devil.webp", "zh": "惡魔", "en": "The Devil", "q": ["你最近被什麼慾望或恐懼牽制？", "哪個模式明知不舒服卻重複出現？", "你可以先鬆開哪一小部分？"]}, {"file": "16-tower.webp", "zh": "高塔", "en": "The Tower", "q": ["哪個真相正在打破舊有想法？", "你最害怕失去的是什麼？", "在混亂之中，有什麼變得更清楚？"]}, {"file": "17-star.webp", "zh": "星星", "en": "The Star", "q": ["今天什麼事情令你重新燃起希望？", "你有沒有忽略自己真正的需要？", "如果相信自己一次，你會做什麼？"]}, {"file": "18-moon.webp", "zh": "月亮", "en": "The Moon", "q": ["最近有什麼讓你感到不確定？", "你的恐懼之中有多少來自想像？", "你需要更多什麼資訊或安全感？"]}, {"file": "19-sun.webp", "zh": "太陽", "en": "The Sun", "q": ["今天有什麼值得你真心享受？", "你在哪裡可以更坦率地做自己？", "有什麼好事其實已經在發生？"]}, {"file": "20-judgement.webp", "zh": "審判", "en": "Judgement", "q": ["你正在回應哪一個內在呼喚？", "有哪些過去需要重新理解？", "你準備為自己作出什麼新決定？"]}, {"file": "21-world.webp", "zh": "世界", "en": "The World", "q": ["你最近完成了哪一個重要階段？", "你可以如何肯定自己的成長？", "下一段旅程想帶著什麼出發？"]}];
-let mood=localStorage.getItem("innerootMood")||"",journal=localStorage.getItem("innerootJournal")||"";
 const backdrop=document.getElementById("modalBackdrop"),content=document.getElementById("modalContent"),toast=document.getElementById("toast");
 function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+const DAILY_ENTRY_KEYS=["innerootMood","innerootJournal","innerootJournalFocus","innerootGentleNote"];
+let pendingDailyRollover=null;
+
+function getRawDraw(){
+  try{
+    const x=JSON.parse(localStorage.getItem("innerootDailyDraw")||"null");
+    return x&&x.date&&x.card?x:null;
+  }catch{return null}
+}
+function storedDrawDate(){
+  const x=getRawDraw();
+  return x?String(x.date):"";
+}
+function hasDailyWriting(){
+  return DAILY_ENTRY_KEYS.some(key=>(localStorage.getItem(key)||"").trim());
+}
+function archiveDailyEntry(entryDate){
+  const draw=getRawDraw();
+  const entry={
+    date:entryDate||storedDrawDate()||today(),
+    card:draw&&(!entryDate||draw.date===entryDate)?{zh:draw.card.zh,en:draw.card.en}:null,
+    mood:localStorage.getItem("innerootMood")||"",
+    focus:localStorage.getItem("innerootJournalFocus")||"",
+    journal:localStorage.getItem("innerootJournal")||"",
+    gentle:localStorage.getItem("innerootGentleNote")||""
+  };
+  if(!entry.card&&!entry.mood&&!entry.focus&&!entry.journal.trim()&&!entry.gentle.trim())return false;
+  const rows=getInsightHistory().filter(x=>x&&x.date!==entry.date);
+  rows.push(entry);
+  rows.sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  localStorage.setItem("innerootInsightHistory",JSON.stringify(rows.slice(-90)));
+  return true;
+}
+function clearDailyWriting(){
+  DAILY_ENTRY_KEYS.forEach(key=>localStorage.removeItem(key));
+  mood="";
+  journal="";
+}
+function completeDailyRollover(previousDate){
+  archiveDailyEntry(previousDate);
+  clearDailyWriting();
+  localStorage.setItem("innerootDailyEntryDate",today());
+  localStorage.setItem("innerootDailyResetVersion","6.9.1");
+}
+function initialiseDailyEntry(){
+  const current=today();
+  const explicitDate=localStorage.getItem("innerootDailyEntryDate")||"";
+  const legacyDate=storedDrawDate();
+  const installed=localStorage.getItem("innerootDailyResetVersion")==="6.9.1";
+
+  if(explicitDate&&explicitDate!==current){
+    pendingDailyRollover={type:"dated",previousDate:explicitDate};
+    return;
+  }
+
+  if(!installed&&!explicitDate&&hasDailyWriting()){
+    pendingDailyRollover={
+      type:"migration",
+      previousDate:legacyDate&&legacyDate!==current?legacyDate:""
+    };
+    return;
+  }
+
+  localStorage.setItem("innerootDailyEntryDate",current);
+  localStorage.setItem("innerootDailyResetVersion","6.9.1");
+}
+function touchDailyEntry(){
+  localStorage.setItem("innerootDailyEntryDate",today());
+  localStorage.setItem("innerootDailyResetVersion","6.9.1");
+}
+initialiseDailyEntry();
+let mood=localStorage.getItem("innerootMood")||"",journal=localStorage.getItem("innerootJournal")||"";
 function getDraw(){try{const x=JSON.parse(localStorage.getItem("innerootDailyDraw")||"null");return x&&x.date===today()?x:null}catch{return null}}
 function getInsightHistory(){
   try{
@@ -79,7 +150,7 @@ function closeModal(){
   document.body.classList.remove("modal-open");
 }
 function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
-function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
+function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));touchDailyEntry();showResult(card)}}
 function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>下一步，把看到這張牌後最先出現的感受寫下來。<br>不需要寫得完整，只需要對自己誠實。</div><div class="actions"><button class="primary" id="toJournal">前往潛意識日記</button><button class="secondary" id="finishDraw">稍後再寫</button></div>`);document.getElementById("toJournal").onclick=openJournal;document.getElementById("finishDraw").onclick=closeModal}
 function promptText(){
   const d=getDraw();
@@ -258,17 +329,20 @@ function openJournal(){
   document.querySelectorAll(".journal-v4-prompt").forEach(b=>b.onclick=()=>{
     document.querySelectorAll(".journal-v4-prompt").forEach(x=>x.classList.remove("selected"));
     b.classList.add("selected");
+    touchDailyEntry();
     localStorage.setItem("innerootJournalFocus",b.dataset.focus);
   });
 
   document.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{
     mood=b.dataset.jm;
+    touchDailyEntry();
     localStorage.setItem("innerootMood",mood);
     document.querySelectorAll("[data-jm]").forEach(x=>x.classList.toggle("selected",x===b));
   });
 
   document.getElementById("save").onclick=()=>{
     journal=document.getElementById("j").value;
+    touchDailyEntry();
     localStorage.setItem("innerootJournal",journal);
     localStorage.setItem("innerootGentleNote",document.getElementById("gentleNoteV4").value);
     saveInsightEntry();
@@ -277,7 +351,8 @@ function openJournal(){
     document.getElementById("finishLater").onclick=closeModal;
   };
 }
-function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
+function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;touchDailyEntry();
+    localStorage.setItem("innerootMood",mood);closeModal();showToast("已記錄："+mood)})}
 function info(title,text){openModal(`<h2>${title}</h2><p>${text}</p>`)}
 function runAction(a){
   if(a==="home")scrollTo({top:0,behavior:"smooth"});
@@ -311,6 +386,48 @@ function showTapFeedback(e,label){
 }
 
 
+
+function showDailyRolloverPrompt(){
+  if(!pendingDailyRollover)return;
+  const state=pendingDailyRollover;
+  const isMigration=state.type==="migration";
+  openModal(`<div class="explore-ready">
+    <div class="explore-orb">🌿</div>
+    <p class="eyebrow">A NEW DAY</p>
+    <h2>新的一天開始了</h2>
+    <p>${isMigration
+      ?"我們偵測到目前仍有未分類的心情或日記內容。你可以先保存舊內容並開始今天，或者保留目前內容繼續書寫。"
+      :"昨天的內容會先安全保存到「內在洞察」記錄，今天的心情與日記會重新開始。"}</p>
+    <div class="explore-actions">
+      <button class="primary" id="startNewDay">開始今天</button>
+      ${isMigration?'<button class="secondary" id="keepCurrentDay">保留目前內容</button>':''}
+    </div>
+    <p class="explore-note">已保存的舊記錄不會被刪除。</p>
+  </div>`);
+
+  document.getElementById("startNewDay").onclick=()=>{
+    let archiveDate=state.previousDate;
+    if(!archiveDate){
+      const d=new Date();
+      d.setDate(d.getDate()-1);
+      archiveDate=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    }
+    completeDailyRollover(archiveDate);
+    pendingDailyRollover=null;
+    closeModal();
+    showToast("已開始今天的新記錄");
+  };
+
+  const keep=document.getElementById("keepCurrentDay");
+  if(keep)keep.onclick=()=>{
+    localStorage.setItem("innerootDailyEntryDate",today());
+    localStorage.setItem("innerootDailyResetVersion","6.9.1");
+    pendingDailyRollover=null;
+    closeModal();
+    showToast("已保留目前內容");
+  };
+}
+
 function updateTimeGreeting(){
   const el=document.getElementById("timeGreeting");
   if(!el)return;
@@ -332,3 +449,4 @@ document.querySelectorAll("[data-action]").forEach(b=>b.onclick=(e)=>{
 });
 
 document.getElementById("closeModal").onclick=closeModal;backdrop.onclick=e=>{if(e.target===backdrop)closeModal()};
+if(pendingDailyRollover)setTimeout(showDailyRolloverPrompt,80);
