@@ -1,0 +1,13 @@
+/* Inneroot V6.8 — hide mobile bottom navigation on desktop/web layout */
+
+/* The navigation lives outside .mobile-home so it must be hidden by default. */
+.asset-bottom-nav{
+  display:none !important;
+}
+
+/* Show it only on the supported mobile portrait layout. */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-bottom-nav{
+    display:grid !important;
+  }
+}
