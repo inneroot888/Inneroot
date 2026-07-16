@@ -2503,7 +2503,7 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 
 
 /* =========================================================
-   Inneroot V7.0 — Daily Draw single-card redesign only
+   Inneroot V7.1 — Dream Draw single-card experience
    ========================================================= */
 .modal-card:has(.draw-v70){
   width:min(580px,96vw);
@@ -2512,7 +2512,7 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   border:1px solid rgba(255,255,255,.88);
   background:
     linear-gradient(rgba(255,253,246,.28),rgba(249,251,244,.40)),
-    url("daily-draw-background.jpg?v=7.0.0") center/cover no-repeat;
+    url("daily-draw-background.jpg?v=7.1.0") center/cover no-repeat;
   box-shadow:0 30px 90px rgba(39,64,47,.25);
 }
 
@@ -2666,249 +2666,58 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 }
 
 
-/* =========================================================
-   Inneroot V8 — True HTML/CSS desktop redesign
-   No personal name or login copy is baked into an image.
-   ========================================================= */
-.desktop-v8{display:none}
-
-@media(min-width:761px){
-  body{
-    min-height:100vh;
-    background:
-      radial-gradient(circle at 72% 5%,rgba(255,247,211,.75),transparent 28%),
-      linear-gradient(135deg,#e7efe2,#f8f4e8);
-  }
-
-  .page-shell{display:none!important}
-
-  .desktop-v8{
-    display:grid!important;
-    grid-template-columns:230px minmax(0,1fr);
-    width:min(1440px,calc(100% - 38px));
-    min-height:calc(100vh - 38px);
-    margin:19px auto;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.84);
-    border-radius:30px;
-    background:rgba(248,250,244,.78);
-    box-shadow:0 30px 90px rgba(49,72,55,.17);
-    backdrop-filter:blur(18px);
-  }
-
-  .desktop-v8-sidebar{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    padding:28px 20px 22px;
-    background:
-      radial-gradient(circle at 20% 2%,rgba(255,255,255,.92),transparent 28%),
-      linear-gradient(180deg,rgba(239,246,235,.94),rgba(220,235,220,.91));
-    border-right:1px solid rgba(92,120,98,.10);
-  }
-
-  .desktop-v8-logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:4px 7px 25px;
-  }
-  .desktop-v8-logo-mark{
-    width:42px;height:42px;display:grid;place-items:center;border-radius:50%;
-    background:rgba(255,255,255,.72);
-    box-shadow:0 10px 24px rgba(62,88,67,.09);
-  }
-  .desktop-v8-logo strong,.desktop-v8-logo small{display:block}
-  .desktop-v8-logo strong{
-    font-family:Georgia,serif;font-size:24px;font-weight:500;letter-spacing:.06em;color:#42614c
-  }
-  .desktop-v8-logo small{font-size:9px;letter-spacing:.13em;color:#859286;margin-top:2px}
-
-  .desktop-v8-menu{display:grid;gap:6px}
-  .desktop-v8-menu button{
-    width:100%;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:12px 14px;
-    border:0;
-    border-radius:14px;
-    color:#64796a;
-    background:transparent;
-    text-align:left;
-    cursor:pointer;
-    transition:.2s ease;
-  }
-  .desktop-v8-menu button span{width:20px;text-align:center;color:#87a089}
-  .desktop-v8-menu button:hover,
-  .desktop-v8-menu button.active{
-    color:#3f624a;
-    background:rgba(255,255,255,.70);
-    box-shadow:0 9px 24px rgba(63,91,68,.08);
-    transform:translateX(2px);
-  }
-
-  .desktop-v8-account{
-    margin-top:auto;
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:13px;
-    border-radius:18px;
-    background:rgba(255,255,255,.58);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
-  }
-  .desktop-v8-avatar{
-    width:38px;height:38px;display:grid;place-items:center;flex:0 0 auto;
-    border-radius:50%;color:#779079;background:#e8f0e4
-  }
-  .desktop-v8-account strong,.desktop-v8-account small{display:block}
-  .desktop-v8-account strong{font-size:12px;color:#4f6957}
-  .desktop-v8-account small{font-size:9px;color:#8b978f;margin-top:3px}
-
-  .desktop-v8-main{
-    position:relative;
-    overflow:auto;
-    padding:29px 34px 24px;
-    background:
-      radial-gradient(circle at 87% 4%,rgba(255,247,207,.55),transparent 25%),
-      linear-gradient(155deg,rgba(253,253,248,.91),rgba(238,246,234,.88));
-  }
-
-  .desktop-v8-topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:22px;
-  }
-  .desktop-v8-topbar p{margin:0 0 6px;font-size:10px;letter-spacing:.26em;color:#8d998f}
-  .desktop-v8-topbar h1{
-    margin:0;font-family:Georgia,"Noto Serif TC",serif;font-size:32px;font-weight:500;color:#42604b
-  }
-  .desktop-v8-topbar h1 i{font-style:normal;color:#cbb064;font-size:18px}
-  .desktop-v8-topbar small{display:block;margin-top:8px;color:#7c8b81}
-  .desktop-v8-settings{
-    width:43px;height:43px;border:1px solid rgba(255,255,255,.9);border-radius:50%;
-    background:rgba(255,255,255,.72);color:#627963;cursor:pointer;
-    box-shadow:0 12px 24px rgba(59,82,63,.08)
-  }
-
-  .desktop-v8-hero{
-    position:relative;
-    min-height:320px;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    padding:44px 46px;
-    border-radius:28px;
-    border:1px solid rgba(255,255,255,.88);
-    background:
-      radial-gradient(circle at 75% 16%,rgba(255,247,201,.88),transparent 25%),
-      linear-gradient(135deg,#f9fbf5 0%,#e7f1e3 48%,#dcebdc 100%);
-    box-shadow:0 22px 55px rgba(59,86,65,.10);
-  }
-  .desktop-v8-hero-copy{position:relative;z-index:3;width:54%}
-  .desktop-v8-overline{margin:0 0 12px;font-size:9px;letter-spacing:.28em;color:#8b988e}
-  .desktop-v8-hero h2{
-    margin:0;
-    font-family:Georgia,"Noto Serif TC",serif;
-    font-size:clamp(30px,3.3vw,48px);
-    line-height:1.25;
-    font-weight:500;
-    color:#3f624b;
-  }
-  .desktop-v8-hero-copy>p:not(.desktop-v8-overline){
-    margin:18px 0 0;line-height:1.8;color:#718178
-  }
-  .desktop-v8-hero-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-
-  .desktop-v8-landscape{position:absolute;inset:0 0 0 48%;pointer-events:none}
-  .desktop-v8-sun{
-    position:absolute;right:18%;top:12%;width:92px;height:92px;border-radius:50%;
-    background:radial-gradient(circle,#fffef2 0 22%,#fff0b7 52%,rgba(255,239,173,0) 72%);
-    filter:blur(.2px)
-  }
-  .desktop-v8-hill{position:absolute;border-radius:50% 50% 0 0}
-  .hill-a{right:-6%;bottom:25%;width:78%;height:44%;background:linear-gradient(180deg,#afcaac,#739b7c)}
-  .hill-b{left:-5%;bottom:18%;width:67%;height:34%;background:linear-gradient(180deg,#d8e7d2,#9fbea2)}
-  .desktop-v8-lake{
-    position:absolute;right:2%;bottom:-8%;width:94%;height:36%;border-radius:50%;
-    background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.74),rgba(177,211,185,.64) 54%,rgba(123,173,139,.20) 74%,transparent 76%);
-  }
-  .desktop-v8-tree{position:absolute;color:#537a5e;font-size:54px;text-shadow:0 10px 18px rgba(53,86,61,.17)}
-  .tree-a{right:7%;bottom:28%}.tree-b{right:32%;bottom:26%;font-size:42px;color:#719476}
-  .desktop-v8-flower{position:absolute;color:#fff;text-shadow:0 2px 9px rgba(76,106,80,.20)}
-  .flower-a{right:15%;bottom:12%;font-size:27px}.flower-b{right:42%;bottom:9%;font-size:19px}
-
-  .desktop-v8-mood{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:28px;
-    margin-top:20px;
-    padding:22px 26px;
-    border-radius:23px;
-    border:1px solid rgba(255,255,255,.86);
-    background:rgba(255,255,255,.65);
-    box-shadow:0 15px 36px rgba(60,83,64,.07);
-  }
-  .desktop-v8-mood p{margin:0 0 5px;font-size:9px;letter-spacing:.22em;color:#929d94}
-  .desktop-v8-mood h3{margin:0;font-family:Georgia,"Noto Serif TC",serif;font-size:21px;color:#486553}
-  .desktop-v8-mood small{color:#87938b}
-  .desktop-v8-moods{display:flex;gap:10px}
-  .desktop-v8-moods button{
-    width:58px;height:62px;border:1px solid rgba(123,151,126,.11);border-radius:17px;
-    background:rgba(245,249,242,.82);cursor:pointer;transition:.18s ease
-  }
-  .desktop-v8-moods button:hover{transform:translateY(-3px);background:#fff}
-  .desktop-v8-moods span,.desktop-v8-moods small{display:block}
-  .desktop-v8-moods span{font-size:22px}.desktop-v8-moods small{font-size:10px;margin-top:4px}
-
-  .desktop-v8-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:15px;
-    margin-top:20px;
-  }
-  .desktop-v8-card{
-    display:grid;
-    grid-template-columns:52px 1fr 24px;
-    gap:15px;
-    align-items:center;
-    min-height:112px;
-    padding:22px;
-    border:1px solid rgba(255,255,255,.9);
-    border-radius:23px;
-    background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(239,247,235,.72));
-    box-shadow:0 15px 37px rgba(59,84,63,.07);
-    color:#4b6755;
-    text-align:left;
-    cursor:pointer;
-    transition:.2s ease;
-  }
-  .desktop-v8-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(59,84,63,.11)}
-  .desktop-v8-card-icon{
-    width:52px;height:52px;display:grid;place-items:center;border-radius:18px;
-    color:#a68b46;background:linear-gradient(145deg,#fffdf3,#e7f1e2);font-size:20px
-  }
-  .desktop-v8-card strong,.desktop-v8-card small{display:block}
-  .desktop-v8-card strong{font-family:Georgia,"Noto Serif TC",serif;font-size:19px;font-weight:500}
-  .desktop-v8-card small{margin-top:7px;color:#849188}
-  .desktop-v8-card i{font-style:normal;color:#9aab9d}
-
-  .desktop-v8-quote{
-    display:flex;justify-content:center;align-items:center;gap:12px;
-    margin-top:19px;padding:12px;color:#7c8d80
-  }
-  .desktop-v8-quote p{margin:0;font-family:Georgia,"Noto Serif TC",serif}
-  .desktop-v8-quote span{color:#bd9f54}.desktop-v8-quote i{font-style:normal;color:#9bae9c}
+/* V7.1 Dream Draw: water ripple and reveal transition */
+.draw-v70-ripple{
+  position:absolute;
+  left:50%;
+  bottom:40px;
+  width:245px;
+  height:54px;
+  transform:translateX(-50%);
+  border:1px solid rgba(221,196,126,.46);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 12px rgba(255,255,255,.13),
+    0 0 36px rgba(246,226,166,.34);
+  opacity:.74;
+  animation:drawV71Ripple 3.6s ease-in-out infinite;
 }
-
-@media(min-width:761px) and (max-width:1020px){
-  .desktop-v8{grid-template-columns:190px minmax(0,1fr)}
-  .desktop-v8-main{padding:24px}
-  .desktop-v8-hero{padding:35px 30px}
-  .desktop-v8-hero-copy{width:62%}
-  .desktop-v8-mood{align-items:flex-start;flex-direction:column}
-  .desktop-v8-grid{grid-template-columns:1fr}
+.draw-v70-cardback{
+  transform-origin:center center;
+  will-change:transform,opacity,filter;
+}
+.draw-v70-cardback.is-revealing{
+  animation:drawV71Reveal .9s cubic-bezier(.2,.72,.22,1) forwards;
+}
+.draw-v70.is-revealing .draw-v70-glow{
+  animation:drawV71Flash .9s ease forwards;
+}
+.draw-v70.is-revealing .draw-v70-ripple{
+  animation:drawV71RippleBurst .9s ease-out forwards;
+}
+.draw-v70-button:disabled{
+  cursor:default;
+  opacity:.82;
+}
+@keyframes drawV71Ripple{
+  0%,100%{transform:translateX(-50%) scale(.92);opacity:.44}
+  50%{transform:translateX(-50%) scale(1.08);opacity:.82}
+}
+@keyframes drawV71Reveal{
+  0%{transform:translateY(0) rotateY(0) scale(1);opacity:1;filter:drop-shadow(0 23px 25px rgba(42,65,46,.25))}
+  48%{transform:translateY(-18px) rotateY(82deg) scale(1.06);opacity:.95;filter:drop-shadow(0 32px 34px rgba(42,65,46,.28)) brightness(1.08)}
+  100%{transform:translateY(-28px) rotateY(90deg) scale(1.1);opacity:0;filter:drop-shadow(0 38px 40px rgba(42,65,46,.12)) brightness(1.18)}
+}
+@keyframes drawV71Flash{
+  0%{opacity:.7;transform:scale(.96)}
+  55%{opacity:1;transform:scale(1.17)}
+  100%{opacity:.18;transform:scale(1.28)}
+}
+@keyframes drawV71RippleBurst{
+  0%{opacity:.62;transform:translateX(-50%) scale(.94)}
+  100%{opacity:0;transform:translateX(-50%) scale(1.55)}
+}
+@media (prefers-reduced-motion:reduce){
+  .draw-v70-cardback,.draw-v70-glow,.draw-v70-ripple{animation:none!important}
+  .draw-v70-cardback.is-revealing{opacity:0;transition:opacity .2s ease}
 }
