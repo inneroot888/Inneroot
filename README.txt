@@ -1,18 +1,12 @@
-Inneroot V2.0 — 真正獨立 iPhone 首頁
+Inneroot V2.1 — iPhone 疊版修正
 
-手機版：
-- 不再縮小桌面版圖片
-- 全屏森林背景
-- 手機可讀的問候、心情卡及功能卡
-- 底部固定四個主要按鈕：
-  首頁、抽牌、日記、AI 探索
-- 保留洞察分析及心靈花園入口
-- 彈窗配合 iPhone 闊度
-- 支援 iPhone safe area
-
-iPad／電腦版：
-- 完全保留原有設計及按鈕位置
+修正內容：
+- iPhone 只顯示手機版首頁
+- 原本桌面版首頁在 iPhone 完全隱藏
+- iPad／電腦只顯示原本版本
+- 移除重複 logo、問候語、心情卡及功能卡重疊
+- 底部四個導覽按鈕保留
 
 更新方式：
-請將 index.html、style.css 一併上傳覆蓋。
+請覆蓋 index.html、style.css。
 script.js 不需要更換。

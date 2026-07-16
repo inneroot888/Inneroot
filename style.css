@@ -1127,3 +1127,38 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .mobile-actions{padding-left:12px;padding-right:12px}
   .mobile-feature-grid{gap:9px}
 }
+
+
+/* V2.1 authoritative desktop/mobile visibility fix */
+.desktop-home{display:block;}
+.mobile-home{display:none;}
+
+@media (max-width:600px) and (orientation:portrait){
+  .desktop-home{
+    display:none !important;
+    visibility:hidden !important;
+    position:absolute !important;
+    width:0 !important;
+    height:0 !important;
+    overflow:hidden !important;
+    pointer-events:none !important;
+  }
+
+  .mobile-home{
+    display:block !important;
+    visibility:visible !important;
+    position:relative !important;
+    width:100% !important;
+    min-height:100dvh !important;
+  }
+
+  body > .desktop-home,
+  body > .page-shell.desktop-home{
+    display:none !important;
+  }
+}
+
+@media (min-width:601px){
+  .desktop-home{display:block !important;}
+  .mobile-home{display:none !important;}
+}
