@@ -6,9 +6,104 @@ function getDraw(){try{const x=JSON.parse(localStorage.getItem("innerootDailyDra
 function openModal(h){content.innerHTML=h;backdrop.hidden=false}function closeModal(){backdrop.hidden=true}
 function showToast(t){toast.textContent=t;toast.hidden=false;clearTimeout(showToast.x);showToast.x=setTimeout(()=>toast.hidden=true,1700)}
 function beginDraw(){const old=getDraw();if(old)return showResult(old.card);openModal(`<p class="eyebrow">每日一張</p><h2>先停一停</h2><p>深呼吸一次。想一想，今天你最想了解的是什麼？</p><div class="card-stage"><div class="card-back">☾<span>INNEROOT</span></div></div><button class="primary" id="go">開始抽牌</button>`);document.getElementById("go").onclick=()=>{const card=cards[Math.floor(Math.random()*cards.length)];localStorage.setItem("innerootDailyDraw",JSON.stringify({date:today(),card}));showResult(card)}}
-function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 AI 陪我探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
-function promptText(){const d=getDraw();return `今天抽到：${d?d.card.zh+"（"+d.card.en+"）":"未抽牌"}\n\n請不要把塔羅當作預測未來，而是作為自我探索與潛意識反思的工具。\n\n今天的心情：${mood||"未選擇"}\n我的記錄：${journal||"未填寫"}\n\n請從潛意識、情緒、核心信念、重複模式、內在需要與身體感受角度，引導我理解自己。不要判斷吉凶，不要預測未來。請多用提問，最後提供一個今天可以實踐的小步驟。`;}
-async function copyPrompt(){try{await navigator.clipboard.writeText(promptText());showToast("探索指令已複製")}catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
+function showResult(card){openModal(`<span class="badge">${today()} · 今日牌卡</span><div class="card-stage"><img class="tarot-card" src="${card.file}" alt="${card.zh}"></div><h2>${card.zh}</h2><p><strong>${card.en}</strong></p><p class="result-copy">這張牌不是答案，而是一個邀請。</p><ol class="questions">${card.q.map(x=>`<li>${x}</li>`).join("")}</ol><div class="result-closing"><span class="sprout">🌱</span>今天的潛意識訊息已送達。<br>願你今天，多理解自己一點。</div><div class="actions"><button class="primary" id="copy">🌿 開始內在探索</button><button class="secondary" id="done">完成今天覺察</button></div>`);document.getElementById("copy").onclick=copyPrompt;document.getElementById("done").onclick=openJournal}
+function promptText(){
+  const d=getDraw();
+  const card=d?d.card:null;
+  const focus=localStorage.getItem("innerootJournalFocus")||"未選擇";
+  const gentle=localStorage.getItem("innerootGentleNote")||"未填寫";
+
+  return `你是 Inneroot 的 AI 內在探索陪伴者。
+
+你的角色不是塔羅老師、命理師、心理治療師或人生導師。
+你是一位溫柔、冷靜、尊重使用者自主性的同行者。
+你的工作不是替我下結論，而是陪我看見自己可能忽略的感受、信念與重複模式。
+
+請遵守以下原則：
+- 不預測未來，不判斷吉凶。
+- 不宣稱知道我真正的潛意識。
+- 不下心理或醫療診斷。
+- 只引用我實際寫過的內容，不要捏造細節。
+- 推論時使用「可能」「也許」「其中一個值得探索的方向」等語氣。
+- 不說教，不用空泛安慰。
+- 以繁體中文回覆，語氣溫柔、自然、清晰。
+
+【今天的資料】
+今日牌：${card?card.zh+"（"+card.en+"）":"未抽牌"}
+今日心情：${mood||"未選擇"}
+最觸動我的問題：${focus}
+今日日記：
+${journal||"未填寫"}
+
+我想送給自己的一句話：
+${gentle}
+
+【請依照以下結構回覆】
+
+1. 🌿 謝謝你願意停下來
+用一至兩句溫柔開場，但不要過度安慰。
+
+2. 🌿 我留意到……
+只反映我實際寫過的字詞、語氣、矛盾或重複內容。
+如日記太短，請坦白說資料有限，不要硬作分析。
+
+3. 🌳 一個值得探索的方向
+提出一個「可能的內在信念或保護模式」，但不要把它說成事實。
+再提出一至兩條具體問題，幫我自己探索。
+
+4. 🃏 今日牌與我的連結
+不要只講固定牌義。
+把今日牌的象徵，連結到我今日的心情、問題和日記。
+
+5. 🌱 今天的種子
+根據我的情況，生成一句短而真實的新內在信念。
+不要用誇張正能量，也不要否定我現有的感受。
+
+6. 🍃 今天的小練習
+提供一個三十秒至五分鐘內能完成的小行動。
+
+7. 🌼 如果今天只帶走一句話
+給我一句值得收藏、但不武斷的句子。
+
+最後固定加上：
+「這不是標準答案，只是陪伴你探索自己的一個角度。如果有共鳴，可以把它帶進今天；如果沒有，也可以放下，慢慢尋找屬於自己的答案。」`;
+}
+
+async function copyPrompt(){
+  const text=promptText();
+
+  try{
+    await navigator.clipboard.writeText(text);
+
+    openModal(`<div class="explore-ready">
+      <div class="explore-orb">✦</div>
+      <p class="eyebrow">INNER EXPLORATION</p>
+      <h2>探索內容已準備好</h2>
+      <p>今日牌卡、心情、反思問題同日記已經整理完成。</p>
+      <div class="explore-actions">
+        <button class="primary" id="copyAgain">複製探索內容</button>
+        <button class="secondary" id="closeExplore">稍後再去</button>
+      </div>
+      <p class="explore-note">你可以將內容貼到任何支援文字對話的 AI 平台，開始今天的內在探索。</p>
+    </div>`);
+
+    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("探索內容已複製")}catch{showToast("請長按文字手動複製")}};
+  }catch{
+    openModal(`<div class="explore-ready">
+      <p class="eyebrow">INNER EXPLORATION</p>
+      <h2>長按以下內容複製</h2>
+      <textarea class="explore-prompt" readonly>${escapeHTML(text)}</textarea>
+      <div class="explore-actions">
+        <button class="primary" id="copyAgain">複製探索內容</button>
+        <button class="secondary" id="closeExplore">關閉</button>
+      </div>
+    </div>`);
+
+    document.getElementById("closeExplore").onclick=closeModal;const copyAgain=document.getElementById("copyAgain");if(copyAgain)copyAgain.onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("探索內容已複製")}catch{showToast("請長按文字手動複製")}};
+  }
+}
+
+catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
 function escapeHTML(value){return String(value||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
 function openJournal(){
   const draw=getDraw(),card=draw?draw.card:null;
