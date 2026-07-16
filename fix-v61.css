@@ -1,0 +1,50 @@
+/* Inneroot V6.2.1 — clean logo-only update based on V5.9 */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-topbar{
+    align-items:flex-start !important;
+  }
+
+  .asset-logo.asset-logo-v61{
+    display:block !important;
+    width:118px !important;
+    max-width:33vw !important;
+    padding:0 !important;
+    margin:14px 0 0 0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    position:relative !important;
+    z-index:4 !important;
+  }
+
+  .asset-logo.asset-logo-v61 img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    object-fit:contain !important;
+    object-position:center top !important;
+    filter:drop-shadow(0 2px 10px rgba(255,255,255,.42)) !important;
+  }
+
+  .asset-round{
+    margin-top:4px !important;
+  }
+
+  .asset-welcome{
+    margin-top:58px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-logo.asset-logo-v61{
+    width:108px !important;
+    max-width:34vw !important;
+    margin-top:16px !important;
+  }
+
+  .asset-welcome{
+    margin-top:54px !important;
+  }
+}
