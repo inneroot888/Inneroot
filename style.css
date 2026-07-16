@@ -2503,7 +2503,7 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 
 
 /* =========================================================
-   Inneroot V7.0 — Daily Draw single-card redesign only
+   Inneroot V7.1 — Dream Draw single-card experience
    ========================================================= */
 .modal-card:has(.draw-v70){
   width:min(580px,96vw);
@@ -2512,7 +2512,7 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   border:1px solid rgba(255,255,255,.88);
   background:
     linear-gradient(rgba(255,253,246,.28),rgba(249,251,244,.40)),
-    url("daily-draw-background.jpg?v=7.0.0") center/cover no-repeat;
+    url("daily-draw-background.jpg?v=7.1.0") center/cover no-repeat;
   box-shadow:0 30px 90px rgba(39,64,47,.25);
 }
 
@@ -2663,4 +2663,61 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .draw-v70-scene{min-height:310px}
   .draw-v70-cardback{width:172px}
   .draw-v70-glow{width:235px;height:235px}
+}
+
+
+/* V7.1 Dream Draw: water ripple and reveal transition */
+.draw-v70-ripple{
+  position:absolute;
+  left:50%;
+  bottom:40px;
+  width:245px;
+  height:54px;
+  transform:translateX(-50%);
+  border:1px solid rgba(221,196,126,.46);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 12px rgba(255,255,255,.13),
+    0 0 36px rgba(246,226,166,.34);
+  opacity:.74;
+  animation:drawV71Ripple 3.6s ease-in-out infinite;
+}
+.draw-v70-cardback{
+  transform-origin:center center;
+  will-change:transform,opacity,filter;
+}
+.draw-v70-cardback.is-revealing{
+  animation:drawV71Reveal .9s cubic-bezier(.2,.72,.22,1) forwards;
+}
+.draw-v70.is-revealing .draw-v70-glow{
+  animation:drawV71Flash .9s ease forwards;
+}
+.draw-v70.is-revealing .draw-v70-ripple{
+  animation:drawV71RippleBurst .9s ease-out forwards;
+}
+.draw-v70-button:disabled{
+  cursor:default;
+  opacity:.82;
+}
+@keyframes drawV71Ripple{
+  0%,100%{transform:translateX(-50%) scale(.92);opacity:.44}
+  50%{transform:translateX(-50%) scale(1.08);opacity:.82}
+}
+@keyframes drawV71Reveal{
+  0%{transform:translateY(0) rotateY(0) scale(1);opacity:1;filter:drop-shadow(0 23px 25px rgba(42,65,46,.25))}
+  48%{transform:translateY(-18px) rotateY(82deg) scale(1.06);opacity:.95;filter:drop-shadow(0 32px 34px rgba(42,65,46,.28)) brightness(1.08)}
+  100%{transform:translateY(-28px) rotateY(90deg) scale(1.1);opacity:0;filter:drop-shadow(0 38px 40px rgba(42,65,46,.12)) brightness(1.18)}
+}
+@keyframes drawV71Flash{
+  0%{opacity:.7;transform:scale(.96)}
+  55%{opacity:1;transform:scale(1.17)}
+  100%{opacity:.18;transform:scale(1.28)}
+}
+@keyframes drawV71RippleBurst{
+  0%{opacity:.62;transform:translateX(-50%) scale(.94)}
+  100%{opacity:0;transform:translateX(-50%) scale(1.55)}
+}
+@media (prefers-reduced-motion:reduce){
+  .draw-v70-cardback,.draw-v70-glow,.draw-v70-ripple{animation:none!important}
+  .draw-v70-cardback.is-revealing{opacity:0;transition:opacity .2s ease}
 }
