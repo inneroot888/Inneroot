@@ -143,7 +143,7 @@ function openJournal(){
         <strong>${card?card.zh:"今日覺察"}</strong>
         <span>${card?card.en:"Inneroot Journal"}</span>
       </div>
-      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card">`:`<div class="journal-v4-card empty">✿</div>`}
+      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card" width="180" height="270" style="display:block;width:180px;max-width:min(38vw,180px);height:auto;max-height:270px;object-fit:contain;justify-self:end;">`:`<div class="journal-v4-card empty">✿</div>`}
       <p class="journal-v4-cardcopy">${card?"這張牌像一面柔和的鏡，陪你看看今天真正觸動你的，是什麼。":"今天可以不急著找答案，只需要誠實地記下感受。"}</p>
     </section>
 

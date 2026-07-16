@@ -1,0 +1,177 @@
+/* Inneroot V4.8 — final overrides loaded after legacy style.css */
+
+/* ---------- Journal: tablet / desktop ---------- */
+@media (min-width:601px){
+  .modal-backdrop{
+    position:fixed !important;
+    inset:0 !important;
+    display:grid !important;
+    place-items:center !important;
+    padding:24px !important;
+    overflow:auto !important;
+  }
+  .modal-backdrop[hidden]{display:none !important}
+  .modal-card:has(.journal-v4){
+    width:min(900px,94vw) !important;
+    max-width:900px !important;
+    max-height:92vh !important;
+    min-height:0 !important;
+    overflow:auto !important;
+    padding:34px !important;
+    border-radius:30px !important;
+  }
+  .modal-card:has(.journal-v4) > .close{
+    position:absolute !important;
+    top:14px !important;
+    right:16px !important;
+    width:44px !important;
+    height:44px !important;
+    z-index:20 !important;
+  }
+  .journal-v4{
+    display:grid !important;
+    grid-template-columns:minmax(250px,320px) minmax(0,1fr) !important;
+    gap:18px !important;
+    align-items:start !important;
+  }
+  .journal-v4-head{
+    grid-column:1/-1 !important;
+    padding:0 58px 6px 0 !important;
+  }
+  .journal-v4-head h2{font-size:36px !important}
+  .journal-v4-head p{max-width:640px !important;font-size:16px !important}
+  .journal-v4-date{margin-top:14px !important}
+  .journal-v4-cardpanel{
+    grid-column:1 !important;
+    grid-row:2 / span 2 !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    align-content:start !important;
+    margin-top:0 !important;
+    padding:18px !important;
+  }
+  .journal-v4-cardintro{text-align:center !important}
+  .journal-v4-card{
+    width:180px !important;
+    max-width:180px !important;
+    height:auto !important;
+    max-height:270px !important;
+    object-fit:contain !important;
+    justify-self:center !important;
+    border-radius:16px !important;
+  }
+  .journal-v4-card.empty{
+    width:180px !important;
+    height:270px !important;
+    justify-self:center !important;
+  }
+  .journal-v4-cardcopy{grid-column:auto !important;text-align:center !important}
+  .journal-v4-moodbox,
+  .journal-v4-prompts{
+    grid-column:2 !important;
+    margin-top:0 !important;
+  }
+  .journal-v4-writing,
+  .journal-v4-savebar{
+    grid-column:1/-1 !important;
+  }
+  .journal-v4-writing{margin-top:0 !important}
+  .journal-v4-paper textarea{min-height:220px !important}
+}
+
+/* ---------- Homepage cards: phone portrait only ---------- */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-card-grid{
+    gap:10px !important;
+  }
+  .asset-feature-card{
+    min-height:174px !important;
+    padding:16px 13px 15px !important;
+  }
+  .asset-feature-card > div{
+    position:relative !important;
+    z-index:5 !important;
+    width:61% !important;
+    max-width:61% !important;
+    padding:2px 2px 0 0 !important;
+  }
+  .asset-feature-card > div::after{
+    content:"" !important;
+    position:absolute !important;
+    z-index:-1 !important;
+    left:-8px !important;
+    right:-18px !important;
+    top:-8px !important;
+    bottom:-10px !important;
+    border-radius:18px !important;
+    background:linear-gradient(90deg,rgba(255,253,247,.99) 0%,rgba(255,253,247,.96) 72%,rgba(255,253,247,.55) 88%,rgba(255,253,247,0) 100%) !important;
+    pointer-events:none !important;
+  }
+  .asset-feature-card strong{
+    display:block !important;
+    margin:0 !important;
+    font-size:20px !important;
+    line-height:1.16 !important;
+    font-weight:600 !important;
+    letter-spacing:0 !important;
+    color:#365a45 !important;
+    white-space:normal !important;
+  }
+  .asset-feature-card strong i{
+    font-size:9px !important;
+    vertical-align:middle !important;
+  }
+  .asset-feature-card small{
+    display:block !important;
+    max-width:118px !important;
+    margin-top:10px !important;
+    font-size:13px !important;
+    line-height:1.5 !important;
+    font-weight:400 !important;
+    color:#65776b !important;
+  }
+  .asset-feature-card > img{
+    z-index:1 !important;
+    object-fit:contain !important;
+    -webkit-mask-image:none !important;
+    mask-image:none !important;
+    opacity:.96 !important;
+  }
+  .asset-feature-card[data-action="draw"] > img{
+    width:116px !important;height:116px !important;right:-7px !important;bottom:-7px !important;
+  }
+  .asset-feature-card[data-action="journal"] > img{
+    width:124px !important;height:124px !important;right:-16px !important;bottom:-7px !important;
+  }
+  .asset-feature-card[data-action="insight"] > img{
+    width:118px !important;height:118px !important;right:-5px !important;bottom:-7px !important;
+  }
+  .asset-feature-card[data-action="prompt"] > img{
+    width:120px !important;height:120px !important;right:-6px !important;bottom:-6px !important;
+  }
+  .asset-feature-card.asset-wide{
+    min-height:140px !important;
+  }
+  .asset-feature-card.asset-wide > div{
+    width:66% !important;
+    max-width:66% !important;
+  }
+  .asset-feature-card.asset-wide small{
+    max-width:230px !important;
+  }
+  .asset-feature-card.asset-wide > img{
+    width:142px !important;height:142px !important;right:4px !important;bottom:-13px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-feature-card{min-height:166px !important;padding:14px 12px 14px !important}
+  .asset-feature-card > div{width:62% !important;max-width:62% !important}
+  .asset-feature-card strong{font-size:18px !important}
+  .asset-feature-card small{font-size:12px !important;max-width:106px !important}
+  .asset-feature-card[data-action="draw"] > img{width:108px !important;height:108px !important}
+  .asset-feature-card[data-action="journal"] > img{width:116px !important;height:116px !important}
+  .asset-feature-card[data-action="insight"] > img{width:110px !important;height:110px !important}
+  .asset-feature-card[data-action="prompt"] > img{width:112px !important;height:112px !important}
+}
