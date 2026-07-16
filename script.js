@@ -103,7 +103,6 @@ async function copyPrompt(){
   }
 }
 
-catch{openModal(`<h2>長按以下內容複製</h2><textarea readonly>${promptText()}</textarea>`)}}
 function escapeHTML(value){return String(value||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
 function openJournal(){
   const draw=getDraw(),card=draw?draw.card:null;
