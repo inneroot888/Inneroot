@@ -1,0 +1,111 @@
+/* Inneroot V5.8 — complete final mood section */
+@media (max-width:600px) and (orientation:portrait){
+
+  .asset-mood-card{
+    padding-left:16px !important;
+    padding-right:16px !important;
+    overflow:visible !important;
+  }
+
+  .asset-moods{
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:3px !important;
+    align-items:start !important;
+    margin-top:15px !important;
+  }
+
+  .asset-moods button{
+    min-width:0 !important;
+    padding:0 !important;
+    display:grid !important;
+    grid-template-rows:74px auto !important;
+    justify-items:center !important;
+    align-items:start !important;
+    gap:6px !important;
+    overflow:visible !important;
+  }
+
+  .asset-moods img{
+    display:block !important;
+    width:74px !important;
+    height:74px !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    margin:0 auto !important;
+    transform:none !important;
+    filter:drop-shadow(0 6px 11px rgba(71,91,72,.10)) !important;
+  }
+
+  .asset-moods small{
+    display:block !important;
+    margin:0 !important;
+    font-size:12px !important;
+    line-height:1.15 !important;
+    font-weight:400 !important;
+    color:#66766b !important;
+    white-space:nowrap !important;
+  }
+
+  /* Use the exact user-provided image without any stretching. */
+  .asset-mood-save{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:1370 / 210 !important;
+    min-height:0 !important;
+    margin:15px 0 0 !important;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:url("mood-save-button-exact.png") center / contain no-repeat !important;
+    box-shadow:none !important;
+    color:transparent !important;
+    font-size:0 !important;
+    line-height:0 !important;
+    letter-spacing:0 !important;
+    text-shadow:none !important;
+    overflow:visible !important;
+  }
+
+  .asset-mood-save::before,
+  .asset-mood-save::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* Match the desktop tree logo on mobile. */
+  .asset-logo > span{
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+    font-size:0 !important;
+    color:transparent !important;
+    background:
+      url("logo-tree.png") center / 38px 38px no-repeat,
+      radial-gradient(circle at 35% 25%,#fff,#e5eee1) !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-moods button{
+    grid-template-rows:66px auto !important;
+  }
+
+  .asset-moods img{
+    width:66px !important;
+    height:66px !important;
+  }
+
+  .asset-moods small{
+    font-size:11px !important;
+  }
+
+  .asset-logo > span{
+    width:44px !important;
+    height:44px !important;
+    flex-basis:44px !important;
+    background-size:35px 35px,auto !important;
+  }
+}
