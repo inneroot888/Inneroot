@@ -2038,3 +2038,125 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .asset-feature-card[data-action="insight"] > img{width:121px !important;height:121px !important}
   .asset-feature-card[data-action="prompt"] > img{width:122px !important;height:122px !important}
 }
+
+/* =========================================================
+   Inneroot V4.5 — Text / illustration balance tuning
+   Scope: only feature-card text and illustration placement
+   ========================================================= */
+@media (max-width:600px) and (orientation:portrait){
+  .asset-feature-card{
+    min-height:170px !important;
+    padding:15px 14px 16px !important;
+  }
+
+  .asset-feature-card > div{
+    width:60% !important;
+    max-width:60% !important;
+    padding-top:2px !important;
+    z-index:2 !important;
+    text-shadow:0 2px 10px rgba(255,255,255,.92);
+  }
+
+  .asset-feature-card strong{
+    white-space:normal !important;
+    font-size:20px !important;
+    line-height:1.14 !important;
+    letter-spacing:.002em !important;
+  }
+
+  .asset-feature-card small{
+    max-width:118px !important;
+    margin-top:10px !important;
+    font-size:13px !important;
+    line-height:1.5 !important;
+    color:#6f7f74 !important;
+  }
+
+  .asset-feature-card.asset-wide{
+    min-height:136px !important;
+  }
+
+  .asset-feature-card.asset-wide > div{
+    width:63% !important;
+    max-width:63% !important;
+  }
+
+  .asset-feature-card.asset-wide small{
+    max-width:230px !important;
+  }
+
+  /* keep the decorative star small */
+  .asset-feature-card strong i{
+    font-size:9px !important;
+    margin-left:2px !important;
+  }
+
+  /* text stays readable, art sits lower / further right */
+  .asset-feature-card[data-action="draw"] > img{
+    width:122px !important;
+    height:122px !important;
+    right:-6px !important;
+    bottom:-6px !important;
+  }
+
+  .asset-feature-card[data-action="journal"] > img{
+    width:132px !important;
+    height:132px !important;
+    right:-15px !important;
+    bottom:-6px !important;
+  }
+
+  .asset-feature-card[data-action="insight"] > img{
+    width:124px !important;
+    height:124px !important;
+    right:-3px !important;
+    bottom:-6px !important;
+  }
+
+  .asset-feature-card[data-action="prompt"] > img{
+    width:126px !important;
+    height:126px !important;
+    right:-4px !important;
+    bottom:-5px !important;
+  }
+
+  .asset-feature-card.asset-wide > img{
+    width:146px !important;
+    height:146px !important;
+    right:6px !important;
+    bottom:-14px !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-feature-card{
+    min-height:164px !important;
+    padding:14px 12px 15px !important;
+  }
+
+  .asset-feature-card > div,
+  .asset-feature-card.asset-wide > div{
+    width:60% !important;
+    max-width:60% !important;
+  }
+
+  .asset-feature-card strong{
+    font-size:18px !important;
+    line-height:1.14 !important;
+  }
+
+  .asset-feature-card small{
+    max-width:104px !important;
+    font-size:12px !important;
+    line-height:1.48 !important;
+  }
+
+  .asset-feature-card.asset-wide small{
+    max-width:190px !important;
+  }
+
+  .asset-feature-card[data-action="draw"] > img{width:114px !important;height:114px !important;right:-7px !important;bottom:-7px !important}
+  .asset-feature-card[data-action="journal"] > img{width:123px !important;height:123px !important;right:-14px !important;bottom:-7px !important}
+  .asset-feature-card[data-action="insight"] > img{width:116px !important;height:116px !important;right:-4px !important;bottom:-7px !important}
+  .asset-feature-card[data-action="prompt"] > img{width:118px !important;height:118px !important;right:-5px !important;bottom:-6px !important}
+}
