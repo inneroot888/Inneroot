@@ -1,13 +1,23 @@
-Inneroot AI Exploration V1.2 FIXED
+Inneroot V1.4 — 側欄全面校正版
 
-重要修正：
-- 移除造成全站按鈕失效的 JavaScript 舊程式
-- 已用 Node.js 檢查 script.js，語法通過
-- 保留「複製探索內容」及不綁定單一 AI 平台的設計
+根據 iPad 首頁截圖重新定位及核對：
 
-更新方法：
-1. 解壓縮 ZIP
-2. 最少上傳並覆蓋 script.js
-3. 建議 index.html、style.css、script.js 三個檔案一併覆蓋
-4. Commit changes
-5. 等待部署完成後重新整理網站
+首頁 → 首頁
+每日抽牌 → 每日抽牌
+潛意識日記 → 潛意識日記
+心情追蹤 → 心情追蹤
+洞察分析 → 洞察分析
+成長圖譜 → 成長圖譜
+AI 探索 → AI 探索
+心靈花園 → 心靈花園
+設定 → 設定
+
+同時修正：
+- 側欄透明按鈕整體向上校正
+- 按鈕高度縮窄，避免上下功能重疊
+- 點擊框寬度及左側位置重新對準
+- 新增心靈花園及設定的正確按鈕
+- JavaScript 語法檢查通過
+
+更新方式：
+請將 index.html、style.css、script.js 三個檔案一併覆蓋。
