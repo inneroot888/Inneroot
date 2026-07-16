@@ -1,0 +1,108 @@
+/* Inneroot V5.5 — equal mood sizing, live-text mood button, desktop tree logo */
+@media (max-width:600px) and (orientation:portrait){
+
+  /* Equal optical size and alignment for all five mood illustrations */
+  .asset-moods{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:3px !important;
+    align-items:start !important;
+  }
+
+  .asset-moods button{
+    grid-template-rows:72px auto !important;
+    min-width:0 !important;
+    justify-items:center !important;
+    align-items:start !important;
+    gap:5px !important;
+    overflow:visible !important;
+  }
+
+  .asset-moods img{
+    width:72px !important;
+    height:72px !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    transform:none !important;
+    filter:drop-shadow(0 6px 11px rgba(71,91,72,.10)) !important;
+  }
+
+  .asset-moods small{
+    margin:0 !important;
+    font-size:12px !important;
+    line-height:1.15 !important;
+    white-space:nowrap !important;
+  }
+
+  /* Do not stretch an image containing text. Use live HTML text instead. */
+  .asset-mood-save{
+    position:relative !important;
+    isolation:isolate !important;
+    height:58px !important;
+    margin-top:15px !important;
+    padding:0 22px !important;
+    overflow:hidden !important;
+    border-radius:999px !important;
+    border:1px solid rgba(245,239,205,.95) !important;
+    background-image:
+      radial-gradient(circle at 14% 42%,rgba(255,255,255,.70) 0 1px,transparent 2px),
+      radial-gradient(circle at 77% 35%,rgba(255,250,214,.82) 0 1.5px,transparent 2.5px),
+      radial-gradient(circle at 89% 68%,rgba(255,255,255,.65) 0 1px,transparent 2px),
+      linear-gradient(90deg,#9fb79e 0%,#76997f 48%,#a7bda1 100%) !important;
+    background-size:auto !important;
+    color:#fff !important;
+    font-family:Georgia,"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif !important;
+    font-size:18px !important;
+    font-weight:400 !important;
+    letter-spacing:.055em !important;
+    text-shadow:0 1px 6px rgba(45,72,53,.22) !important;
+    box-shadow:
+      0 9px 20px rgba(60,86,65,.17),
+      inset 0 1px 0 rgba(255,255,255,.78),
+      inset 0 0 0 2px rgba(255,255,255,.22) !important;
+  }
+
+  .asset-mood-save::before{
+    content:"❧" !important;
+    display:inline-block !important;
+    margin-right:13px !important;
+    color:#fff !important;
+    font-size:21px !important;
+    line-height:1 !important;
+    vertical-align:-1px !important;
+    text-shadow:0 1px 5px rgba(46,72,53,.20) !important;
+  }
+
+  .asset-mood-save::after{
+    content:"" !important;
+    position:absolute !important;
+    inset:3px !important;
+    z-index:-1 !important;
+    border-radius:inherit !important;
+    border:1px solid rgba(255,255,255,.42) !important;
+    background:
+      linear-gradient(105deg,transparent 0 20%,rgba(255,255,255,.13) 33%,transparent 46%),
+      radial-gradient(circle at 68% 58%,rgba(255,246,196,.22),transparent 22%) !important;
+    pointer-events:none !important;
+  }
+
+  /* Use the same tree mark as the desktop website */
+  .asset-logo > span{
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+    font-size:0 !important;
+    color:transparent !important;
+    background:
+      url("logo-tree.png") center/38px 38px no-repeat,
+      radial-gradient(circle at 35% 25%,#fff,#e5eee1) !important;
+  }
+}
+
+@media (max-width:374px) and (orientation:portrait){
+  .asset-moods button{grid-template-rows:64px auto !important}
+  .asset-moods img{width:64px !important;height:64px !important}
+  .asset-moods small{font-size:11px !important}
+  .asset-mood-save{height:54px !important;font-size:17px !important}
+  .asset-logo > span{width:44px !important;height:44px !important;flex-basis:44px !important;background-size:35px 35px,auto !important}
+}
