@@ -1294,3 +1294,152 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
   .feature-illus{width:90px;height:90px}
   .feature-illus svg{width:58px;height:58px}
 }
+
+
+/* =========================================================
+   Inneroot V2.5 — iPhone modal, scrolling and overlay fixes
+   ========================================================= */
+@media (max-width:600px) and (orientation:portrait){
+
+  body.modal-open{
+    overflow:hidden !important;
+    height:100dvh;
+    touch-action:none;
+  }
+
+  body.modal-open .mobile-bottom-nav{
+    display:none !important;
+  }
+
+  .modal-backdrop{
+    position:fixed !important;
+    inset:0 !important;
+    z-index:100000 !important;
+    display:block !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+    padding:
+      max(10px,env(safe-area-inset-top))
+      10px
+      max(18px,env(safe-area-inset-bottom)) !important;
+    background:rgba(49,69,55,.52) !important;
+  }
+
+  .modal-backdrop[hidden]{
+    display:none !important;
+  }
+
+  .modal-card{
+    position:relative !important;
+    width:100% !important;
+    min-height:0 !important;
+    max-height:none !important;
+    margin:0 auto !important;
+    padding:64px 16px 28px !important;
+    overflow:visible !important;
+    border-radius:28px !important;
+  }
+
+  .modal-card > .close{
+    position:fixed !important;
+    top:max(14px,env(safe-area-inset-top)) !important;
+    right:14px !important;
+    z-index:100020 !important;
+    width:50px !important;
+    height:50px !important;
+    display:grid !important;
+    place-items:center !important;
+    border-radius:50% !important;
+    font-size:32px !important;
+    line-height:1 !important;
+    background:rgba(255,253,246,.97) !important;
+    color:#536d59 !important;
+    box-shadow:0 12px 28px rgba(40,59,44,.22) !important;
+  }
+
+  /* Ordinary popups should stay compact instead of filling the screen */
+  .modal-card:not(:has(.journal-v4)){
+    min-height:auto !important;
+  }
+
+  .modal-card:has(.explore-ready){
+    min-height:auto !important;
+    padding-bottom:36px !important;
+  }
+
+  .explore-ready{
+    min-height:0 !important;
+    padding-top:12px !important;
+  }
+
+  /* Tarot result remains readable and does not become oversized */
+  .card-stage{
+    padding:8px 0 14px !important;
+  }
+
+  .card-back,
+  .tarot-card{
+    width:min(210px,58vw) !important;
+    max-width:210px !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    border-radius:16px !important;
+  }
+
+  .questions{
+    padding-left:22px !important;
+    margin-bottom:18px !important;
+  }
+
+  .questions li{
+    margin-bottom:9px !important;
+    line-height:1.55 !important;
+  }
+
+  .result-closing{
+    margin-top:14px !important;
+  }
+
+  .actions{
+    position:relative !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:10px !important;
+    margin-top:16px !important;
+    padding-bottom:4px !important;
+  }
+
+  .actions .primary,
+  .actions .secondary{
+    flex:1 1 150px !important;
+  }
+
+  /* Journal scrolls through the backdrop naturally */
+  .modal-card:has(.journal-v4){
+    min-height:auto !important;
+    padding-bottom:34px !important;
+  }
+
+  .journal-v4{
+    min-height:0 !important;
+    padding-bottom:6px !important;
+  }
+
+  .journal-v4-writing,
+  .journal-v4-savebar{
+    scroll-margin-top:80px;
+  }
+
+  .journal-v4-paper textarea{
+    min-height:220px !important;
+    max-height:none !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .journal-v4-savebar{
+    margin-bottom:10px !important;
+  }
+}
