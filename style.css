@@ -2500,3 +2500,167 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
     margin-top:42px !important;
   }
 }
+
+
+/* =========================================================
+   Inneroot V7.0 — Daily Draw single-card redesign only
+   ========================================================= */
+.modal-card:has(.draw-v70){
+  width:min(580px,96vw);
+  padding:0;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.88);
+  background:
+    linear-gradient(rgba(255,253,246,.28),rgba(249,251,244,.40)),
+    url("daily-draw-background.jpg?v=7.0.0") center/cover no-repeat;
+  box-shadow:0 30px 90px rgba(39,64,47,.25);
+}
+
+.modal-card:has(.draw-v70) .close{
+  z-index:4;
+  width:42px;
+  height:42px;
+  right:14px;
+  top:13px;
+  border-radius:50%;
+  background:rgba(255,255,255,.70);
+  box-shadow:0 8px 22px rgba(57,78,60,.10);
+  backdrop-filter:blur(12px);
+}
+
+.draw-v70{
+  position:relative;
+  min-height:720px;
+  padding:46px 32px 32px;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.draw-v70::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(255,255,255,.92),rgba(255,255,255,.54) 28%,transparent 54%),
+    linear-gradient(180deg,rgba(255,253,247,.42),rgba(255,253,247,.12) 58%,rgba(252,249,239,.52));
+  pointer-events:none;
+}
+
+.draw-v70::after{
+  content:"✦";
+  position:absolute;
+  left:16%;
+  top:24%;
+  z-index:-1;
+  color:rgba(207,174,90,.52);
+  font-size:12px;
+  text-shadow:
+    330px 10px 0 rgba(207,174,90,.42),
+    55px 230px 0 rgba(255,255,255,.88),
+    285px 310px 0 rgba(207,174,90,.32),
+    120px 420px 0 rgba(255,255,255,.78);
+}
+
+.draw-v70 .eyebrow{
+  margin:0;
+  color:#7b907e;
+  letter-spacing:.22em;
+}
+
+.draw-v70 h2{
+  margin:8px 0 9px;
+  color:#385a44;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:36px;
+  font-weight:500;
+  letter-spacing:.08em;
+}
+
+.draw-v70-intro{
+  max-width:420px;
+  margin:0 auto!important;
+  color:#66766c!important;
+  line-height:1.75!important;
+}
+
+.draw-v70-scene{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:405px;
+  margin:6px auto 0;
+}
+
+.draw-v70-glow{
+  position:absolute;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,250,211,.88),rgba(255,255,255,.34) 48%,transparent 72%);
+  filter:blur(4px);
+  animation:drawV70Glow 3.2s ease-in-out infinite alternate;
+}
+
+.draw-v70-cardback{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:226px;
+  height:auto;
+  aspect-ratio:5/8;
+  object-fit:contain;
+  filter:drop-shadow(0 23px 25px rgba(42,65,46,.25));
+  animation:drawV70Float 3.5s ease-in-out infinite;
+}
+
+.draw-v70-note{
+  max-width:400px;
+  margin:-2px auto 17px!important;
+  color:#718077!important;
+  font-size:13px!important;
+  line-height:1.7!important;
+}
+
+.draw-v70-button{
+  width:min(390px,100%);
+  padding:15px 22px;
+  border:1px solid rgba(255,255,255,.82);
+  border-radius:999px;
+  background:linear-gradient(135deg,#809f82,#52745d);
+  box-shadow:0 13px 28px rgba(57,91,67,.20),inset 0 1px 0 rgba(255,255,255,.40);
+}
+
+@keyframes drawV70Float{
+  0%,100%{transform:translateY(2px) rotate(-.4deg)}
+  50%{transform:translateY(-7px) rotate(.4deg)}
+}
+@keyframes drawV70Glow{
+  from{opacity:.68;transform:scale(.96)}
+  to{opacity:1;transform:scale(1.04)}
+}
+
+@media(max-width:600px){
+  .modal-card:has(.draw-v70){
+    width:calc(100vw - 22px);
+    max-height:94dvh;
+    border-radius:26px;
+  }
+  .draw-v70{
+    min-height:660px;
+    padding:42px 20px 26px;
+  }
+  .draw-v70 h2{font-size:31px}
+  .draw-v70-scene{min-height:365px}
+  .draw-v70-cardback{width:202px}
+  .draw-v70-glow{width:275px;height:275px}
+  .draw-v70-note{font-size:12px!important}
+}
+
+@media(max-height:720px) and (max-width:600px){
+  .draw-v70{min-height:590px;padding-top:35px}
+  .draw-v70-scene{min-height:310px}
+  .draw-v70-cardback{width:172px}
+  .draw-v70-glow{width:235px;height:235px}
+}
