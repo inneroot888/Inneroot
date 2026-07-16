@@ -1,16 +1,19 @@
-Inneroot V5.9 — 心情圖真正更新版
+Inneroot V6.0.1 — 只更換 Logo 修正版
 
-修正重點：
-- 5 張心情圖改用全新檔名，避免 Safari 繼續讀取舊圖片快取
-- index.html 已直接改用新檔名
-- 焦慮圖視覺放大 8%
-- 難過圖視覺放大 6%
-- 五個圖示仍然使用相同 74 × 74 顯示格
-- 綠色按鍵沿用使用者原圖，沒有重新設計
-- 按鈕保持 1370:210 原始比例
+這個更新包只包含：
+- index.html
+- fix-v60.css
+- logo-v60.png
+
+重要：
+- 不包含 style.css
+- 不會覆蓋綠色按鍵、心情圖、功能卡或底部功能列的設定
+- index.html 是由 V5.9 正常版本製作
+- 保留 fix-v48.css 至 fix-v59.css 的所有載入連結
+- fix-v60.css 只控制手機 Logo 尺寸及位置
 
 GitHub：
-將 ZIP 內所有檔案直接上傳到 repository 根目錄。
-index.html 覆蓋同名檔案。
-fix-v59.css 和 mood-*-v59.png 是新檔案。
-保留舊 CSS 檔案。
+1. index.html 覆蓋原本同名檔案
+2. fix-v60.css 和 logo-v60.png 新增到根目錄
+3. 保留所有 fix-v48.css 至 fix-v59.css
+4. 不要刪除或覆蓋 style.css
