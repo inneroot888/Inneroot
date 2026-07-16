@@ -3,6 +3,70 @@ let mood=localStorage.getItem("innerootMood")||"",journal=localStorage.getItem("
 const backdrop=document.getElementById("modalBackdrop"),content=document.getElementById("modalContent"),toast=document.getElementById("toast");
 function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
 function getDraw(){try{const x=JSON.parse(localStorage.getItem("innerootDailyDraw")||"null");return x&&x.date===today()?x:null}catch{return null}}
+function getInsightHistory(){
+  try{
+    const rows=JSON.parse(localStorage.getItem("innerootInsightHistory")||"[]");
+    return Array.isArray(rows)?rows:[];
+  }catch{return []}
+}
+function saveInsightEntry(){
+  const draw=getDraw();
+  const entry={
+    date:today(),
+    card:draw?{zh:draw.card.zh,en:draw.card.en}:null,
+    mood:localStorage.getItem("innerootMood")||"",
+    focus:localStorage.getItem("innerootJournalFocus")||"",
+    journal:localStorage.getItem("innerootJournal")||"",
+    gentle:localStorage.getItem("innerootGentleNote")||""
+  };
+  if(!entry.journal.trim())return;
+  const rows=getInsightHistory().filter(x=>x&&x.date!==entry.date);
+  rows.push(entry);
+  rows.sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  localStorage.setItem("innerootInsightHistory",JSON.stringify(rows.slice(-90)));
+}
+function recentInsightEntries(days=7){
+  const start=new Date();
+  start.setHours(0,0,0,0);
+  start.setDate(start.getDate()-(days-1));
+  return getInsightHistory().filter(x=>{
+    const d=new Date(`${x.date}T00:00:00`);
+    return !Number.isNaN(d.getTime())&&d>=start;
+  });
+}
+function insightPrompt(entries){
+  const records=entries.map((x,i)=>`【記錄 ${i+1}｜${x.date}】\n牌卡：${x.card?x.card.zh+"（"+x.card.en+"）":"未抽牌"}\n心情：${x.mood||"未選擇"}\n最觸動的問題：${x.focus||"未選擇"}\n日記：${x.journal||"未填寫"}\n給自己的話：${x.gentle||"未填寫"}`).join("\n\n");
+  return `你是 Inneroot 的「內在洞察」陪伴者。請根據以下最近七天的真實記錄，幫我回顧重複出現的情緒、牌卡、想法與內在模式。\n\n請遵守：\n- 不預測未來，不判斷吉凶。\n- 不下心理或醫療診斷。\n- 只引用記錄中實際出現的內容，不要捏造。\n- 推論要使用「可能」「也許」「值得留意」等語氣。\n- 如資料不足或未見明顯模式，要直接說明。\n- 使用繁體中文，語氣溫柔、清晰、不說教。\n\n【最近七天記錄】\n${records}\n\n【請依照以下五個部分回覆】\n1. 🌿 近期情緒：整理主要情緒變化與可能出現的情境。\n2. 🃏 反覆出現的牌：列出重複牌卡；若沒有，說明牌卡共同帶出的象徵方向。\n3. ✨ 重複出現的主題：只根據日記字詞與內容，整理二至四個主題。\n4. 🌱 成長提醒：指出一至兩個已經出現的改變或值得培養的方向。\n5. 💭 下一次可以留意：提供一條具體、溫柔而不武斷的日記問題。\n\n最後固定加上：\n「這份洞察不是對你的定義，只是根據最近記錄整理出的一個角度。你可以留下有共鳴的部分，也可以放下不適合你的內容。」`;
+}
+async function prepareInsight(){
+  const entries=recentInsightEntries(7);
+  if(entries.length<3){
+    openInsight();
+    return;
+  }
+  const text=insightPrompt(entries);
+  try{
+    await navigator.clipboard.writeText(text);
+    openModal(`<div class="explore-ready"><div class="explore-orb">✦</div><p class="eyebrow">INNER INSIGHT</p><h2>最近 7 天的內在洞察已準備好</h2><p>內容已整理成一段提示，你可以貼到文字對話 AI，回顧近期情緒、牌卡與日記中反覆出現的線索。</p><div class="explore-actions"><button class="primary" id="copyInsightAgain">再次複製</button><button class="secondary" id="closeInsight">稍後再看</button></div><p class="explore-note">這不是對你的定義，只是一個回望自己的角度。</p></div>`);
+    document.getElementById("closeInsight").onclick=closeModal;
+    document.getElementById("copyInsightAgain").onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("內在洞察內容已複製")}catch{showToast("請長按文字手動複製")}};
+  }catch{
+    openModal(`<div class="explore-ready"><p class="eyebrow">INNER INSIGHT</p><h2>長按以下內容複製</h2><textarea class="explore-prompt" readonly>${escapeHTML(text)}</textarea><div class="explore-actions"><button class="primary" id="copyInsightAgain">複製內在洞察內容</button><button class="secondary" id="closeInsight">關閉</button></div></div>`);
+    document.getElementById("closeInsight").onclick=closeModal;
+    document.getElementById("copyInsightAgain").onclick=async()=>{try{await navigator.clipboard.writeText(text);showToast("內在洞察內容已複製")}catch{showToast("請長按文字手動複製")}};
+  }
+}
+function openInsight(){
+  // Migrate the current saved journal into history once, so existing users do not start from zero.
+  if((localStorage.getItem("innerootJournal")||"").trim())saveInsightEntry();
+  const entries=recentInsightEntries(7);
+  const remaining=Math.max(0,3-entries.length);
+  const progress=Math.min(100,Math.round(entries.length/3*100));
+  openModal(`<div class="explore-ready"><div class="explore-orb">◌</div><p class="eyebrow">INNER INSIGHT</p><h2>內在洞察</h2><p>每一次抽牌、心情和日記，都會慢慢累積成你的內在軌跡。當記錄足夠後，這裡會幫你整理最近七天反覆出現的情緒、牌卡、想法與成長方向。</p><div style="margin:20px 0;padding:16px 18px;border-radius:18px;background:rgba(236,243,232,.72);text-align:left"><strong>最近 7 天已累積 ${entries.length} 次記錄</strong><div style="height:8px;margin-top:12px;border-radius:999px;background:rgba(112,143,117,.14);overflow:hidden"><span style="display:block;width:${progress}%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#a9bea5,#718f76)"></span></div><small style="display:block;margin-top:10px;color:#748278">${remaining?`再完成 ${remaining} 次潛意識日記，就可以開始第一份內在洞察。`:"資料已足夠，可以開始回顧最近七天。"}</small></div><div class="explore-actions">${remaining?'<button class="primary" id="continueJournal">前往潛意識日記</button>':'<button class="primary" id="startInsight">開始分析最近 7 天</button>'}<button class="secondary" id="closeInsight">稍後再看</button></div><p class="explore-note">所有記錄只儲存在你目前使用的瀏覽器。</p></div>`);
+  document.getElementById("closeInsight").onclick=closeModal;
+  const journalButton=document.getElementById("continueJournal");if(journalButton)journalButton.onclick=openJournal;
+  const insightButton=document.getElementById("startInsight");if(insightButton)insightButton.onclick=prepareInsight;
+}
 function openModal(h){
   content.innerHTML=h;
   backdrop.hidden=false;
@@ -207,6 +271,7 @@ function openJournal(){
     journal=document.getElementById("j").value;
     localStorage.setItem("innerootJournal",journal);
     localStorage.setItem("innerootGentleNote",document.getElementById("gentleNoteV4").value);
+    saveInsightEntry();
     openModal(`<div class="journal-v4-finish"><div class="journal-v4-bloom">✿</div><h2>今天的覺察已經收藏好了。</h2><p>下一步，可以讓「深入探索」結合今天的牌卡、心情和日記，陪你整理其中的連結與值得留意的方向。</p><div class="actions"><button class="primary" id="startExplore">開始深入探索</button><button class="secondary" id="finishLater">稍後再做</button></div></div>`);
     document.getElementById("startExplore").onclick=copyPrompt;
     document.getElementById("finishLater").onclick=closeModal;
@@ -220,7 +285,7 @@ function runAction(a){
   if(a==="journal")openJournal();
   if(a==="mood")openMood();
   if(a==="prompt")copyPrompt();
-  if(a==="insight")info("洞察分析","完成更多心情、抽牌和日記後，這裡會整理你的重複模式。");
+  if(a==="insight")openInsight();
   if(a==="growth")info("成長圖譜","每一次記錄，都是一個新的根。");
   if(a==="garden")info("心靈花園","這裡將收藏你的內在種子與成長片段。");
   if(a==="settings")info("設定","設定功能將於下一階段開放。");
