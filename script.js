@@ -347,9 +347,17 @@ function openCompletedJournal(record=getCompletedJournal()){
     ${record.gentle&&record.gentle.trim()?`<section class="journal-readonly-gentle"><small>給今天的自己</small><p>「${escapeHTML(record.gentle)}」</p></section>`:""}
 
     <div class="journal-v4-savebar journal-complete-actions">
-      <button class="journal-v4-save journal-v4-saved" type="button" disabled>已收藏 ✓</button>
-      <button class="journal-edit-link" id="editCompletedJournal" type="button">重新編輯</button>
-      <p>重新編輯會更新今天已收藏的記錄。</p>
+      <div class="journal-complete-action-block journal-saved-action">
+        <button class="journal-v4-save journal-v4-saved" type="button" disabled>已收藏 ✓</button>
+        <button class="journal-edit-link" id="editCompletedJournal" type="button">重新編輯</button>
+        <p>重新編輯會更新今天已收藏的記錄。</p>
+      </div>
+      <div class="journal-complete-action-block journal-explore-action">
+        <button class="journal-explore-button" id="exploreCompletedJournal" type="button">
+          <span aria-hidden="true">❧</span> 前往深入探索 <i aria-hidden="true">›</i>
+        </button>
+        <p>透過牌卡指引，探索更深層的內在訊息。</p>
+      </div>
     </div>
   </div>`);
 
@@ -359,6 +367,9 @@ function openCompletedJournal(record=getCompletedJournal()){
     clearCompletedJournal();
     openJournal(true);
   };
+
+  const exploreCompleted=document.getElementById("exploreCompletedJournal");
+  if(exploreCompleted)exploreCompleted.onclick=()=>copyPrompt();
 }
 
 function openJournal(forceEdit=false){

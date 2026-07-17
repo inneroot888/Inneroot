@@ -1,0 +1,221 @@
+/* =========================================================
+   Inneroot V7.1.11 — Approved completed journal layout
+   Desktop/web only. Mobile remains exactly as before.
+   ========================================================= */
+
+/* New action stays hidden on mobile so mobile UI is unchanged. */
+.journal-explore-action{
+  display:none;
+}
+
+@media (min-width:761px){
+
+  .modal-card:has(.journal-v4-readonly){
+    width:min(980px,96vw) !important;
+  }
+
+  /* Approved compact layout:
+     card left; mood + writing right;
+     highlighted sentence left-bottom; gentle note right-bottom. */
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    display:grid !important;
+    grid-template-columns:minmax(275px,.82fr) minmax(460px,1.18fr) !important;
+    grid-template-areas:
+      "head head"
+      "card badge"
+      "card mood"
+      "card entry"
+      "focus gentle"
+      "actions actions" !important;
+    gap:14px 18px !important;
+    align-items:start !important;
+    padding-bottom:20px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head{
+    grid-area:head !important;
+    padding-bottom:4px !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    grid-area:badge !important;
+    justify-self:end !important;
+    align-self:center !important;
+    margin:0 !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardpanel{
+    grid-area:card !important;
+    grid-column:auto !important;
+    grid-row:auto !important;
+    min-height:100% !important;
+    padding:18px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-card{
+    width:min(220px,100%) !important;
+  }
+
+  /* Let the two existing fact cards become independent grid items. */
+  .journal-v4-readonly .journal-readonly-grid{
+    display:contents !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item{
+    min-height:0 !important;
+    padding:18px 20px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.84) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child{
+    grid-area:mood !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child strong{
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    font-size:18px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child strong::before{
+    content:"♥";
+    color:#88a87f;
+    font-size:16px;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2){
+    grid-area:focus !important;
+    min-height:138px !important;
+    justify-content:center !important;
+    background:
+      radial-gradient(circle at 92% 84%,rgba(204,224,197,.48),transparent 28%),
+      linear-gradient(145deg,rgba(250,252,246,.94),rgba(236,245,232,.86)) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2)::before{
+    content:"❝";
+    position:absolute;
+    margin-top:-72px;
+    margin-left:-4px;
+    color:#adc29f;
+    font-size:34px;
+    opacity:.72;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2) strong{
+    font-size:18px !important;
+    line-height:1.65 !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry{
+    grid-area:entry !important;
+    margin:0 !important;
+    min-height:250px !important;
+    padding:20px 22px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.86) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry p{
+    min-height:170px !important;
+    padding:12px 14px !important;
+    border:1px solid rgba(130,151,132,.13) !important;
+    border-radius:14px !important;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 37px,
+        rgba(122,143,125,.12) 38px
+      ) !important;
+    line-height:38px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle{
+    grid-area:gentle !important;
+    margin:0 !important;
+    min-height:138px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    padding:18px 22px !important;
+  }
+
+  .journal-v4-readonly .journal-complete-actions{
+    grid-area:actions !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:0 !important;
+    margin:0 !important;
+    padding:16px 22px !important;
+    border-radius:20px !important;
+  }
+
+  .journal-complete-action-block{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-height:94px !important;
+    padding:4px 24px !important;
+  }
+
+  .journal-complete-action-block + .journal-complete-action-block{
+    border-left:1px solid rgba(116,139,119,.16) !important;
+  }
+
+  .journal-complete-action-block p{
+    margin:7px 0 0 !important;
+    font-size:12px !important;
+    color:#87938b !important;
+    text-align:center !important;
+  }
+
+  .journal-explore-action{
+    display:flex !important;
+  }
+
+  .journal-explore-button{
+    min-width:260px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    padding:12px 22px !important;
+    border:1px solid rgba(104,137,110,.28) !important;
+    border-radius:999px !important;
+    color:#4b6d54 !important;
+    background:
+      linear-gradient(145deg,rgba(253,253,248,.96),rgba(239,246,235,.92)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.96),
+      0 8px 20px rgba(65,92,70,.07) !important;
+    cursor:pointer !important;
+    font-size:16px !important;
+  }
+
+  .journal-explore-button:hover{
+    transform:translateY(-1px) !important;
+    border-color:rgba(91,128,98,.42) !important;
+    background:linear-gradient(145deg,#fff,#edf5ea) !important;
+  }
+
+  .journal-explore-button span{
+    color:#739579;
+    font-size:20px;
+  }
+
+  .journal-explore-button i{
+    margin-left:auto;
+    font-style:normal;
+    font-size:25px;
+    line-height:1;
+    color:#78927d;
+  }
+
+  .journal-v4-readonly .journal-v4-saved{
+    min-width:220px !important;
+  }
+}
