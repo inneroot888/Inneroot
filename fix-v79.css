@@ -1,0 +1,143 @@
+/* Inneroot v7.1.28 — final refinements requested 2026-07-17.
+   Only completed-journal date/meta and action area are changed. */
+
+/* Shared action appearance: same proportions on desktop, iPad and phone. */
+.journal-v4-readonly .journal-complete-actions{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:start!important;
+}
+.journal-v4-readonly .journal-complete-action-block{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+}
+.journal-v4-readonly .journal-v4-saved,
+.journal-v4-readonly .journal-explore-button{
+  width:100%!important;
+  max-width:none!important;
+  height:60px!important;
+  min-height:60px!important;
+  padding:0 18px!important;
+  border-radius:999px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  font-size:18px!important;
+  font-weight:500!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+}
+.journal-v4-readonly .journal-explore-button::before,
+.journal-v4-readonly .journal-explore-button > span{
+  content:none!important;
+  display:none!important;
+}
+.journal-v4-readonly .journal-explore-button i{
+  margin-left:2px!important;
+}
+.journal-v4-readonly .journal-complete-action-block > p,
+.journal-v4-readonly .journal-saved-action .journal-edit-link{
+  text-align:center!important;
+}
+
+/* Desktop: smaller date card; saved notice gets its own full cell beside it. */
+@media (min-width:761px) and (hover:hover) and (pointer:fine){
+  .journal-v4-readonly .journal-complete-meta{
+    grid-template-columns:165px minmax(225px,1fr)!important;
+    gap:16px!important;
+  }
+  .journal-v4-readonly .journal-v4-date{
+    min-height:92px!important;
+    padding:14px 12px!important;
+  }
+  .journal-v4-readonly .journal-v4-date strong{
+    font-size:20px!important;
+  }
+  .journal-v4-readonly .journal-v4-date span{
+    font-size:14px!important;
+  }
+  .journal-v4-readonly .journal-complete-badge{
+    min-height:46px!important;
+    padding:9px 12px!important;
+    font-size:13px!important;
+    overflow:visible!important;
+  }
+  .journal-v4-readonly .journal-complete-actions{
+    gap:34px!important;
+  }
+}
+
+/* iPad/tablet: same compact date + notice arrangement, no overlap. */
+@media (min-width:761px) and (hover:none) and (pointer:coarse){
+  .journal-v4-readonly .journal-complete-meta{
+    grid-template-columns:155px minmax(215px,1fr)!important;
+    gap:14px!important;
+  }
+  .journal-v4-readonly .journal-v4-date{
+    min-height:88px!important;
+    padding:12px 10px!important;
+  }
+  .journal-v4-readonly .journal-v4-date strong{
+    font-size:19px!important;
+  }
+  .journal-v4-readonly .journal-v4-date span{
+    font-size:14px!important;
+  }
+  .journal-v4-readonly .journal-complete-badge{
+    min-height:44px!important;
+    padding:8px 10px!important;
+    font-size:12.5px!important;
+  }
+  .journal-v4-readonly .journal-complete-actions{
+    gap:28px!important;
+  }
+}
+
+/* Phone: centered date + centered saved notice. Action area follows the two-column reference. */
+@media (max-width:760px){
+  .journal-v4-readonly .journal-complete-meta{
+    align-items:center!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-v4-date{
+    width:190px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-complete-badge{
+    width:max-content!important;
+    max-width:calc(100% - 24px)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-complete-actions{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:12px!important;
+    padding:20px 14px!important;
+  }
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button{
+    height:56px!important;
+    min-height:56px!important;
+    padding:0 10px!important;
+    font-size:15px!important;
+  }
+  .journal-v4-readonly .journal-explore-button i{
+    font-size:22px!important;
+  }
+  .journal-v4-readonly .journal-saved-action .journal-edit-link{
+    margin-top:12px!important;
+    font-size:15px!important;
+  }
+  .journal-v4-readonly .journal-complete-action-block > p{
+    margin-top:9px!important;
+    font-size:12px!important;
+    line-height:1.45!important;
+  }
+}
