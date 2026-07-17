@@ -290,6 +290,29 @@ function clearCompletedJournal(){
   localStorage.removeItem("innerootJournalCompletedAt");
 }
 
+
+function alignDesktopCompletedBadge(){
+  if(window.innerWidth<=760)return;
+  const journal=document.querySelector(".journal-v4-readonly");
+  if(!journal)return;
+
+  const badge=journal.querySelector(":scope > .journal-complete-badge");
+  const mood=journal.querySelector(".journal-readonly-item:first-child");
+  if(!badge||!mood)return;
+
+  // Preserve all existing vertical positioning and dimensions.
+  badge.style.removeProperty("right");
+  badge.style.left="0px";
+
+  requestAnimationFrame(()=>{
+    const journalRect=journal.getBoundingClientRect();
+    const moodRect=mood.getBoundingClientRect();
+    const badgeWidth=badge.getBoundingClientRect().width;
+    const targetLeft=moodRect.right-journalRect.left-badgeWidth;
+    badge.style.left=`${Math.round(targetLeft)}px`;
+  });
+}
+
 function openCompletedJournal(record=getCompletedJournal()){
   if(!record){
     openJournal(true);
@@ -317,14 +340,6 @@ function openCompletedJournal(record=getCompletedJournal()){
     </header>
 
     <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
-
-    <div class="journal-desktop-meta" aria-hidden="true">
-      <div class="journal-desktop-date">
-        <strong>${dateText}</strong>
-        <span>${weekday}</span>
-      </div>
-      <div class="journal-desktop-status"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
-    </div>
 
     <section class="journal-v4-cardpanel">
       <div class="journal-v4-cardintro">
@@ -378,6 +393,9 @@ function openCompletedJournal(record=getCompletedJournal()){
 
   const exploreCompleted=document.getElementById("exploreCompletedJournal");
   if(exploreCompleted)exploreCompleted.onclick=()=>copyPrompt();
+
+  alignDesktopCompletedBadge();
+  setTimeout(alignDesktopCompletedBadge,80);
 }
 
 function openJournal(forceEdit=false){
@@ -611,3 +629,8 @@ if(pendingDailyRollover)setTimeout(showDailyRolloverPrompt,80);
     el.textContent="Good Evening";
   }
 })();
+
+
+window.addEventListener("resize",()=>{
+  if(window.innerWidth>760)alignDesktopCompletedBadge();
+});
