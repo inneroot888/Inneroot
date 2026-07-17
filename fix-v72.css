@@ -1,0 +1,147 @@
+/* =========================================================
+   Inneroot V7.1.13 — Final completed journal layout
+   Desktop + mobile completed-journal action alignment only.
+   Other pages remain untouched.
+   ========================================================= */
+
+/* ---------- Desktop / iPad web ---------- */
+@media (min-width:761px){
+
+  /* Give the saved-time pill breathing room below the date card. */
+  .journal-v4-readonly .journal-v4-date{
+    top:0 !important;
+    right:0 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    top:112px !important;
+    right:0 !important;
+  }
+
+  /* Main two actions stay side by side; edit link moves below and centered. */
+  .journal-v4-readonly .journal-complete-actions{
+    position:relative !important;
+    grid-template-columns:1fr 1fr !important;
+    padding:16px 22px 52px !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action,
+  .journal-v4-readonly .journal-explore-action{
+    min-height:76px !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action .journal-edit-link{
+    position:absolute !important;
+    left:50% !important;
+    bottom:18px !important;
+    transform:translateX(-50%) !important;
+    margin:0 !important;
+    white-space:nowrap !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action p{
+    position:absolute !important;
+    left:50% !important;
+    bottom:2px !important;
+    transform:translateX(-50%) !important;
+    width:100% !important;
+    margin:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  .journal-v4-readonly .journal-explore-action p{
+    margin-top:6px !important;
+  }
+}
+
+/* ---------- Mobile completed journal only ---------- */
+@media (max-width:760px){
+
+  /* Keep date and saved time separated. */
+  .journal-v4-readonly .journal-v4-date{
+    margin-bottom:14px !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    margin:0 auto 14px !important;
+  }
+
+  /* Two main actions side by side, edit link centered underneath. */
+  .journal-v4-readonly .journal-complete-actions{
+    position:relative !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    padding:14px 12px 58px !important;
+    align-items:start !important;
+  }
+
+  .journal-v4-readonly .journal-complete-action-block{
+    min-width:0 !important;
+    padding:0 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-action-block + .journal-complete-action-block{
+    border-left:0 !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+
+  .journal-v4-readonly .journal-explore-action{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button{
+    width:100% !important;
+    min-width:0 !important;
+    height:46px !important;
+    padding:10px 8px !important;
+    font-size:13px !important;
+    border-radius:999px !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button{
+    display:flex !important;
+    justify-content:center !important;
+    gap:6px !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button i{
+    margin-left:4px !important;
+    font-size:20px !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action .journal-edit-link{
+    position:absolute !important;
+    left:50% !important;
+    bottom:29px !important;
+    transform:translateX(-50%) !important;
+    margin:0 !important;
+    white-space:nowrap !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action p{
+    position:absolute !important;
+    left:50% !important;
+    bottom:8px !important;
+    transform:translateX(-50%) !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 8px !important;
+    text-align:center !important;
+    font-size:10px !important;
+    white-space:normal !important;
+  }
+
+  .journal-v4-readonly .journal-explore-action p{
+    display:none !important;
+  }
+}
