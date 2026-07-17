@@ -1,0 +1,11 @@
+/* Inneroot v7.1.32 — md+ spacing adjustment only.
+   This file changes one thing only: adds vertical breathing room
+   above the two lower journal cards on iPad/Desktop.
+   Mobile (< 768px) is untouched. */
+
+@media (min-width: 768px) {
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle {
+    margin-top: 28px !important;
+  }
+}
