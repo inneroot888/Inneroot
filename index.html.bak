@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Inneroot</title>
   <meta name="description" content="與潛意識對話，遇見真正的自己。">
-  <link rel="stylesheet" href="style.css?v=7.1.21">
+  <link rel="stylesheet" href="style.css?v=7.1.9">
   <link rel="stylesheet" href="fix-v48.css?v=4.8.0">
   <link rel="stylesheet" href="fix-v49.css?v=4.9.0">
   <link rel="stylesheet" href="fix-v50.css?v=5.0.0">
@@ -20,6 +20,11 @@
   <link rel="stylesheet" href="fix-v59.css?v=5.9.0">
   <link rel="stylesheet" href="fix-v61.css?v=6.2.1">
   <link rel="stylesheet" href="fix-v68.css?v=6.8.0">
+  <link rel="stylesheet" href="fix-v69.css?v=7.1.10">
+  <link rel="stylesheet" href="fix-v70.css?v=7.1.11">
+  <link rel="stylesheet" href="fix-v71.css?v=7.1.12">
+  <link rel="stylesheet" href="fix-v72.css?v=7.1.13">
+  <link rel="stylesheet" href="fix-v73.css?v=7.1.20">
 </head>
 <body>
   <main class="page-shell desktop-home">

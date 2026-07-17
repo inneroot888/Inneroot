@@ -312,49 +312,44 @@ function openCompletedJournal(record=getCompletedJournal()){
       <p>今天的內在聲音，已被好好收藏。</p>
     </header>
 
-    <div class="journal-complete-layout">
-      <div class="journal-complete-left">
-        <section class="journal-v4-cardpanel">
-          <div class="journal-v4-cardintro">
-            <small>今日牌卡</small>
-            <strong>${card?card.zh:"今日覺察"}</strong>
-            <span>${card?card.en:"Inneroot Journal"}</span>
-          </div>
-          ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card">`:`<div class="journal-v4-card empty">✿</div>`}
-          <p class="journal-v4-cardcopy">${card?"這張牌陪你留下了今天的覺察。":"今天的感受已經被記錄下來。"}</p>
-        </section>
-
-        <article class="journal-readonly-item journal-readonly-focus">
-          <small>最觸動的一句</small>
-          <strong>${escapeHTML(record.focus||"未選擇")}</strong>
-        </article>
+    <div class="journal-complete-meta">
+      <div class="journal-v4-date">
+        <strong>${dateText}</strong>
+        <span>${weekday}</span>
       </div>
-
-      <div class="journal-complete-right">
-        <div class="journal-complete-meta">
-          <div class="journal-v4-date">
-            <strong>${dateText}</strong>
-            <span>${weekday}</span>
-          </div>
-          <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
-        </div>
-
-        <article class="journal-readonly-item journal-readonly-mood">
-          <small>今天的心情</small>
-          <strong>${escapeHTML(record.mood||"未選擇")}</strong>
-        </article>
-
-        <section class="journal-readonly-entry">
-          <small>今天留下的文字</small>
-          <p>${record.journal&&record.journal.trim()?escapeHTML(record.journal).replace(/\n/g,"<br>"):"今天沒有留下文字。"}</p>
-        </section>
-
-        <section class="journal-readonly-gentle">
-          <small>給今天的自己</small>
-          <p>${record.gentle&&record.gentle.trim()?`「${escapeHTML(record.gentle)}」`:"今天未有留下這句話。"}</p>
-        </section>
-      </div>
+      <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
     </div>
+
+    <section class="journal-v4-cardpanel">
+      <div class="journal-v4-cardintro">
+        <small>今日牌卡</small>
+        <strong>${card?card.zh:"今日覺察"}</strong>
+        <span>${card?card.en:"Inneroot Journal"}</span>
+      </div>
+      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card">`:`<div class="journal-v4-card empty">✿</div>`}
+      <p class="journal-v4-cardcopy">${card?"這張牌陪你留下了今天的覺察。":"今天的感受已經被記錄下來。"}</p>
+    </section>
+
+    <section class="journal-readonly-grid">
+      <article class="journal-readonly-item">
+        <small>今天的心情</small>
+        <strong>${escapeHTML(record.mood||"未選擇")}</strong>
+      </article>
+      <article class="journal-readonly-item">
+        <small>最觸動的一句</small>
+        <strong>${escapeHTML(record.focus||"未選擇")}</strong>
+      </article>
+    </section>
+
+    <section class="journal-readonly-entry">
+      <small>今天留下的文字</small>
+      <p>${record.journal&&record.journal.trim()?escapeHTML(record.journal).replace(/\n/g,"<br>"):"今天沒有留下文字。"}</p>
+    </section>
+
+    <section class="journal-readonly-gentle">
+      <small>給今天的自己</small>
+      <p>${record.gentle&&record.gentle.trim()?`「${escapeHTML(record.gentle)}」`:"今天未有留下這句話。"}</p>
+    </section>
 
     <div class="journal-v4-savebar journal-complete-actions">
       <div class="journal-complete-action-block journal-saved-action">
