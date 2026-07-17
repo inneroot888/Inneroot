@@ -1,15 +1,20 @@
-Inneroot V7.1.6 — English Dynamic Greeting
+Inneroot V7.1.8 — Journal Lock Fix
 
-桌面版及手機版統一按裝置時間顯示：
-00:00–11:59 Good Morning
-12:00–17:59 Good Afternoon
-18:00–23:59 Good Evening
+今次重新接駁真正的收藏按鈕流程：
 
-問候語旁保留細小綠色葉子圖示。
-其他版面、動畫及功能不變。
+1. 按「收藏今天的覺察」
+2. 立即寫入完整完成紀錄
+3. 按鈕即時變成「已收藏 ✓」
+4. 自動切換到唯讀完成頁
+5. 再次打開日記仍然顯示唯讀完成頁
+6. 只有按「重新編輯」及確認後才會解鎖
+7. 新一日自動清除完成鎖定
 
-請將 ZIP 內以下 4 個檔案覆蓋到 GitHub 根目錄：
-1. index.html
-2. style.css
-3. script.js
-4. inneroot-home.png
+完成頁上方會見到細小「v7.1.8」，方便確認網站已載入新版本。
+
+只需覆蓋 GitHub：
+- index.html
+- style.css
+- script.js
+
+首頁圖片及手機版其他畫面沒有修改。

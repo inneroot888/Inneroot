@@ -2765,3 +2765,115 @@ textarea{width:100%;min-height:190px;border:1px solid rgba(57,91,68,.17);border-
 .asset-welcome .greeting-leaf{
   color:#78906f;
 }
+
+
+/* =========================================================
+   Inneroot V7.1.7 — completed journal state
+   ========================================================= */
+.journal-v4-readonly{
+  padding-bottom:26px;
+}
+.journal-complete-badge{
+  width:max-content;
+  max-width:100%;
+  margin:2px auto 22px;
+  padding:9px 15px;
+  border:1px solid rgba(116,151,120,.18);
+  border-radius:999px;
+  color:#55705c;
+  background:rgba(232,242,228,.82);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+  font-size:13px;
+}
+.journal-complete-badge span{
+  display:inline-grid;
+  place-items:center;
+  width:19px;height:19px;
+  margin-right:6px;
+  border-radius:50%;
+  color:#fff;
+  background:#779779;
+}
+.journal-readonly-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:18px;
+}
+.journal-readonly-item,
+.journal-readonly-entry,
+.journal-readonly-gentle{
+  border:1px solid rgba(132,156,135,.13);
+  border-radius:19px;
+  background:rgba(255,255,255,.68);
+  box-shadow:0 12px 28px rgba(64,88,68,.06);
+}
+.journal-readonly-item{
+  padding:16px 18px;
+}
+.journal-readonly-item small,
+.journal-readonly-entry small,
+.journal-readonly-gentle small{
+  display:block;
+  margin-bottom:8px;
+  color:#87948b;
+  font-size:11px;
+  letter-spacing:.08em;
+}
+.journal-readonly-item strong{
+  color:#4f6957;
+  font-weight:500;
+  line-height:1.6;
+}
+.journal-readonly-entry{
+  margin-top:12px;
+  padding:20px;
+}
+.journal-readonly-entry p{
+  margin:0!important;
+  color:#506657!important;
+  line-height:2!important;
+  white-space:normal;
+}
+.journal-readonly-gentle{
+  margin-top:12px;
+  padding:17px 20px;
+  text-align:center;
+  background:linear-gradient(145deg,rgba(253,251,241,.85),rgba(238,246,234,.76));
+}
+.journal-readonly-gentle p{
+  margin:0!important;
+  font-family:Georgia,"Noto Serif TC",serif;
+  color:#5d715f!important;
+  font-size:17px;
+}
+.journal-complete-actions{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:9px;
+}
+.journal-v4-saved{
+  opacity:.82;
+  cursor:default!important;
+}
+.journal-edit-link{
+  border:0;
+  padding:7px 12px;
+  color:#708475;
+  background:transparent;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  .journal-readonly-grid{grid-template-columns:1fr}
+  .journal-readonly-entry{padding:17px}
+}
+
+
+/* Inneroot V7.1.8 — robust locked journal completion */
+.journal-v4-readonly .journal-v4-tag::after{
+  content:" · v7.1.8";
+  opacity:.55;
+}

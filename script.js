@@ -36,6 +36,9 @@ function archiveDailyEntry(entryDate){
 }
 function clearDailyWriting(){
   DAILY_ENTRY_KEYS.forEach(key=>localStorage.removeItem(key));
+  localStorage.removeItem("innerootJournalCompletedDate");
+  localStorage.removeItem("innerootJournalCompletedAt");
+  localStorage.removeItem("innerootCompletedJournal");
   mood="";
   journal="";
 }
@@ -266,7 +269,105 @@ async function copyPrompt(){
 }
 
 function escapeHTML(value){return String(value||"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
-function openJournal(){
+function getCompletedJournal(){
+  try{
+    const record=JSON.parse(localStorage.getItem("innerootCompletedJournal")||"null");
+    return record&&record.date===today()?record:null;
+  }catch{
+    return null;
+  }
+}
+
+function saveCompletedJournal(record){
+  localStorage.setItem("innerootCompletedJournal",JSON.stringify(record));
+  localStorage.setItem("innerootJournalCompletedDate",record.date);
+  localStorage.setItem("innerootJournalCompletedAt",record.completedAt);
+}
+
+function clearCompletedJournal(){
+  localStorage.removeItem("innerootCompletedJournal");
+  localStorage.removeItem("innerootJournalCompletedDate");
+  localStorage.removeItem("innerootJournalCompletedAt");
+}
+
+function openCompletedJournal(record=getCompletedJournal()){
+  if(!record){
+    openJournal(true);
+    return;
+  }
+
+  const draw=getDraw(),card=draw?draw.card:null;
+  const now=new Date();
+  const dateText=`${now.getFullYear()} / ${String(now.getMonth()+1).padStart(2,"0")} / ${String(now.getDate()).padStart(2,"0")}`;
+  const weekday=new Intl.DateTimeFormat("zh-HK",{weekday:"long"}).format(now);
+
+  openModal(`<div class="journal-v4 journal-v4-readonly">
+    <div class="journal-v4-glow glow-a" aria-hidden="true"></div>
+    <div class="journal-v4-glow glow-b" aria-hidden="true"></div>
+    <div class="journal-v4-daisies" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <header class="journal-v4-head">
+      <div class="journal-v4-tag">inneroot ✦ completed journal</div>
+      <h2>今天的潛意識日記</h2>
+      <p>今天的內在聲音，已被好好收藏。</p>
+      <div class="journal-v4-date">
+        <strong>${dateText}</strong>
+        <span>${weekday}</span>
+      </div>
+    </header>
+
+    <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
+
+    <section class="journal-v4-cardpanel">
+      <div class="journal-v4-cardintro">
+        <small>今日牌卡</small>
+        <strong>${card?card.zh:"今日覺察"}</strong>
+        <span>${card?card.en:"Inneroot Journal"}</span>
+      </div>
+      ${card?`<img src="${card.file}" alt="${card.zh}" class="journal-v4-card">`:`<div class="journal-v4-card empty">✿</div>`}
+      <p class="journal-v4-cardcopy">${card?"這張牌陪你留下了今天的覺察。":"今天的感受已經被記錄下來。"}</p>
+    </section>
+
+    <section class="journal-readonly-grid">
+      <article class="journal-readonly-item">
+        <small>今天的心情</small>
+        <strong>${escapeHTML(record.mood||"未選擇")}</strong>
+      </article>
+      <article class="journal-readonly-item">
+        <small>最觸動的一句</small>
+        <strong>${escapeHTML(record.focus||"未選擇")}</strong>
+      </article>
+    </section>
+
+    <section class="journal-readonly-entry">
+      <small>今天留下的文字</small>
+      <p>${record.journal&&record.journal.trim()?escapeHTML(record.journal).replace(/\n/g,"<br>"):"今天沒有留下文字。"}</p>
+    </section>
+
+    ${record.gentle&&record.gentle.trim()?`<section class="journal-readonly-gentle"><small>給今天的自己</small><p>「${escapeHTML(record.gentle)}」</p></section>`:""}
+
+    <div class="journal-v4-savebar journal-complete-actions">
+      <button class="journal-v4-save journal-v4-saved" type="button" disabled>已收藏 ✓</button>
+      <button class="journal-edit-link" id="editCompletedJournal" type="button">重新編輯</button>
+      <p>重新編輯會更新今天已收藏的記錄。</p>
+    </div>
+  </div>`);
+
+  document.getElementById("editCompletedJournal").onclick=()=>{
+    const ok=window.confirm("修改已收藏的日記，會更新今天的記錄。要繼續嗎？");
+    if(!ok)return;
+    clearCompletedJournal();
+    openJournal(true);
+  };
+}
+
+function openJournal(forceEdit=false){
+  const completed=getCompletedJournal();
+  if(completed&&!forceEdit){
+    openCompletedJournal(completed);
+    return;
+  }
+
   const draw=getDraw(),card=draw?draw.card:null;
   const questions=card?card.q:["今天最想留下的是哪一個感受？","有什麼事情值得你慢慢理解？","今天想對自己說什麼？"];
   const savedFocus=localStorage.getItem("innerootJournalFocus")||questions[0];
@@ -341,14 +442,39 @@ function openJournal(){
   });
 
   document.getElementById("save").onclick=()=>{
+    const saveButton=document.getElementById("save");
+    if(saveButton.disabled)return;
+
     journal=document.getElementById("j").value;
+    const gentle=document.getElementById("gentleNoteV4").value;
+    const focus=localStorage.getItem("innerootJournalFocus")||savedFocus;
+    const completedAt=new Intl.DateTimeFormat("zh-HK",{
+      hour:"2-digit",
+      minute:"2-digit",
+      hour12:false
+    }).format(new Date());
+
     touchDailyEntry();
     localStorage.setItem("innerootJournal",journal);
-    localStorage.setItem("innerootGentleNote",document.getElementById("gentleNoteV4").value);
+    localStorage.setItem("innerootGentleNote",gentle);
+
+    const record={
+      date:today(),
+      mood:localStorage.getItem("innerootMood")||mood||"未選擇",
+      focus,
+      journal,
+      gentle,
+      completedAt
+    };
+
+    saveCompletedJournal(record);
     saveInsightEntry();
-    openModal(`<div class="journal-v4-finish"><div class="journal-v4-bloom">✿</div><h2>今天的覺察已經收藏好了。</h2><p>下一步，可以讓「深入探索」結合今天的牌卡、心情和日記，陪你整理其中的連結與值得留意的方向。</p><div class="actions"><button class="primary" id="startExplore">開始深入探索</button><button class="secondary" id="finishLater">稍後再做</button></div></div>`);
-    document.getElementById("startExplore").onclick=copyPrompt;
-    document.getElementById("finishLater").onclick=closeModal;
+
+    saveButton.disabled=true;
+    saveButton.textContent="已收藏 ✓";
+    showToast("今天的內在聲音，已被好好收藏。");
+
+    setTimeout(()=>openCompletedJournal(record),350);
   };
 }
 function openMood(){openModal(`<h2>今天的心情如何？</h2><div class="actions">${["平靜","開心","一般","焦慮","難過"].map(x=>`<button class="secondary" data-m="${x}">${x}</button>`).join("")}</div>`);document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mood=b.dataset.m;touchDailyEntry();
