@@ -1,0 +1,38 @@
+/* =========================================================
+   Inneroot V7.1.19 — saved badge tail alignment
+   Desktop/iPad web only. No layout redesign. Mobile untouched.
+   ========================================================= */
+
+@media (min-width:761px){
+
+  /* Keep the exact approved size and vertical position.
+     JavaScript supplies ONLY the final horizontal left value. */
+  .journal-v4-readonly > .journal-complete-badge{
+    position:absolute !important;
+    top:145px !important;
+    right:auto !important;
+    min-height:34px !important;
+    width:max-content !important;
+    margin:0 !important;
+    padding:6px 11px !important;
+    font-size:11px !important;
+    white-space:nowrap !important;
+    z-index:5 !important;
+    box-sizing:border-box !important;
+  }
+
+  /* Keep desktop action buttons visually equal. */
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button{
+    width:240px !important;
+    min-width:240px !important;
+    max-width:240px !important;
+    height:48px !important;
+    min-height:48px !important;
+    box-sizing:border-box !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button > span{
+    display:none !important;
+  }
+}

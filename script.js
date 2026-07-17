@@ -293,23 +293,25 @@ function clearCompletedJournal(){
 
 function alignDesktopCompletedBadge(){
   if(window.innerWidth<=760)return;
+
   const journal=document.querySelector(".journal-v4-readonly");
   if(!journal)return;
 
-  const badge=journal.querySelector(":scope > .journal-complete-badge");
+  const badge=journal.querySelector(".journal-complete-badge");
   const mood=journal.querySelector(".journal-readonly-item:first-child");
   if(!badge||!mood)return;
 
-  // Preserve all existing vertical positioning and dimensions.
-  badge.style.removeProperty("right");
-  badge.style.left="0px";
-
   requestAnimationFrame(()=>{
-    const journalRect=journal.getBoundingClientRect();
+    const containingBlock=badge.offsetParent||journal;
+    const parentRect=containingBlock.getBoundingClientRect();
     const moodRect=mood.getBoundingClientRect();
     const badgeWidth=badge.getBoundingClientRect().width;
-    const targetLeft=moodRect.right-journalRect.left-badgeWidth;
-    badge.style.left=`${Math.round(targetLeft)}px`;
+
+    // Only change the horizontal position.
+    // Use !important because older fix files contain left:auto !important.
+    const targetLeft=Math.round(moodRect.right-parentRect.left-badgeWidth);
+    badge.style.setProperty("right","auto","important");
+    badge.style.setProperty("left",`${targetLeft}px`,"important");
   });
 }
 
@@ -396,6 +398,7 @@ function openCompletedJournal(record=getCompletedJournal()){
 
   alignDesktopCompletedBadge();
   setTimeout(alignDesktopCompletedBadge,80);
+  setTimeout(alignDesktopCompletedBadge,250);
 }
 
 function openJournal(forceEdit=false){
