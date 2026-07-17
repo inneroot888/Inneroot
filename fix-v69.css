@@ -1,0 +1,133 @@
+/* =========================================================
+   Inneroot V7.1.10
+   Loaded after all older fix files so desktop journal rules
+   can no longer be overwritten.
+   Mobile is intentionally untouched.
+   ========================================================= */
+
+@media (min-width:761px){
+
+  /* Editing page: selected reflection question */
+  .modal-card:has(.journal-v4) .journal-v4-prompt{
+    position:relative !important;
+    cursor:pointer !important;
+    transition:
+      background .18s ease,
+      border-color .18s ease,
+      box-shadow .18s ease,
+      transform .18s ease !important;
+  }
+
+  .modal-card:has(.journal-v4) .journal-v4-prompt:hover{
+    transform:translateY(-1px) !important;
+    border-color:rgba(111,148,118,.34) !important;
+    background:#f7fbf5 !important;
+  }
+
+  .modal-card:has(.journal-v4) .journal-v4-prompt.selected{
+    background:linear-gradient(145deg,#e7f1e4,#f8fbf6) !important;
+    border-color:#8eaa92 !important;
+    color:#355b42 !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(97,137,105,.18),
+      0 8px 20px rgba(66,92,70,.09) !important;
+  }
+
+  .modal-card:has(.journal-v4) .journal-v4-prompt .dot{
+    width:15px !important;
+    height:15px !important;
+    border:1.5px solid #a5b5a7 !important;
+    border-radius:50% !important;
+    background:#fff !important;
+  }
+
+  .modal-card:has(.journal-v4) .journal-v4-prompt.selected .dot{
+    border-color:#6f9075 !important;
+    background:#6f9075 !important;
+    box-shadow:inset 0 0 0 3px #fff !important;
+  }
+
+  .modal-card:has(.journal-v4) .journal-v4-prompt.selected .flower{
+    color:#b58f38 !important;
+  }
+
+  /* Completed page: clean two-column desktop layout */
+  .modal-card:has(.journal-v4-readonly){
+    width:min(980px,96vw) !important;
+  }
+
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    display:grid !important;
+    grid-template-columns:minmax(270px,.84fr) minmax(420px,1.16fr) !important;
+    grid-template-areas:
+      "head head"
+      "card badge"
+      "card facts"
+      "entry entry"
+      "gentle gentle"
+      "actions actions" !important;
+    gap:18px 22px !important;
+    align-items:start !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head{
+    grid-area:head !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    grid-area:badge !important;
+    justify-self:start !important;
+    align-self:end !important;
+    margin:0 0 2px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardpanel{
+    grid-area:card !important;
+    grid-column:auto !important;
+    grid-row:auto !important;
+    min-height:100% !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-grid{
+    grid-area:facts !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:14px !important;
+    margin:0 !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item{
+    min-height:126px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    padding:20px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.84) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry{
+    grid-area:entry !important;
+    margin:0 !important;
+    padding:22px 24px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.84) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle{
+    grid-area:gentle !important;
+    margin:0 !important;
+    padding:20px 24px !important;
+  }
+
+  .journal-v4-readonly .journal-complete-actions{
+    grid-area:actions !important;
+    grid-column:auto !important;
+    margin:0 !important;
+    padding:22px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardcopy{
+    text-align:center !important;
+  }
+}
