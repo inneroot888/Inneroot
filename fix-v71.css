@@ -1,0 +1,232 @@
+/* =========================================================
+   Inneroot V7.1.12 — Completed journal size & position fix
+   Desktop / iPad landscape only.
+   Mobile remains untouched.
+   ========================================================= */
+
+@media (min-width:761px){
+
+  .modal-card:has(.journal-v4-readonly){
+    width:min(920px,94vw) !important;
+    max-height:92vh !important;
+  }
+
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    position:relative !important;
+    display:grid !important;
+    grid-template-columns:minmax(285px,320px) minmax(0,1fr) !important;
+    grid-template-areas:
+      "head head"
+      "card mood"
+      "card entry"
+      "focus gentle"
+      "actions actions" !important;
+    gap:14px 18px !important;
+    align-items:stretch !important;
+    padding:28px 28px 22px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head{
+    grid-area:head !important;
+    margin:0 !important;
+    padding:0 190px 6px 0 !important;
+    min-height:105px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head h2{
+    font-size:clamp(30px,3.4vw,42px) !important;
+    line-height:1.18 !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date{
+    top:0 !important;
+    right:0 !important;
+    width:155px !important;
+    padding:14px 16px !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    position:absolute !important;
+    top:86px !important;
+    right:0 !important;
+    z-index:3 !important;
+    margin:0 !important;
+    padding:8px 13px !important;
+    font-size:12px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardpanel{
+    grid-area:card !important;
+    align-self:stretch !important;
+    height:100% !important;
+    min-height:0 !important;
+    padding:18px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+    border-radius:22px !important;
+    background:rgba(255,255,255,.86) !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardintro{
+    margin-bottom:10px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-card{
+    width:min(205px,86%) !important;
+    max-height:300px !important;
+    object-fit:contain !important;
+    margin:0 auto 10px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardcopy{
+    margin-top:auto !important;
+    padding-top:8px !important;
+    font-size:12px !important;
+    line-height:1.6 !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-grid{
+    display:contents !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item{
+    padding:16px 18px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.86) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child{
+    grid-area:mood !important;
+    min-height:96px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child strong{
+    font-size:17px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry{
+    grid-area:entry !important;
+    min-height:205px !important;
+    margin:0 !important;
+    padding:17px 18px !important;
+    border-radius:18px !important;
+    background:rgba(255,255,255,.88) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry p{
+    min-height:135px !important;
+    margin:0 !important;
+    padding:10px 13px !important;
+    line-height:34px !important;
+    border-radius:13px !important;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 33px,
+        rgba(122,143,125,.12) 34px
+      ) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2){
+    grid-area:focus !important;
+    min-height:112px !important;
+    padding:18px 20px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    background:
+      radial-gradient(circle at 91% 82%,rgba(204,224,197,.45),transparent 27%),
+      linear-gradient(145deg,rgba(250,252,246,.96),rgba(236,245,232,.88)) !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2)::before{
+    margin-top:-54px !important;
+    font-size:28px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2) strong{
+    font-size:16px !important;
+    line-height:1.6 !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle{
+    grid-area:gentle !important;
+    min-height:112px !important;
+    margin:0 !important;
+    padding:18px 20px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle p{
+    font-size:16px !important;
+    line-height:1.65 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-actions{
+    grid-area:actions !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    min-height:112px !important;
+    margin:0 !important;
+    padding:12px 18px !important;
+    border-radius:20px !important;
+  }
+
+  .journal-complete-action-block{
+    min-height:84px !important;
+    padding:4px 20px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-saved{
+    min-width:190px !important;
+    padding:11px 20px !important;
+  }
+
+  .journal-explore-button{
+    min-width:220px !important;
+    padding:11px 18px !important;
+    font-size:15px !important;
+  }
+
+  .journal-complete-action-block p{
+    margin-top:5px !important;
+    font-size:11px !important;
+  }
+}
+
+/* Slightly tighter sizing specifically for iPad-width web view. */
+@media (min-width:761px) and (max-width:1100px){
+  .modal-card:has(.journal-v4-readonly){
+    width:94vw !important;
+  }
+
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    grid-template-columns:300px minmax(0,1fr) !important;
+    padding:24px 24px 20px !important;
+    gap:12px 16px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-card{
+    width:190px !important;
+    max-height:275px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry{
+    min-height:190px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry p{
+    min-height:120px !important;
+  }
+
+  .journal-explore-button{
+    min-width:205px !important;
+  }
+}
