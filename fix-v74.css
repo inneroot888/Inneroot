@@ -1,0 +1,20 @@
+/* =========================================================
+   Inneroot V7.1.15
+   Desktop only: move ONLY the saved-status badge horizontally.
+   Its size, height and vertical position remain unchanged.
+   Mobile is untouched.
+   ========================================================= */
+
+@media (min-width:761px){
+  .journal-v4-readonly .journal-complete-badge{
+    /* Keep the approved vertical position and dimensions. */
+    top:145px !important;
+    left:auto !important;
+
+    /* Move the whole badge right so its tail aligns with
+       the right edge of the "今天的心情" card. */
+    right:0 !important;
+
+    margin:0 !important;
+  }
+}
