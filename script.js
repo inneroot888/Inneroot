@@ -290,31 +290,6 @@ function clearCompletedJournal(){
   localStorage.removeItem("innerootJournalCompletedAt");
 }
 
-
-function alignDesktopCompletedBadge(){
-  if(window.innerWidth<=760)return;
-
-  const journal=document.querySelector(".journal-v4-readonly");
-  if(!journal)return;
-
-  const badge=journal.querySelector(".journal-complete-badge");
-  const mood=journal.querySelector(".journal-readonly-item:first-child");
-  if(!badge||!mood)return;
-
-  requestAnimationFrame(()=>{
-    const containingBlock=badge.offsetParent||journal;
-    const parentRect=containingBlock.getBoundingClientRect();
-    const moodRect=mood.getBoundingClientRect();
-    const badgeWidth=badge.getBoundingClientRect().width;
-
-    // Only change the horizontal position.
-    // Use !important because older fix files contain left:auto !important.
-    const targetLeft=Math.round(moodRect.right-parentRect.left-badgeWidth);
-    badge.style.setProperty("right","auto","important");
-    badge.style.setProperty("left",`${targetLeft}px`,"important");
-  });
-}
-
 function openCompletedJournal(record=getCompletedJournal()){
   if(!record){
     openJournal(true);
@@ -335,13 +310,15 @@ function openCompletedJournal(record=getCompletedJournal()){
       <div class="journal-v4-tag">inneroot ✦ completed journal</div>
       <h2>今天的潛意識日記</h2>
       <p>今天的內在聲音，已被好好收藏。</p>
+    </header>
+
+    <div class="journal-complete-meta">
       <div class="journal-v4-date">
         <strong>${dateText}</strong>
         <span>${weekday}</span>
       </div>
-    </header>
-
-    <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
+      <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
+    </div>
 
     <section class="journal-v4-cardpanel">
       <div class="journal-v4-cardintro">
@@ -369,7 +346,10 @@ function openCompletedJournal(record=getCompletedJournal()){
       <p>${record.journal&&record.journal.trim()?escapeHTML(record.journal).replace(/\n/g,"<br>"):"今天沒有留下文字。"}</p>
     </section>
 
-    ${record.gentle&&record.gentle.trim()?`<section class="journal-readonly-gentle"><small>給今天的自己</small><p>「${escapeHTML(record.gentle)}」</p></section>`:""}
+    <section class="journal-readonly-gentle">
+      <small>給今天的自己</small>
+      <p>${record.gentle&&record.gentle.trim()?`「${escapeHTML(record.gentle)}」`:"今天未有留下這句話。"}</p>
+    </section>
 
     <div class="journal-v4-savebar journal-complete-actions">
       <div class="journal-complete-action-block journal-saved-action">
@@ -395,10 +375,6 @@ function openCompletedJournal(record=getCompletedJournal()){
 
   const exploreCompleted=document.getElementById("exploreCompletedJournal");
   if(exploreCompleted)exploreCompleted.onclick=()=>copyPrompt();
-
-  alignDesktopCompletedBadge();
-  setTimeout(alignDesktopCompletedBadge,80);
-  setTimeout(alignDesktopCompletedBadge,250);
 }
 
 function openJournal(forceEdit=false){
@@ -632,8 +608,3 @@ if(pendingDailyRollover)setTimeout(showDailyRolloverPrompt,80);
     el.textContent="Good Evening";
   }
 })();
-
-
-window.addEventListener("resize",()=>{
-  if(window.innerWidth>760)alignDesktopCompletedBadge();
-});

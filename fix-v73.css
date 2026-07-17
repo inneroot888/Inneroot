@@ -1,0 +1,221 @@
+/* =========================================================
+   Inneroot V7.1.20 — Stable completed journal layout
+   Built on restored V7.1.13 only.
+   ========================================================= */
+
+/* ---------- Desktop / iPad web ---------- */
+@media (min-width:761px){
+
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    display:grid !important;
+    grid-template-columns:minmax(285px,320px) minmax(0,1fr) !important;
+    grid-template-areas:
+      "head head"
+      "card meta"
+      "card mood"
+      "card entry"
+      "focus gentle"
+      "actions actions" !important;
+    gap:14px 18px !important;
+    align-items:start !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head{
+    grid-area:head !important;
+    padding-right:0 !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardpanel{
+    grid-area:card !important;
+    grid-column:auto !important;
+    grid-row:auto !important;
+    align-self:stretch !important;
+  }
+
+  /* Date and saved status share the exact width of the mood card below. */
+  .journal-v4-readonly .journal-complete-meta{
+    grid-area:meta !important;
+    display:flex !important;
+    align-items:flex-end !important;
+    justify-content:space-between !important;
+    gap:14px !important;
+    width:100% !important;
+    margin:0 0 -8px !important;
+    padding:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date{
+    position:static !important;
+    width:158px !important;
+    min-height:72px !important;
+    margin:0 !important;
+    padding:12px 16px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:18px !important;
+    box-sizing:border-box !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date span{
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    position:static !important;
+    width:max-content !important;
+    max-width:100% !important;
+    min-height:34px !important;
+    margin:0 !important;
+    padding:6px 11px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:6px !important;
+    font-size:11px !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge span{
+    width:20px !important;
+    height:20px !important;
+    flex:0 0 20px !important;
+    font-size:12px !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-grid{
+    display:contents !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:first-child{
+    grid-area:mood !important;
+    width:100% !important;
+    margin:0 !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-item:nth-child(2){
+    grid-area:focus !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry{
+    grid-area:entry !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle{
+    grid-area:gentle !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+  }
+
+  .journal-v4-readonly .journal-complete-actions{
+    grid-area:actions !important;
+    grid-template-columns:1fr 1fr !important;
+  }
+
+  /* Same dimensions for both desktop/iPad actions. */
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button{
+    width:240px !important;
+    min-width:240px !important;
+    max-width:240px !important;
+    height:48px !important;
+    min-height:48px !important;
+    padding:0 22px !important;
+    border-radius:999px !important;
+    box-sizing:border-box !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button > span{
+    display:none !important;
+  }
+}
+
+/* ---------- Mobile completed journal ---------- */
+@media (max-width:760px){
+
+  /* Keep the existing mobile layout, only centre metadata. */
+  .journal-v4-readonly .journal-v4-head{
+    text-align:center !important;
+  }
+
+  .journal-v4-readonly .journal-v4-head .journal-v4-tag,
+  .journal-v4-readonly .journal-v4-head h2,
+  .journal-v4-readonly .journal-v4-head > p{
+    text-align:center !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .journal-v4-readonly .journal-complete-meta{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:10px !important;
+    margin:0 0 14px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date{
+    position:static !important;
+    margin:0 auto !important;
+    text-align:center !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date span{
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge{
+    position:static !important;
+    margin:0 auto !important;
+  }
+
+  /* Keep mobile actions side by side and visually matched. */
+  .journal-v4-readonly .journal-complete-actions{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:46px !important;
+    min-height:46px !important;
+    padding:0 10px !important;
+    border-radius:999px !important;
+    box-sizing:border-box !important;
+    font-size:13px !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button > span{
+    display:none !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button{
+    appearance:none !important;
+    -webkit-appearance:none !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    border:1px solid rgba(79,111,87,.42) !important;
+    background:linear-gradient(145deg,#fffdf7,#eef5eb) !important;
+    color:#44634c !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      0 6px 14px rgba(63,88,68,.06) !important;
+  }
+
+  .journal-v4-readonly .journal-explore-button i{
+    margin-left:3px !important;
+    color:#55745e !important;
+  }
+}
