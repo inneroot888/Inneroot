@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inneroot</title>
+  <meta name="description" content="與潛意識對話，遇見真正的自己。">
+  <link rel="stylesheet" href="style.css?v=7.1.28">
+  <link rel="stylesheet" href="fix-v48.css?v=4.8.0">
+  <link rel="stylesheet" href="fix-v49.css?v=4.9.0">
+  <link rel="stylesheet" href="fix-v50.css?v=5.0.0">
+  <link rel="stylesheet" href="fix-v51.css?v=5.1.0">
+  <link rel="stylesheet" href="fix-v52.css?v=5.2.0">
+  <link rel="stylesheet" href="fix-v53.css?v=5.3.0">
+  <link rel="stylesheet" href="fix-v54.css?v=5.4.0">
+  <link rel="stylesheet" href="fix-v55.css?v=5.5.0">
+  <link rel="stylesheet" href="fix-v56.css?v=5.6.0">
+  <link rel="stylesheet" href="fix-v57.css?v=5.7.0">
+  <link rel="stylesheet" href="fix-v58.css?v=5.8.0">
+  <link rel="stylesheet" href="fix-v59.css?v=5.9.0">
+  <link rel="stylesheet" href="fix-v61.css?v=6.2.1">
+  <link rel="stylesheet" href="fix-v68.css?v=6.8.0">
+  <link rel="stylesheet" href="fix-v78.css?v=7.1.27">
+  <link rel="stylesheet" href="fix-v79.css?v=7.1.28">
+  <link rel="stylesheet" href="fix-v80.css?v=7.1.29">
+  <link rel="stylesheet" href="fix-v82.css?v=7.1.31">
+</head>
+<body>
+  <main class="page-shell desktop-home">
+    <section class="design-stage">
+      <img src="inneroot-home.png?v=7.1.6" alt="Inneroot 淺色森林首頁" class="design-image">
+      <div class="desktop-dynamic-greeting" aria-label="時間問候">
+        <h1><span id="desktopDynamicGreeting">Good Morning</span> <i class="greeting-leaf" aria-hidden="true">❧</i></h1>
+        <p>深呼吸，聆聽內在的聲音，<br>你已經在回家的路上。</p>
+      </div>
+      <button class="hotspot nav-home" data-action="home" aria-label="首頁"></button>
+      <button class="hotspot nav-draw" data-action="draw" aria-label="每日抽牌"></button>
+      <button class="hotspot nav-journal" data-action="journal" aria-label="潛意識日記"></button>
+      <button class="hotspot nav-mood" data-action="mood" aria-label="心情追蹤"></button>
+      <button class="hotspot nav-insight" data-action="insight" aria-label="內在洞察"></button>
+      <button class="hotspot nav-growth" data-action="growth" aria-label="成長圖譜"></button>
+      <button class="hotspot nav-prompt" data-action="prompt" aria-label="深入探索"></button>
+      <button class="hotspot nav-garden" data-action="garden" aria-label="心靈花園"></button>
+      <button class="hotspot nav-settings" data-action="settings" aria-label="設定"></button>
+      <button class="hotspot daily-card" data-action="draw" aria-label="每日抽牌"></button>
+      <button class="hotspot journal-card" data-action="journal" aria-label="潛意識日記"></button>
+      <button class="hotspot insight-card" data-action="insight" aria-label="內在洞察"></button>
+    </section>
+  </main>
+
+  <main class="mobile-home mobile-assets-home" aria-label="Inneroot 手機版首頁">
+    <section class="asset-hero">
+      <img class="asset-hero-bg" src="hero-lake.webp" alt="" aria-hidden="true">
+      <img class="asset-deco asset-deco-daisy" src="decor-daisy.png" alt="" aria-hidden="true">
+
+      <div class="asset-topbar">
+        <div class="asset-logo asset-logo-v61" aria-label="inneroot">
+          <img src="logo-v62.png?v=6.3.0" alt="inneroot">
+        </div>
+        <button class="asset-round" data-action="settings" aria-label="設定">⚙︎</button>
+      </div>
+
+      <div class="asset-welcome">
+        <p>WELCOME HOME</p>
+        <h1><span id="timeGreeting">Good Morning</span> <i class="greeting-leaf" aria-hidden="true">❧</i></h1>
+        <div>深呼吸，聆聽內在的聲音，<br>你已經在回家的路上。</div>
+      </div>
+
+      <section class="asset-mood-card">
+        <div class="asset-mood-head">
+          <div><h2>你今天的心情如何？</h2><p>覺察當下的感受，照顧自己，從這一刻開始。</p></div>
+          <button data-action="mood">記錄歷史</button>
+        </div>
+        <div class="asset-moods">
+          <button data-action="mood" aria-label="平靜"><img src="mood-calm-v59.png" alt=""><small>平靜</small></button>
+          <button data-action="mood" aria-label="開心"><img src="mood-happy-v59.png" alt=""><small>開心</small></button>
+          <button data-action="mood" aria-label="一般"><img src="mood-neutral-v59.png" alt=""><small>一般</small></button>
+          <button data-action="mood" aria-label="焦慮"><img src="mood-anxious-v59.png" alt=""><small>焦慮</small></button>
+          <button data-action="mood" aria-label="難過"><img src="mood-sad-v59.png" alt=""><small>難過</small></button>
+        </div>
+        <button class="asset-mood-save" data-action="mood">記錄我的心情</button>
+      </section>
+    </section>
+
+    <section class="asset-content">
+      <div class="asset-card-grid">
+        <button class="asset-feature-card" data-action="draw">
+          <div><strong>每日抽牌 <i>✦</i></strong><small>接收今天的內在指引</small></div>
+          <img src="feature-draw.png" alt="">
+        </button>
+        <button class="asset-feature-card" data-action="journal">
+          <div><strong>潛意識日記 <i>✦</i></strong><small>寫下感受，覺察內在的聲音</small></div>
+          <img src="feature-journal.png" alt="">
+        </button>
+        <button class="asset-feature-card" data-action="insight">
+          <div><strong>內在洞察 <i>✦</i></strong><small>回顧與分析，看見成長軌跡</small></div>
+          <img src="feature-insight.png" alt="">
+        </button>
+        <button class="asset-feature-card" data-action="prompt">
+          <div><strong>深入探索 <i>✦</i></strong><small>整理今天的內在訊息</small></div>
+          <img src="feature-ai.png" alt="">
+        </button>
+        <button class="asset-feature-card asset-wide" data-action="garden">
+          <div><strong>心靈花園 <i>✦</i></strong><small>收藏你的內在種子，讓心靈慢慢綻放</small></div>
+          <img src="feature-garden.png" alt="">
+        </button>
+      </div>
+
+      <div class="asset-quote"><span>❧</span><p>「當你越安靜，你越能聽見自己的聲音。」</p><i>♡</i></div>
+    </section>
+  </main>
+
+  <nav class="asset-bottom-nav" aria-label="主要導覽">
+      <button data-action="home" class="active"><img src="nav-home.png" alt=""><small>首頁</small></button>
+      <button data-action="draw"><img src="nav-draw.png" alt=""><small>抽牌</small></button>
+      <button data-action="journal"><img src="nav-journal.png" alt=""><small>日記</small></button>
+      <button data-action="prompt"><img src="nav-ai.png" alt=""><small>深入探索</small></button>
+    </nav>
+
+  <div id="modalBackdrop" class="modal-backdrop" hidden>
+    <section class="modal-card" role="dialog" aria-modal="true">
+      <button id="closeModal" class="close" aria-label="關閉">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="script.js?v=7.1.25"></script>
+</body>
+</html>

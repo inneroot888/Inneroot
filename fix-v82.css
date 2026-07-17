@@ -1,0 +1,290 @@
+/* Inneroot v7.1.30 — completed journal md+ layout only.
+   IMPORTANT: every rule in this file is locked to >= 768px.
+   Mobile (<768px) remains untouched. */
+
+@media (min-width: 768px) {
+  /* Give the completed journal enough usable width without changing mobile. */
+  .modal-card:has(.journal-v4-readonly) {
+    width: min(96vw, 1320px) !important;
+    max-width: 1320px !important;
+    overflow-x: hidden !important;
+  }
+
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    padding-left: clamp(34px, 5vw, 70px) !important;
+    padding-right: clamp(34px, 5vw, 70px) !important;
+  }
+
+  /* Main md+ composition: left card, right journal details. */
+  .journal-v4-readonly .journal-complete-layout {
+    display: grid !important;
+    grid-template-columns: minmax(300px, 39%) minmax(0, 1fr) !important;
+    grid-template-areas:
+      "card meta"
+      "card mood"
+      "card entry"
+      "focus gentle" !important;
+    column-gap: clamp(22px, 3vw, 34px) !important;
+    row-gap: 0 !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-left,
+  .journal-v4-readonly .journal-complete-right {
+    display: contents !important;
+  }
+
+  .journal-v4-readonly .journal-v4-cardpanel {
+    grid-area: card !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    margin: 0 0 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Date + saved badge: one aligned row, exact same outer width as details below. */
+  .journal-v4-readonly .journal-complete-meta {
+    grid-area: meta !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.45fr) minmax(190px, .9fr) !important;
+    gap: clamp(12px, 1.8vw, 22px) !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 14px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date,
+  .journal-v4-readonly .journal-complete-badge {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    grid-template-rows: auto auto !important;
+    column-gap: 14px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 88px !important;
+    padding: 15px 20px !important;
+    border-radius: 15px !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date::before {
+    content: "▣" !important;
+    grid-column: 1 !important;
+    grid-row: 1 / 3 !important;
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 28px !important;
+    height: 28px !important;
+    color: #355d46 !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date strong {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: start !important;
+    font-size: clamp(18px, 2.2vw, 24px) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date span {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    justify-self: center !important;
+    font-size: clamp(15px, 1.8vw, 19px) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 50px !important;
+    padding: 10px 14px !important;
+    border-radius: 13px !important;
+    white-space: nowrap !important;
+    font-size: clamp(12px, 1.45vw, 15px) !important;
+    overflow: hidden !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge span {
+    flex: 0 0 auto !important;
+    margin-right: 8px !important;
+  }
+
+  /* Mood + journal text visually form one vertical panel. */
+  .journal-v4-readonly .journal-readonly-mood {
+    grid-area: mood !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 128px !important;
+    margin: 0 !important;
+    border-radius: 18px 18px 0 0 !important;
+    border-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry {
+    grid-area: entry !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 245px !important;
+    margin: 0 0 18px !important;
+    border-radius: 0 0 18px 18px !important;
+    border-top: 1px solid rgba(63, 92, 71, .13) !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-entry p {
+    min-height: 150px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Lower cards: two equal columns. */
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 145px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-focus {
+    grid-area: focus !important;
+  }
+
+  .journal-v4-readonly .journal-readonly-gentle {
+    grid-area: gentle !important;
+  }
+
+  /* Bottom action area: two equal halves with a subtle divider. */
+  .journal-v4-readonly .journal-complete-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr) !important;
+    column-gap: clamp(28px, 4vw, 48px) !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 26px clamp(34px, 5vw, 62px) 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-complete-actions::before {
+    content: "" !important;
+    display: block !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: stretch !important;
+    width: 1px !important;
+    min-height: 118px !important;
+    background: rgba(63, 92, 71, .20) !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .journal-v4-readonly .journal-explore-action {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-action-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .journal-v4-readonly .journal-v4-saved,
+  .journal-v4-readonly .journal-explore-button {
+    width: min(100%, 370px) !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 24px !important;
+    border-radius: 999px !important;
+    font-size: clamp(16px, 1.8vw, 19px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action .journal-edit-link,
+  .journal-v4-readonly .journal-complete-action-block > p {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .journal-v4-readonly .journal-saved-action .journal-edit-link {
+    margin: 13px 0 0 !important;
+  }
+
+  .journal-v4-readonly .journal-complete-action-block > p {
+    margin: 8px 0 0 !important;
+  }
+}
+
+/* Inneroot v7.1.31 — md+ spacing/alignment refinement only.
+   All overrides remain locked to >= 768px so mobile is unchanged. */
+@media (min-width: 768px) {
+  /* Stretch the date row to the exact width of the right-side content panel. */
+  .journal-v4-readonly .journal-complete-meta {
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: minmax(190px, 0.9fr) minmax(250px, 1.1fr) !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+  }
+
+  .journal-v4-readonly .journal-v4-date,
+  .journal-v4-readonly .journal-complete-badge {
+    width: 100% !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+  }
+
+  .journal-v4-readonly .journal-complete-badge {
+    justify-content: flex-start !important;
+    padding-left: clamp(16px, 2vw, 24px) !important;
+    padding-right: clamp(16px, 2vw, 24px) !important;
+  }
+
+  /* Add breathing room between the main tarot/detail area and the two lower cards. */
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle {
+    margin-top: clamp(24px, 3vw, 34px) !important;
+  }
+
+  /* Keep the two lower cards perfectly aligned after adding the spacing. */
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle {
+    align-self: stretch !important;
+    height: auto !important;
+  }
+}
