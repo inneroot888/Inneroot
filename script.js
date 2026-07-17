@@ -364,7 +364,7 @@ function openCompletedJournal(record=getCompletedJournal()){
       </div>
       <div class="journal-complete-action-block journal-explore-action">
         <button class="journal-explore-button" id="exploreCompletedJournal" type="button">
-          <span aria-hidden="true">❧</span> 前往深入探索 <i aria-hidden="true">›</i>
+          前往深入探索 <i aria-hidden="true">›</i>
         </button>
         <p>透過牌卡指引，探索更深層的內在訊息。</p>
       </div>
