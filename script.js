@@ -318,6 +318,14 @@ function openCompletedJournal(record=getCompletedJournal()){
 
     <div class="journal-complete-badge"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
 
+    <div class="journal-desktop-meta" aria-hidden="true">
+      <div class="journal-desktop-date">
+        <strong>${dateText}</strong>
+        <span>${weekday}</span>
+      </div>
+      <div class="journal-desktop-status"><span>✓</span> 今日的日記已收藏 · ${escapeHTML(record.completedAt||"")}</div>
+    </div>
+
     <section class="journal-v4-cardpanel">
       <div class="journal-v4-cardintro">
         <small>今日牌卡</small>
