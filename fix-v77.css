@@ -1,0 +1,289 @@
+/* Inneroot v7.1.26 — completed journal device-isolated final layout */
+
+/* Shared: action buttons are exactly the same size and shape */
+.modal-card:has(.journal-v4-readonly) .journal-complete-actions{
+  box-sizing:border-box!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-complete-action-block{
+  min-width:0!important;
+  width:100%!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-v4-save,
+.modal-card:has(.journal-v4-readonly) .journal-explore-button{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  width:100%!important;
+  max-width:none!important;
+  height:60px!important;
+  min-height:60px!important;
+  padding:0 28px!important;
+  margin:0!important;
+  border-radius:999px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  font-family:inherit!important;
+  font-size:18px!important;
+  font-weight:500!important;
+  line-height:1!important;
+  letter-spacing:.02em!important;
+  text-decoration:none!important;
+  opacity:1!important;
+  white-space:nowrap!important;
+  cursor:pointer!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-v4-save{
+  color:#fff!important;
+  background:linear-gradient(180deg,#9db9a1 0%,#82a98e 100%)!important;
+  border:1px solid rgba(91,126,105,.16)!important;
+  box-shadow:0 10px 24px rgba(78,111,91,.18),inset 0 1px 0 rgba(255,255,255,.28)!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-explore-button{
+  color:#4d6e5f!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(241,247,241,.96))!important;
+  border:1px solid rgba(91,126,105,.34)!important;
+  box-shadow:0 10px 24px rgba(78,111,91,.11),inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-explore-button i{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-style:normal!important;
+  font-size:25px!important;
+  line-height:1!important;
+  margin:0!important;
+}
+.modal-card:has(.journal-v4-readonly) .journal-explore-button::before,
+.modal-card:has(.journal-v4-readonly) .journal-explore-button > span{
+  display:none!important;
+  content:none!important;
+}
+
+/* DESKTOP / NOTEBOOK — mouse or trackpad, independent from window width */
+@media (min-width:601px) and (hover:hover) and (pointer:fine){
+  .modal-card:has(.journal-v4-readonly) .journal-complete-layout{
+    display:grid!important;
+    grid-template-columns:minmax(390px,1.08fr) minmax(320px,.92fr)!important;
+    grid-template-areas:
+      "card meta"
+      "card mood"
+      "card entry"
+      "focus gentle"!important;
+    grid-template-rows:auto auto minmax(230px,auto) auto!important;
+    column-gap:28px!important;
+    row-gap:22px!important;
+    align-items:stretch!important;
+  }
+  .journal-v4-readonly .journal-complete-left,
+  .journal-v4-readonly .journal-complete-right{display:contents!important}
+  .journal-v4-readonly .journal-v4-cardpanel{grid-area:card!important;margin:0!important;height:100%!important}
+  .journal-v4-readonly .journal-complete-meta{
+    grid-area:meta!important;
+    display:grid!important;
+    grid-template-columns:minmax(205px,235px) minmax(230px,1fr)!important;
+    gap:18px!important;
+    align-items:center!important;
+    margin:0!important;
+    width:100%!important;
+  }
+  .journal-v4-readonly .journal-v4-date,
+  .journal-v4-readonly .journal-complete-badge{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    margin:0!important;
+    width:100%!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+  }
+  .journal-v4-readonly .journal-complete-badge{
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+  .journal-v4-readonly .journal-readonly-mood{grid-area:mood!important;margin:0!important;min-height:125px!important}
+  .journal-v4-readonly .journal-readonly-entry{grid-area:entry!important;margin:0!important;min-height:230px!important}
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle{
+    margin:0!important;
+    min-height:150px!important;
+    width:100%!important;
+    height:100%!important;
+    box-sizing:border-box!important;
+  }
+  .journal-v4-readonly .journal-readonly-focus{grid-area:focus!important}
+  .journal-v4-readonly .journal-readonly-gentle{grid-area:gentle!important}
+  .journal-v4-readonly .journal-complete-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:38px!important;
+    align-items:start!important;
+    padding:28px 52px 24px!important;
+  }
+}
+
+/* iPAD / TABLET — touch devices only, never desktop */
+@media (min-width:601px) and (hover:none) and (pointer:coarse){
+  .modal-card:has(.journal-v4-readonly) .journal-v4.journal-v4-readonly{
+    padding-left:7%!important;
+    padding-right:7%!important;
+  }
+  .modal-card:has(.journal-v4-readonly) .journal-complete-layout{
+    display:grid!important;
+    grid-template-columns:minmax(350px,1.05fr) minmax(310px,.95fr)!important;
+    grid-template-areas:
+      "card meta"
+      "card mood"
+      "card entry"
+      "focus gentle"!important;
+    grid-template-rows:auto auto minmax(260px,auto) auto!important;
+    column-gap:24px!important;
+    row-gap:20px!important;
+    align-items:stretch!important;
+  }
+  .journal-v4-readonly .journal-complete-left,
+  .journal-v4-readonly .journal-complete-right{display:contents!important}
+  .journal-v4-readonly .journal-v4-cardpanel{grid-area:card!important;margin:0!important;height:100%!important}
+  .journal-v4-readonly .journal-complete-meta{
+    grid-area:meta!important;
+    display:grid!important;
+    grid-template-columns:minmax(180px,215px) minmax(220px,1fr)!important;
+    gap:16px!important;
+    align-items:center!important;
+    margin:0!important;
+    width:100%!important;
+  }
+  .journal-v4-readonly .journal-v4-date,
+  .journal-v4-readonly .journal-complete-badge{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    margin:0!important;
+    width:100%!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+  }
+  .journal-v4-readonly .journal-v4-date{text-align:center!important}
+  .journal-v4-readonly .journal-complete-badge{
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    padding-left:12px!important;
+    padding-right:12px!important;
+  }
+  .journal-v4-readonly .journal-readonly-mood{grid-area:mood!important;margin:0!important;min-height:135px!important}
+  .journal-v4-readonly .journal-readonly-entry{
+    grid-area:entry!important;
+    margin:0!important;
+    min-height:285px!important;
+    padding:30px 28px!important;
+  }
+  .journal-v4-readonly .journal-readonly-entry p{
+    min-height:180px!important;
+    font-size:18px!important;
+    line-height:1.9!important;
+  }
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-gentle{
+    margin:0!important;
+    min-height:155px!important;
+    width:100%!important;
+    height:100%!important;
+    box-sizing:border-box!important;
+  }
+  .journal-v4-readonly .journal-readonly-focus{grid-area:focus!important}
+  .journal-v4-readonly .journal-readonly-gentle{grid-area:gentle!important}
+  .journal-v4-readonly .journal-complete-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:28px!important;
+    align-items:start!important;
+    padding:28px 42px 24px!important;
+  }
+}
+
+/* PHONE ONLY */
+@media (max-width:600px){
+  .modal-card:has(.journal-v4-readonly) .journal-complete-layout{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:20px!important;
+  }
+  .journal-v4-readonly .journal-complete-left,
+  .journal-v4-readonly .journal-complete-right{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:20px!important;
+    width:100%!important;
+  }
+  .journal-v4-readonly .journal-complete-right{display:contents!important}
+  .journal-v4-readonly .journal-complete-meta{
+    order:-2!important;
+    width:100%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:14px!important;
+    margin:0 auto 20px!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-v4-date{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    margin:0 auto!important;
+    width:min(260px,80vw)!important;
+    max-width:100%!important;
+    align-self:center!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-v4-date strong,
+  .journal-v4-readonly .journal-v4-date span{
+    display:block!important;
+    width:100%!important;
+    text-align:center!important;
+  }
+  .journal-v4-readonly .journal-complete-badge{
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    margin:0 auto!important;
+    width:max-content!important;
+    max-width:92%!important;
+    align-self:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+  .journal-v4-readonly .journal-v4-cardpanel{order:-1!important;width:100%!important;margin:0!important}
+  .journal-v4-readonly .journal-readonly-mood,
+  .journal-v4-readonly .journal-readonly-focus,
+  .journal-v4-readonly .journal-readonly-entry,
+  .journal-v4-readonly .journal-readonly-gentle{
+    width:100%!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+  .journal-v4-readonly .journal-readonly-entry{min-height:205px!important;padding:27px 24px!important}
+  .journal-v4-readonly .journal-readonly-entry p{min-height:115px!important;font-size:17px!important;line-height:1.85!important}
+  .journal-v4-readonly .journal-complete-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:24px!important;
+    padding:28px 24px 30px!important;
+  }
+  .journal-v4-readonly .journal-complete-action-block{
+    width:100%!important;
+    max-width:390px!important;
+    margin:0 auto!important;
+  }
+  .modal-card:has(.journal-v4-readonly) .journal-v4-save,
+  .modal-card:has(.journal-v4-readonly) .journal-explore-button{
+    width:100%!important;
+    height:60px!important;
+    min-height:60px!important;
+  }
+}
